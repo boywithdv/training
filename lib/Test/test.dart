@@ -28,15 +28,7 @@ class _MyAppState extends State<Test> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Container(
       height: 1000,
-      child: Lottie.asset(
-        'assets/Lottie/lottie2.json',
-        controller: _controller,
-        onLoaded: (composition) {
-          _controller
-            ..duration = composition.duration
-            ..forward();
-        },
-      ),
+      child: Lottie.asset('assets/Lottie/lottie1.json', repeat: true),
     );
   }
 }

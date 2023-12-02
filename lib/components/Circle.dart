@@ -13,7 +13,7 @@ class _CircleState extends State<Circle> {
     return Container(
       height: 1000,
       decoration: BoxDecoration(
-          color: Color.fromARGB(60, 0, 242, 255), shape: BoxShape.circle),
+          color: Color.fromARGB(151, 0, 255, 174), shape: BoxShape.circle),
     );
   }
 }
