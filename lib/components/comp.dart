@@ -13,6 +13,7 @@ class LPage extends StatefulWidget {
 class _HomePageState extends State<LPage> {
   String mail = '';
   String password = '';
+  //final _auth = FirebaseAuth.instance;
   // TextEditingControllerの作成
   TextEditingController _nameController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
@@ -64,11 +65,13 @@ class _HomePageState extends State<LPage> {
                       child: Column(
                         children: <Widget>[
                           TextFieldForLogin(
+                            onChanged: (newValue) {},
                             textController: _nameController,
                             text: "メールアドレス",
                             pw: false,
                           ),
                           TextFieldForLogin(
+                            onChanged: (newValue) {},
                             textController: _passwordController,
                             text: "パスワード",
                             pw: true,
@@ -162,6 +165,5 @@ class _HomePageState extends State<LPage> {
       }
     }
   }
-}
-*/
+  */
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:training/Lottie/LottieFiles.dart';
 import 'package:training/components/backgroundAnimation.dart';
 import 'package:training/components/comp.dart';
+import 'package:training/components/textfieldState.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -15,7 +16,7 @@ class _BackGroundState extends State<LoginForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
-        children: [BackgroundAnimation(), LottieFiles(), LPage()],
+        children: [BackgroundAnimation(), LottieFiles(), LoginPage()],
       ),
     );
   }

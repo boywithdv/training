@@ -33,14 +33,17 @@ class LoginModel extends ChangeNotifier {
   Future login() async {
     this.email = titleController.text;
     this.password = authorController.text;
-
+    //emai;とパスワードがnullである
+    print(email);
+    print(password);
     if (email != null && password != null) {
       // ログイン
+      //ここがエラーになる
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email!, password: password!);
-
       final currentUser = FirebaseAuth.instance.currentUser;
       final uid = currentUser!.uid;
+      print("ログイン成功しました。");
     }
   }
 }

@@ -6,10 +6,11 @@ class TextFieldForLogin extends StatelessWidget {
       required this.text,
       required this.pw,
       required this.textController,
-      required});
+      required this.onChanged});
   final String text;
   final bool pw;
   final TextEditingController textController;
+  final void Function(String) onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class TextFieldForLogin extends StatelessWidget {
       padding: EdgeInsets.all(10),
       width: 300,
       child: TextField(
-        onChanged: (text) {},
+        onChanged: onChanged,
         obscureText: pw,
         controller: textController,
         decoration: InputDecoration(
