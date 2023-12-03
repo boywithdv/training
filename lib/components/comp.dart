@@ -1,6 +1,8 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:training/components/textfield.dart';
+import 'package:training/core/LoginSuccess.dart';
 
 class LPage extends StatefulWidget {
   const LPage({Key? key}) : super(key: key);
@@ -11,9 +13,20 @@ class LPage extends StatefulWidget {
 class _HomePageState extends State<LPage> {
   String mail = '';
   String password = '';
+  // TextEditingControllerの作成
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    // ウィジェットが破棄されるときにコントローラーも破棄する
+    _nameController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
     return Scaffold(
         backgroundColor: Colors.transparent,
         body: SingleChildScrollView(
@@ -51,10 +64,12 @@ class _HomePageState extends State<LPage> {
                       child: Column(
                         children: <Widget>[
                           TextFieldForLogin(
+                            textController: _nameController,
                             text: "メールアドレス",
                             pw: false,
                           ),
                           TextFieldForLogin(
+                            textController: _passwordController,
                             text: "パスワード",
                             pw: true,
                           )
@@ -69,7 +84,7 @@ class _HomePageState extends State<LPage> {
                   duration: Duration(milliseconds: 1900),
                   child: MaterialButton(
                     onPressed: () {
-                      print("this is ログインボタン");
+                      //Logind();
                     },
                     color: Color.fromRGBO(49, 39, 79, 1),
                     shape: RoundedRectangleBorder(
@@ -102,4 +117,51 @@ class _HomePageState extends State<LPage> {
           ),
         ));
   }
+
+/*
+  void Logind() async {
+    print("this is login");
+    try {
+      final newUser = await _auth.signInWithEmailAndPassword(
+          email: mail, password: password);
+      if (newUser != null) {
+        Navigator.pushReplacement(
+            context,
+            //ログインが成功した場合の遷移先
+            MaterialPageRoute(builder: (context) => MyWidget()));
+      }
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'invalid-email') {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(''),
+          ),
+        );
+        print('メールアドレスのフォーマットが正しくありません');
+      } else if (e.code == 'user-disabled') {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('現在指定したメールアドレスは使用できません'),
+          ),
+        );
+        print('現在指定したメールアドレスは使用できません');
+      } else if (e.code == 'user-not-found') {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('指定したメールアドレスは登録されていません'),
+          ),
+        );
+        print('指定したメールアドレスは登録されていません');
+      } else if (e.code == 'wrong-password') {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('パスワードが間違っています'),
+          ),
+        );
+        print('パスワードが間違っています');
+      }
+    }
+  }
+}
+*/
 }

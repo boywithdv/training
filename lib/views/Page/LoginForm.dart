@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:training/Test/test.dart';
+import 'package:training/Lottie/LottieFiles.dart';
 import 'package:training/components/backgroundAnimation.dart';
 import 'package:training/components/comp.dart';
 
@@ -15,7 +15,7 @@ class _BackGroundState extends State<LoginForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
-        children: [BackgroundAnimation(), Test(), LPage()],
+        children: [BackgroundAnimation(), LottieFiles(), LPage()],
       ),
     );
   }

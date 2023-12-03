@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:training/Page/background.dart';
-import 'package:training/components/comp.dart';
+import 'package:training/views/Page/LoginForm.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 void main() {
   runApp(const MyApp());

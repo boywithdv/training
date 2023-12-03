@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-class Test extends StatefulWidget {
-  const Test({super.key});
+class LottieFiles extends StatefulWidget {
+  const LottieFiles({super.key});
 
   @override
-  State<Test> createState() => _MyAppState();
+  State<LottieFiles> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<Test> with TickerProviderStateMixin {
+class _MyAppState extends State<LottieFiles> with TickerProviderStateMixin {
   late final AnimationController _controller;
 
   @override
