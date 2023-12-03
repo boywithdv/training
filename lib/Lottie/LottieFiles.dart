@@ -28,7 +28,7 @@ class _MyAppState extends State<LottieFiles> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        child: Lottie.asset('assets/Lottie/lottie3.json', repeat: true),
+        child: Lottie.asset('assets/Lottie/lottie1.json', repeat: true),
       ),
     );
   }
