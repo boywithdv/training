@@ -26,9 +26,10 @@ class _MyAppState extends State<Test> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 1000,
-      child: Lottie.asset('assets/Lottie/lottie1.json', repeat: true),
+    return Center(
+      child: Container(
+        child: Lottie.asset('assets/Lottie/lottie3.json', repeat: true),
+      ),
     );
   }
 }

@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:training/Test/test.dart';
 import 'package:training/components/backgroundAnimation.dart';
+import 'package:training/components/comp.dart';
 
-class BackGround extends StatefulWidget {
-  const BackGround({super.key});
+class LoginForm extends StatefulWidget {
+  const LoginForm({super.key});
 
   @override
-  State<BackGround> createState() => _BackGroundState();
+  State<LoginForm> createState() => _BackGroundState();
 }
 
-class _BackGroundState extends State<BackGround> {
+class _BackGroundState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
-        children: [BackgroundAnimation(), Test()],
+        children: [BackgroundAnimation(), Test(), HomePage()],
       ),
     );
   }
