@@ -2,12 +2,15 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:training/components/textfield.dart';
 
-class HomePage extends StatefulWidget {
+class LPage extends StatefulWidget {
+  const LPage({Key? key}) : super(key: key);
   @override
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<LPage> {
+  String mail = '';
+  String password = '';
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -48,7 +51,7 @@ class _HomePageState extends State<HomePage> {
                       child: Column(
                         children: <Widget>[
                           TextFieldForLogin(
-                            text: "ユーザ名",
+                            text: "メールアドレス",
                             pw: false,
                           ),
                           TextFieldForLogin(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
-import 'package:training/Test/test.dart';
-import 'package:training/components/background.dart';
+import 'package:training/Page/background.dart';
+import 'package:training/components/comp.dart';
 
 void main() {
   runApp(const MyApp());

@@ -14,9 +14,8 @@ class _BackGroundState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: Stack(
-        children: [BackgroundAnimation(), Test(), HomePage()],
+        children: [BackgroundAnimation(), Test(), LPage()],
       ),
     );
   }
