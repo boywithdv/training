@@ -1,8 +1,6 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:training/components/textfield.dart';
-import 'package:training/core/LoginSuccess.dart';
 
 class LPage extends StatefulWidget {
   const LPage({Key? key}) : super(key: key);

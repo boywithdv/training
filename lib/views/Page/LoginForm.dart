@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:training/Lottie/LottieFiles.dart';
 import 'package:training/components/backgroundAnimation.dart';
-import 'package:training/components/comp.dart';
+import 'package:training/Organisms/LPage.dart';
 import 'package:training/components/textfieldState.dart';
 
 class LoginForm extends StatefulWidget {
@@ -13,17 +13,20 @@ class LoginForm extends StatefulWidget {
 
 class _BackGroundState extends State<LoginForm> {
   //これをtrueにすることでcontainerに変更される
-  bool tes = true;
+  bool newAccountFlg = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
           BackgroundAnimation(),
-          LottieFiles(),
+          AnimatedSwitcher(
+            duration: Duration(milliseconds: 500),
+            child: newAccountFlg ? null : LottieFiles(),
+          ),
           AnimatedSwitcher(
               duration: Duration(milliseconds: 500),
-              child: tes
+              child: newAccountFlg
                   ? Center(
                       child: Container(
                         height: 800,

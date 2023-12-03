@@ -2,7 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:training/components/textfield.dart';
-import 'package:training/views/model/LoginModel.dart';
+import 'package:training/controller/Auth/LoginModel.dart';
 
 class LoginPage extends StatelessWidget {
   String mail = '';
