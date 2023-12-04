@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:training/firebase_options.dart';
-import 'package:training/views/Page/LoginForm.dart';
+import 'package:training/views/Page/Form.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {

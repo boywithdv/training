@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:training/components/textfield.dart';
 import 'package:training/controller/Auth/LoginModel.dart';
+import 'package:training/views/Page/RegisterForm.dart';
 
 class LoginPage extends StatelessWidget {
   String mail = '';
@@ -62,7 +63,7 @@ class LoginPage extends StatelessWidget {
                                   model.setEmail(newValue);
                                 },
                                 textController: _nameController,
-                                text: "メールアドレス",
+                                hinttext: "メールアドレス",
                                 pw: false,
                               ),
                               TextFieldForLogin(
@@ -70,7 +71,7 @@ class LoginPage extends StatelessWidget {
                                   model.setPassword(newValue);
                                 },
                                 textController: _passwordController,
-                                text: "パスワード",
+                                hinttext: "パスワード",
                                 pw: true,
                               )
                             ],
@@ -115,7 +116,11 @@ class LoginPage extends StatelessWidget {
                       duration: Duration(milliseconds: 2000),
                       child: Center(
                           child: TextButton(
-                              onPressed: () {
+                              onPressed: () async {
+                                await Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                        builder: (context) => RegisterForm()));
+                                //このボタンが押下した後に実行される
                                 print("create account button");
                               },
                               child: Text(
