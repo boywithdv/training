@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -24,5 +23,14 @@ class LoginModel extends ChangeNotifier {
     );
     final uid = result.user!.uid;
     // TODO 端末に保存
+    print(result.user);
+    /**
+     * result.userには以下のプロパティがある
+     * displayName : ユーザーの名前
+     * email : jukiya8891@gmail.com
+     * isEmailverified : 
+     * isAnonymous : 
+     * metadata : 
+     */
   }
 }
