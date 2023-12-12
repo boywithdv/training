@@ -2,15 +2,15 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:training/components/textfield.dart';
-import 'package:training/controller/Auth/LoginModel.dart';
-import 'package:training/views/Page/RegisterForm.dart';
+import 'package:training/controller/models/LoginModel.dart';
+import 'package:training/controller/Auth/RegisterForm.dart';
 
 class LoginPage extends StatelessWidget {
-  String mail = '';
-  String password = '';
   // TextEditingControllerの作成
-  TextEditingController _nameController = TextEditingController();
+  TextEditingController _mailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+
+  LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -59,16 +59,16 @@ class LoginPage extends StatelessWidget {
                           child: Column(
                             children: <Widget>[
                               TextFieldForLogin(
-                                onChanged: (newValue) {
-                                  model.setEmail(newValue);
+                                onChanged: (text) {
+                                  model.mail = text;
                                 },
-                                textController: _nameController,
+                                textController: _mailController,
                                 hinttext: "メールアドレス",
                                 pw: false,
                               ),
                               TextFieldForLogin(
-                                onChanged: (newValue) {
-                                  model.setPassword(newValue);
+                                onChanged: (text) {
+                                  model.password = text;
                                 },
                                 textController: _passwordController,
                                 hinttext: "パスワード",
@@ -84,8 +84,14 @@ class LoginPage extends StatelessWidget {
                   FadeInUp(
                       duration: Duration(milliseconds: 1900),
                       child: MaterialButton(
-                        onPressed: () {
-                          //Logind();
+                        onPressed: () async {
+                          try {
+                            await model.login();
+                            _showDialog(context, "ログインしました。");
+                          } catch (e) {
+                            print(e);
+                            _showDialog(context, e.toString());
+                          }
                         },
                         color: Color.fromRGBO(49, 39, 79, 1),
                         shape: RoundedRectangleBorder(
@@ -93,21 +99,10 @@ class LoginPage extends StatelessWidget {
                         ),
                         height: 50,
                         child: Center(
-                            child: TextButton(
-                                child: Text(
-                                  'ログイン',
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                                onPressed: () async {
-                                  try {
-                                    await model.login();
-                                    print("ログイン成功");
-                                  } catch (e) {
-                                    print("エラー" + e.toString());
-                                  } finally {
-                                    print("finally");
-                                  }
-                                })),
+                            child: Text(
+                          "ログイン",
+                          style: TextStyle(color: Colors.white),
+                        )),
                       )),
                   SizedBox(
                     height: 30,
@@ -135,5 +130,16 @@ class LoginPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _showDialog(BuildContext context, String title) {
+    showDialog(
+        context: context,
+        builder: (BuildContext contxt) {
+          return AlertDialog(
+            title: Text(title),
+            actions: [],
+          );
+        });
   }
 }

@@ -2,11 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:training/components/backgroundAnimation.dart';
 import 'package:training/components/textfield.dart';
-import 'package:training/controller/Auth/RegisterModel.dart';
+import 'package:training/controller/models/RegisterModel.dart';
 
-class RegisterPageless extends StatelessWidget {
-  final _mailController = TextEditingController();
-  final _pwController = TextEditingController();
+class RegisterForm extends StatefulWidget {
+  const RegisterForm({super.key});
+
+  @override
+  State<RegisterForm> createState() => _RegisterFormState();
+}
+
+class _RegisterFormState extends State<RegisterForm> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<RegisterModel>(
@@ -84,9 +89,6 @@ class RegisterPageless extends StatelessWidget {
                         model.startLoading();
                         try {
                           await model.signUp();
-                          print(
-                              "this is EmailComtroller" + _mailController.text);
-                          print("this is Password" + _pwController.text);
                         } catch (e) {
                           final snackBar = SnackBar(
                               backgroundColor: Colors.red,
@@ -106,5 +108,6 @@ class RegisterPageless extends StatelessWidget {
         ),
       ),
     );
+    ;
   }
 }
