@@ -33,8 +33,11 @@ class RegisterPageless extends StatelessWidget {
                   child: TextFieldForLogin(
                     hinttext: "メールアドレス",
                     pw: false,
-                    textController: _mailController,
-                    onChanged: (newValue) {},
+                    textController: model.titleController,
+                    onChanged: (text) {
+                      print(text);
+                      model.setEmail(text);
+                    },
                   ),
                 ),
                 Positioned(
@@ -43,8 +46,11 @@ class RegisterPageless extends StatelessWidget {
                   child: TextFieldForLogin(
                     hinttext: "パスワード",
                     pw: true,
-                    textController: _pwController,
-                    onChanged: (newValue) {},
+                    textController: model.authorController,
+                    onChanged: (text) {
+                      print(text);
+                      model.setPassword(text);
+                    },
                   ),
                 ),
                 Positioned(
@@ -63,6 +69,35 @@ class RegisterPageless extends StatelessWidget {
                     endIndent: 22,
                     thickness: 1,
                     color: Colors.white70,
+                  ),
+                ),
+                Positioned(
+                  top: 500,
+                  left: 150,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20)),
+                    child: TextButton(
+                      child: Text("SIGN UP"),
+                      onPressed: () async {
+                        model.startLoading();
+                        try {
+                          await model.signUp();
+                          print(
+                              "this is EmailComtroller" + _mailController.text);
+                          print("this is Password" + _pwController.text);
+                        } catch (e) {
+                          final snackBar = SnackBar(
+                              backgroundColor: Colors.red,
+                              content: Text(e.toString()));
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                          print(e);
+                        } finally {
+                          model.endLoading();
+                        }
+                      },
+                    ),
                   ),
                 )
               ],
