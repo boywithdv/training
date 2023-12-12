@@ -28,7 +28,7 @@ class RegisterPageless extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  bottom: 456,
+                  bottom: 415,
                   left: 100,
                   child: TextFieldForLogin(
                     hinttext: "メールアドレス",
@@ -38,7 +38,7 @@ class RegisterPageless extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  bottom: 410,
+                  bottom: 365,
                   left: 100,
                   child: TextFieldForLogin(
                     hinttext: "パスワード",
@@ -48,13 +48,13 @@ class RegisterPageless extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  bottom: 476,
+                  bottom: 435,
                   left: 70,
                   child: Icon(Icons.mail),
                 ),
                 Positioned(
                   left: 70,
-                  bottom: 430,
+                  bottom: 385,
                   child: Icon(Icons.password),
                 ),
                 Center(
