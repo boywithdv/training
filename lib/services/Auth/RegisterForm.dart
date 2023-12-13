@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:training/components/backgroundAnimation.dart';
 import 'package:training/components/textfield.dart';
-import 'package:training/controller/models/RegisterModel.dart';
+import 'package:training/models/RegisterModel.dart';
 
 class RegisterForm extends StatefulWidget {
   const RegisterForm({super.key});

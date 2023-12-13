@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:training/components/Circle.dart';
 
 class LottieFiles extends StatefulWidget {
   const LottieFiles({super.key});
@@ -27,9 +28,14 @@ class _MyAppState extends State<LottieFiles> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Container(
-        child: Lottie.asset('assets/Lottie/lottie1.json', repeat: true),
-      ),
+      child: Stack(children: [
+        Circle(),
+        Center(
+          child: Container(
+            child: Lottie.asset('assets/Lottie/lottie2.json', repeat: true),
+          ),
+        )
+      ]),
     );
   }
 }

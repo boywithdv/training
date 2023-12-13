@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:training/Lottie/LottieFiles.dart';
 import 'package:training/components/backgroundAnimation.dart';
-import 'package:training/controller/Auth/LoginPage.dart';
+import 'package:training/services/Auth/LoginPage.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -16,6 +16,7 @@ class _BackGroundState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Stack(
         children: [BackgroundAnimation(), LottieFiles(), LoginPage()],
       ),

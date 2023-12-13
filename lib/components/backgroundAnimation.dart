@@ -14,6 +14,7 @@ class _BackgroundAnimationState extends State<BackgroundAnimation>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: AnimatedBackground(
         behaviour: RandomParticleBehaviour(
           options: const ParticleOptions(
@@ -27,7 +28,7 @@ class _BackgroundAnimationState extends State<BackgroundAnimation>
           ),
         ),
         vsync: this,
-        child: Circle(),
+        child: Container(),
       ),
     );
   }

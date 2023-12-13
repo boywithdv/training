@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:training/LoginedPage.dart';
 import 'package:training/components/textfield.dart';
-import 'package:training/controller/models/LoginModel.dart';
-import 'package:training/controller/Auth/RegisterForm.dart';
+import 'package:training/models/LoginModel.dart';
+import 'package:training/services/Auth/RegisterForm.dart';
 
 class LoginPage extends StatelessWidget {
   // TextEditingControllerの作成
