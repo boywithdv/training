@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:training/LoginedContainer.dart';
 import 'package:training/components/textfield.dart';
 import 'package:training/controller/models/LoginModel.dart';
 import 'package:training/controller/Auth/RegisterForm.dart';
@@ -87,10 +88,15 @@ class LoginPage extends StatelessWidget {
                         onPressed: () async {
                           try {
                             await model.login();
-                            _showDialog(context, "ログインしました。");
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MyWidget()),
+                            );
                           } catch (e) {
                             print(e);
                             _showDialog(context, e.toString());
+                            return;
                           }
                         },
                         color: Color.fromRGBO(49, 39, 79, 1),

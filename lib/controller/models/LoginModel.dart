@@ -17,13 +17,23 @@ class LoginModel extends ChangeNotifier {
     }
 
     // todo
-    final result = await _auth.signInWithEmailAndPassword(
-      email: mail,
-      password: password,
-    );
-    final uid = result.user!.uid;
-    // TODO 端末に保存
-    print(result.user);
+    try {
+      final result = await _auth.signInWithEmailAndPassword(
+        email: mail,
+        password: password,
+      );
+      final uid = result.user!.uid;
+      // TODO 端末に保存
+    } on FirebaseAuthException catch (error) {
+      if (error.code == "wrong-password") {
+        print("パスワードが間違っている");
+      }
+      if (error.code == "too-many-requests") {
+        print("もう認証の上限に達しました。");
+        print("時間が経ちましたら再度ログインを行なってください");
+      }
+      print(error.code);
+    }
     /**
      * result.userには以下のプロパティがある
      * displayName : ユーザーの名前
