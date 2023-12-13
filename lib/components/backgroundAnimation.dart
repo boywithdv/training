@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:animated_background/animated_background.dart';
-import 'package:training/components/Circle.dart';
 
 class BackgroundAnimation extends StatefulWidget {
   const BackgroundAnimation({super.key});

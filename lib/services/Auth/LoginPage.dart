@@ -1,10 +1,10 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:training/LoginedPage.dart';
 import 'package:training/components/textfield.dart';
 import 'package:training/models/LoginModel.dart';
-import 'package:training/services/Auth/RegisterForm.dart';
+import 'package:training/pages/LoginedPage.dart';
+import 'package:training/services/auth/RegisterForm.dart';
 
 class LoginPage extends StatelessWidget {
   // TextEditingControllerの作成
@@ -91,7 +91,7 @@ class LoginPage extends StatelessWidget {
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => MyWidget()),
+                                  builder: (context) => LoginedPage()),
                             );
                           } catch (e) {
                             print(e);
