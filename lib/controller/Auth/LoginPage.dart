@@ -1,7 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:training/LoginedContainer.dart';
+import 'package:training/LoginedPage.dart';
 import 'package:training/components/textfield.dart';
 import 'package:training/controller/models/LoginModel.dart';
 import 'package:training/controller/Auth/RegisterForm.dart';
