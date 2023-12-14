@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:training/pages/LoginedPage.dart';
 
 class RegisterModel extends ChangeNotifier {
   final titleController = TextEditingController();
@@ -31,7 +32,7 @@ class RegisterModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future signUp() async {
+  Future signUp(BuildContext context) async {
     this.email = titleController.text;
     this.password = authorController.text;
     if (email != null && password != null) {
@@ -45,11 +46,23 @@ class RegisterModel extends ChangeNotifier {
         final uid = user.uid;
         // firestoreに追加
         final doc = FirebaseFirestore.instance.collection('users').doc(uid);
+        //登録時に成功したら画面遷移
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => LoginedPage()),
+        );
         //PWはfireStoreに入れてはいけない
-        await doc.set({
-          'uid': uid,
-          'email': email,
-        });
+        await doc.set(
+          {
+            'uid': uid,
+            'email': email,
+          },
+        );
+        //登録時に成功したら画面遷移
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => LoginedPage()),
+        );
       }
     }
   }

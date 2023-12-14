@@ -26,7 +26,7 @@ class LoginPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   SizedBox(
-                    height: 270,
+                    height: 240,
                   ),
                   FadeInUp(
                       duration: Duration(milliseconds: 1500),
@@ -37,7 +37,7 @@ class LoginPage extends StatelessWidget {
                               .textTheme
                               .titleMedium!
                               .copyWith(
-                                  color: Colors.black,
+                                  color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 27),
                         ),
@@ -111,24 +111,25 @@ class LoginPage extends StatelessWidget {
                         )),
                       )),
                   SizedBox(
-                    height: 30,
+                    height: 10,
                   ),
                   FadeInUp(
-                      duration: Duration(milliseconds: 2000),
-                      child: Center(
-                          child: TextButton(
-                              onPressed: () async {
-                                await Navigator.of(context).push(
-                                    MaterialPageRoute(
-                                        builder: (context) => RegisterForm()));
-                                //このボタンが押下した後に実行される
-                                print("create account button");
-                              },
-                              child: Text(
-                                "Create Account",
-                                style: TextStyle(
-                                    color: Color.fromRGBO(49, 39, 79, .6)),
-                              )))),
+                    duration: Duration(milliseconds: 2000),
+                    child: Center(
+                      child: TextButton(
+                        onPressed: () async {
+                          await Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => RegisterForm()),
+                          );
+                        },
+                        child: Text(
+                          "Create Account",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             );

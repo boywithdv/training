@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:go_router/go_router.dart';
+import 'package:training/components/TextColorWhite.dart';
 
 class AppDescription extends StatelessWidget {
   const AppDescription({super.key});
@@ -24,40 +26,45 @@ class AppDescriptionNavigation extends StatelessWidget {
         child: CustomScrollView(
           slivers: <Widget>[
             const CupertinoSliverNavigationBar(
-              backgroundColor: Colors.transparent,
-              leading: Icon(
-                CupertinoIcons.person,
-                color: Colors.white,
-              ),
-              largeTitle: Text(
-                'Contacts',
-                style: TextStyle(color: Colors.white),
-              ),
-              trailing: Icon(
-                CupertinoIcons.add_circled,
-                color: Colors.white,
-              ),
-            ),
+                backgroundColor: Colors.transparent,
+                leading: Icon(
+                  CupertinoIcons.person,
+                  color: Colors.white,
+                ),
+                largeTitle: TextColorWhite(text: 'Instructions for use')),
             SliverFillRemaining(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   const Text(
-                    "Drag me up",
-                    style: TextStyle(color: Colors.white),
+                    "HELLO WORLD !",
+                    style: TextStyle(color: Colors.white, fontSize: 25),
                     textAlign: TextAlign.center,
                   ),
-                  CupertinoButton.filled(
-                      child: const Text(
-                        "Go to NEXT PAGES",
-                        style: TextStyle(backgroundColor: Colors.transparent),
-                      ),
-                      onPressed: () {
-                        Navigator.push(context,
-                            CupertinoPageRoute(builder: (BuildContext context) {
-                          return const NextPage();
-                        }));
-                      })
+                  const TextColorWhite(
+                      text: 'Go to NEXT PAGESボタンをクリックすることで次のページに進めます。'),
+                  CupertinoButton(
+                    color: Colors.transparent,
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Go to NEXT PAGES",
+                        ),
+                        Icon(CupertinoIcons.hand_point_right)
+                      ],
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                          builder: (BuildContext context) {
+                            return const NextPage();
+                          },
+                        ),
+                      );
+                    },
+                  ),
                 ],
               ),
             )
@@ -77,6 +84,15 @@ class NextPage extends StatelessWidget {
       child: CustomScrollView(
         slivers: <Widget>[
           CupertinoSliverNavigationBar(
+            leading: IconButton(
+              icon: Icon(
+                CupertinoIcons.arrow_left_circle,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
             backgroundColor: const Color.fromARGB(0, 255, 204, 0),
             border: Border(
               bottom: BorderSide(
@@ -85,15 +101,12 @@ class NextPage extends StatelessWidget {
                     : CupertinoColors.white,
               ),
             ),
-            // The middle widget is visible in both collapsed and expanded states.
             middle: const Text(
-              'Contacts Group',
+              'Instructions for use',
               style: TextStyle(color: Colors.white),
             ),
-            // When the "middle" parameter is implemented, the largest title is only visible
-            // when the CupertinoSliverNavigationBar is fully expanded.
             largeTitle: const Text(
-              'Family',
+              'Description(説明)',
               style: TextStyle(color: Colors.white),
             ),
           ),
@@ -106,11 +119,61 @@ class NextPage extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(color: Colors.white),
                 ),
-                // When the "leading" parameter is omitted on a route that has a previous page,
-                // the back button is automatically added to the leading position.
-                Text('Tap on the leading button to navigate back',
-                    style: TextStyle(color: Colors.white),
-                    textAlign: TextAlign.center),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ThardPage extends StatelessWidget {
+  const ThardPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final Brightness brightness = CupertinoTheme.brightnessOf(context);
+    return CupertinoPageScaffold(
+      backgroundColor: Colors.transparent,
+      child: CustomScrollView(
+        slivers: <Widget>[
+          CupertinoSliverNavigationBar(
+            leading: IconButton(
+              icon: Icon(
+                CupertinoIcons.arrow_left_circle,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+            backgroundColor: const Color.fromARGB(0, 255, 204, 0),
+            border: Border(
+              bottom: BorderSide(
+                color: brightness == Brightness.light
+                    ? CupertinoColors.black
+                    : CupertinoColors.white,
+              ),
+            ),
+            middle: const Text(
+              'Instructions for use',
+              style: TextStyle(color: Colors.white),
+            ),
+            largeTitle: const Text(
+              'Description',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+          const SliverFillRemaining(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Text(
+                  'Drag me up',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.white),
+                ),
               ],
             ),
           ),

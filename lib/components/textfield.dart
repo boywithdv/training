@@ -23,9 +23,10 @@ class TextFieldForLogin extends StatelessWidget {
         obscureText: pw,
         controller: textController,
         decoration: InputDecoration(
-            border: InputBorder.none,
-            hintText: hinttext,
-            hintStyle: TextStyle(color: Colors.grey.shade700)),
+          border: InputBorder.none,
+          hintText: hinttext,
+          hintStyle: TextStyle(color: Colors.grey.shade700),
+        ),
       ),
     ));
   }
