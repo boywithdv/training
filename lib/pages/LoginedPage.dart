@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:training/components/app_description.dart';
 import 'package:training/components/backgroundAnimation.dart';
+import 'package:training/pages/app_description.dart';
 
 class LoginedPage extends StatefulWidget {
   const LoginedPage({super.key});

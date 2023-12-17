@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:go_router/go_router.dart';
 import 'package:training/components/TextColorWhite.dart';
+import 'package:training/pages/Screen.dart';
 
 class AppDescription extends StatelessWidget {
   const AppDescription({super.key});
@@ -59,7 +59,7 @@ class AppDescriptionNavigation extends StatelessWidget {
                         context,
                         CupertinoPageRoute(
                           builder: (BuildContext context) {
-                            return const NextPage();
+                            return const ScreenWidget();
                           },
                         ),
                       );

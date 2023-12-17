@@ -18,7 +18,7 @@ class _BackGroundState extends State<LoginForm> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(
-        children: [BackgroundAnimation(), LottieFiles(), LoginPage()],
+        children: [BackgroundAnimation(), LottieLogin(), LoginPage()],
       ),
     );
   }

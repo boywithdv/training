@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:training/components/Circle.dart';
 
-class LottieFiles extends StatefulWidget {
-  const LottieFiles({super.key});
+class LottieLogin extends StatefulWidget {
+  const LottieLogin({super.key});
 
   @override
-  State<LottieFiles> createState() => _MyAppState();
+  State<LottieLogin> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<LottieFiles> with TickerProviderStateMixin {
+class _MyAppState extends State<LottieLogin> with TickerProviderStateMixin {
   late final AnimationController _controller;
 
   @override

@@ -25,7 +25,7 @@ class TextFieldForLogin extends StatelessWidget {
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: hinttext,
-          hintStyle: TextStyle(color: Colors.grey.shade700),
+          hintStyle: TextStyle(color: Colors.grey.shade800),
         ),
       ),
     ));

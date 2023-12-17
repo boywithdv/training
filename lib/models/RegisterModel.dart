@@ -58,11 +58,6 @@ class RegisterModel extends ChangeNotifier {
             'email': email,
           },
         );
-        //登録時に成功したら画面遷移
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => LoginedPage()),
-        );
       }
     }
   }
