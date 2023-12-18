@@ -27,7 +27,7 @@ class SelectedFitness extends StatefulWidget {
 class _SelectedFitnessState extends State<SelectedFitness>
     with TickerProviderStateMixin {
   CountDownController _controller = CountDownController();
-  int _timer = 10;
+  int _timer = 20;
   bool _isPause = true;
   void initState() {
     super.initState();
@@ -36,6 +36,14 @@ class _SelectedFitnessState extends State<SelectedFitness>
 
   @override
   Widget build(BuildContext context) {
+    double deviceWidth = MediaQuery.of(context).size.width;
+    double deviceHeight = MediaQuery.of(context).size.height;
+    double sizedBoxWidthToTimer = deviceWidth * 0.25;
+    double sizedBoxHeightToTimer = deviceHeight * 0.47;
+    double fitnessNameTop = deviceHeight * 0.31;
+    double fitnessComponentTop = deviceHeight * 0.42;
+    double fitnessNameLeft = deviceWidth * 0.05;
+    double fitnessAnimation = deviceHeight * 0.4;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -67,8 +75,8 @@ class _SelectedFitnessState extends State<SelectedFitness>
           child: Stack(
             children: [
               Positioned(
-                bottom: 400,
-                left: 100,
+                bottom: sizedBoxHeightToTimer,
+                left: sizedBoxWidthToTimer,
                 child: FitNessT(
                   timer: _timer,
                   controller: _controller,
@@ -95,7 +103,8 @@ class _SelectedFitnessState extends State<SelectedFitness>
                 ),
               ),
               Positioned(
-                  top: 270,
+                  top: fitnessNameTop,
+                  left: fitnessNameLeft,
                   child: Container(
                     width: 390,
                     height: 90,
@@ -109,7 +118,8 @@ class _SelectedFitnessState extends State<SelectedFitness>
                     ),
                   )),
               Positioned(
-                  top: 380,
+                  top: fitnessComponentTop,
+                  left: fitnessNameLeft,
                   child: Container(
                     width: 390,
                     height: 240,
@@ -118,14 +128,11 @@ class _SelectedFitnessState extends State<SelectedFitness>
                         color: const Color.fromARGB(231, 63, 81, 181)),
                   )),
               Positioned(
-                  top: 320,
-                  child: Container(
-                    width: 390,
-                    height: 300,
-                    child: LottieFiles(
-                        lottie: widget
-                            .muscleLottie[widget.index].fitnessLottieName),
-                  )),
+                top: fitnessAnimation,
+                child: LottieFiles(
+                    lottie:
+                        widget.muscleLottie[widget.index].fitnessLottieName),
+              ),
             ],
           )),
       floatingActionButton: FloatingActionButton.extended(
