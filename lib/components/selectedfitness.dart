@@ -122,13 +122,14 @@ class _SelectedFitnessState extends State<SelectedFitness>
                   left: fitnessNameLeft,
                   child: Container(
                     width: 390,
-                    height: 240,
+                    height: 290,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: const Color.fromARGB(231, 63, 81, 181)),
+                        color: Color.fromARGB(188, 63, 81, 181)),
                   )),
               Positioned(
                 top: fitnessAnimation,
+                left: fitnessNameLeft,
                 child: LottieFiles(
                     lottie:
                         widget.muscleLottie[widget.index].fitnessLottieName),
