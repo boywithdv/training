@@ -20,76 +20,76 @@ class _ToUpperBodyState extends State<ToUpperBody> {
           height: 40,
         ),
         ResizedFitnessPng(
-          png: "assets/png/daikyoukin.png",
+          png: "assets/img/daikyoukin.png",
           description: '大胸筋',
           onTap: () {
             _navigateToSelectedFitness(
-                '大胸筋', "assets/png/daikyoukin.png", pectoralisMajorMuscle);
+                '大胸筋', "assets/img/daikyoukin.png", pectoralisMajorMuscle);
           },
         ),
         const SizedBox(
           height: 15,
         ),
         ResizedFitnessPng(
-          png: "assets/png/kata_sankakukin.PNG",
+          png: "assets/img/kata_sankakukin.PNG",
           description: '三角筋',
           onTap: () {
             _navigateToSelectedFitness(
-                '三角筋', "assets/png/kata_sankakukin.PNG", pectoralisMajorMuscle);
+                '三角筋', "assets/img/kata_sankakukin.PNG", pectoralisMajorMuscle);
           },
         ),
         const SizedBox(
           height: 15,
         ),
         ResizedFitnessPng(
-          png: "assets/png/kouhaikin.PNG",
+          png: "assets/img/kouhaikin.PNG",
           description: '広背筋',
           onTap: () {
             _navigateToSelectedFitness(
-                '広背筋', "assets/png/kouhaikin.PNG", pectoralisMajorMuscle);
+                '広背筋', "assets/img/kouhaikin.PNG", pectoralisMajorMuscle);
           },
         ),
         const SizedBox(
           height: 15,
         ),
         ResizedFitnessPng(
-          png: "assets/png/kubimoto.PNG",
+          png: "assets/img/kubimoto.PNG",
           description: '僧帽筋',
           onTap: () {
             _navigateToSelectedFitness(
-                '僧帽筋', "assets/png/kubimoto.PNG", pectoralisMajorMuscle);
+                '僧帽筋', "assets/img/kubimoto.PNG", pectoralisMajorMuscle);
           },
         ),
         const SizedBox(
           height: 15,
         ),
         ResizedFitnessPng(
-          png: "assets/png/jouwansantoukin.PNG",
+          png: "assets/img/jouwansantoukin.PNG",
           description: '上腕三頭筋',
           onTap: () {
             _navigateToSelectedFitness('上腕三頭筋',
-                "assets/png/jouwansantoukin.PNG", pectoralisMajorMuscle);
+                "assets/img/jouwansantoukin.PNG", pectoralisMajorMuscle);
           },
         ),
         const SizedBox(
           height: 15,
         ),
         ResizedFitnessPng(
-          png: "assets/png/gaihukusyakin.PNG",
+          png: "assets/img/gaihukusyakin.PNG",
           description: '腹斜筋',
           onTap: () {
             _navigateToSelectedFitness(
-                '腹斜筋', "assets/png/gaihukusyakin.PNG", abs);
+                '腹斜筋', "assets/img/gaihukusyakin.PNG", abs);
           },
         ),
         const SizedBox(
           height: 15,
         ),
         ResizedFitnessPng(
-          png: "assets/png/hukkin.PNG",
+          png: "assets/img/hukkin.PNG",
           description: '腹筋',
           onTap: () {
-            _navigateToSelectedFitness('腹筋', "assets/png/hukkin.PNG", abs);
+            _navigateToSelectedFitness('腹筋', "assets/img/hukkin.PNG", abs);
           },
         ),
         const SizedBox(
