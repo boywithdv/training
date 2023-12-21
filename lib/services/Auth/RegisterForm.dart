@@ -4,6 +4,7 @@ import 'package:training/components/Circle.dart';
 import 'package:training/components/TextFieldComponents.dart';
 import 'package:training/components/backgroundAnimation.dart';
 import 'package:training/controller/RegisterModel.dart';
+import 'package:training/controller/UserInfo.dart';
 
 class RegisterForm extends StatefulWidget {
   const RegisterForm({super.key});

@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:training/controller/LoginModel.dart';
+import 'package:training/controller/UserInfo.dart';
 import 'package:training/pages/LoginedPage.dart';
 
 class RegisterModel extends ChangeNotifier {
@@ -43,9 +45,10 @@ class RegisterModel extends ChangeNotifier {
       final user = userCredential.user;
       //uidの取得をする
       if (user != null) {
-        final uid = user.uid;
+        userId = user.uid;
         // firestoreに追加
-        final doc = FirebaseFirestore.instance.collection('users').doc(uid);
+        final doc = FirebaseFirestore.instance.collection('users').doc(userId);
+        print(userId);
         //登録時に成功したら画面遷移
         Navigator.pushReplacement(
           context,
@@ -54,7 +57,7 @@ class RegisterModel extends ChangeNotifier {
         //PWはfireStoreに入れてはいけない
         await doc.set(
           {
-            'uid': uid,
+            'uid': userId,
             'email': email,
           },
         );
@@ -62,3 +65,6 @@ class RegisterModel extends ChangeNotifier {
     }
   }
 }
+
+//
+

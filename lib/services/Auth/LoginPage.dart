@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:training/components/TextFieldForLogin.dart';
 import 'package:training/controller/LoginModel.dart';
+import 'package:training/controller/UserInfo.dart';
 import 'package:training/pages/LoginedPage.dart';
 import 'package:training/services/auth/RegisterForm.dart';
 
@@ -12,7 +13,6 @@ class LoginPage extends StatelessWidget {
   TextEditingController _passwordController = TextEditingController();
 
   LoginPage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<LoginModel>(
@@ -87,6 +87,7 @@ class LoginPage extends StatelessWidget {
                       child: MaterialButton(
                         onPressed: () async {
                           try {
+                            print(userId);
                             await model.login();
                             Navigator.pushReplacement(
                               context,
@@ -145,7 +146,6 @@ class LoginPage extends StatelessWidget {
         builder: (BuildContext contxt) {
           return AlertDialog(
             title: Text(title),
-            actions: [],
           );
         });
   }

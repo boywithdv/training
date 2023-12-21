@@ -1,12 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:training/controller/UserInfo.dart';
 import 'package:training/pages/Screen.dart';
 import 'package:training/services/auth/LoginForm.dart';
 
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp(
-        title: 'Flutter app',
         debugShowCheckedModeBanner: false,
         home: StreamBuilder<User?>(
           stream: FirebaseAuth.instance.authStateChanges(),
@@ -19,6 +19,7 @@ class App extends StatelessWidget {
               // User が null でなない、つまりサインイン済みのホーム画面へ
               return ScreenWidget();
             }
+            userId = "";
             // User が null である、つまり未サインインのサインイン画面へ
             return LoginForm();
           },

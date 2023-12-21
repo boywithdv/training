@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:training/components/TextColorWhite.dart';
 import 'package:training/pages/Screen.dart';
+import 'package:training/controller/UserInfo.dart';
 
 class AppDescription extends StatelessWidget {
   const AppDescription({super.key});
@@ -16,11 +18,11 @@ class AppDescription extends StatelessWidget {
   }
 }
 
-class AppDescriptionNavigation extends StatelessWidget {
+class AppDescriptionNavigation extends ConsumerWidget {
   const AppDescriptionNavigation({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return CupertinoPageScaffold(
         backgroundColor: Colors.transparent,
         child: CustomScrollView(
@@ -55,6 +57,10 @@ class AppDescriptionNavigation extends StatelessWidget {
                       ],
                     ),
                     onPressed: () {
+                      updateUid(ref);
+                      final userID = ref.watch(userInfoProvider);
+                      //riverpodで値を示している
+                      print('これがユーザID : ' + userID);
                       Navigator.push(
                         context,
                         CupertinoPageRoute(

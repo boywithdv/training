@@ -1,10 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:training/controller/UserInfo.dart';
 
 class LoginModel extends ChangeNotifier {
   String mail = '';
   String password = '';
-
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   Future login() async {
@@ -22,7 +23,7 @@ class LoginModel extends ChangeNotifier {
         email: mail,
         password: password,
       );
-      final uid = result.user!.uid;
+      userId = result.user!.uid;
       // TODO 端末に保存
     } on FirebaseAuthException catch (error) {
       if (error.code == "wrong-password") {

@@ -46,6 +46,7 @@ dependencies:
   circular_countdown_timer: ^0.2.3
   showcaseview: ^2.0.3
   rive: ^0.12.3
+  flutter_riverpod: ^2.4.9
 dev_dependencies:
   flutter_test:
     sdk: flutter
