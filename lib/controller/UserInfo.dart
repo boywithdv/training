@@ -23,16 +23,3 @@ void updateUserName(WidgetRef ref) {
   final notifier = ref.read(userNameProvider.notifier);
   notifier.state = userName;
 }
-
-//ログアウトボタンを押下されたときの処理
-final userLogout = StateProvider<bool>((ref) {
-  return false;
-});
-void updateLogout(WidgetRef ref) {
-  final notifieruid = ref.read(userInfoProvider.notifier);
-  final notifiername = ref.read(userNameProvider.notifier);
-  final notifierlogout = ref.read(userLogout.notifier);
-  notifieruid.state = '';
-  notifiername.state = '';
-  notifierlogout.state = true;
-}

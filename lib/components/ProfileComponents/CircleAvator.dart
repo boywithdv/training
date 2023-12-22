@@ -2,18 +2,14 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:training/components/ProfileComponents/testProfileEdit.dart';
-import 'package:training/controller/UserInfo.dart';
 
-class ContainerAvator extends ConsumerWidget {
+class ContainerAvator extends StatelessWidget {
   const ContainerAvator({super.key});
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    final name = ref.watch(userNameProvider);
-
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: SingleChildScrollView(
@@ -60,7 +56,7 @@ class ContainerAvator extends ConsumerWidget {
                                               width: innerWidth * 0.3,
                                             ),
                                             Text(
-                                              name,
+                                              "Jhone Doe",
                                               style: TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 25,
