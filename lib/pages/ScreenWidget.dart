@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:training/components/backgroundAnimationToLower.dart';
 import 'package:training/components/backgroundAnimationToUpper.dart';
-import 'package:training/components/menuBarComponents/ThemeColor.dart';
 import 'package:training/components/menuBarComponents/animated_bar.dart';
 import 'package:training/components/menuBarComponents/rive_assets.dart';
 import 'package:training/components/menuBarComponents/rive_utils.dart';
-import 'package:training/components/menuBarComponents/timerSettings.dart';
-import 'package:training/login/login.dart';
+import 'package:training/pages/Profile/Profile.dart';
 
 class ScreenWidget extends StatelessWidget {
   const ScreenWidget({super.key});

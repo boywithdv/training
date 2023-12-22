@@ -5,6 +5,6 @@ class ComtainerAvator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return ListTile();
   }
 }

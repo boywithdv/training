@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-import 'login.dart';
+import 'package:training/pages/Profile/Profile.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
