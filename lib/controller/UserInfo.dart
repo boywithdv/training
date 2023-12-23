@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 var userId;
-var userName;
+var userName = "";
 var userEmail;
 var userImage;
 var photoURL;
@@ -19,7 +19,6 @@ void updateUid(WidgetRef ref) {
 final userNameProvider = StateProvider<String>((ref) {
   return userName;
 });
-void updateUserName(WidgetRef ref) {
-  final notifier = ref.read(userNameProvider.notifier);
-  notifier.state = userName;
-}
+
+
+//ユーザIDなどはローカル上に保存するようにプログラムを作成する

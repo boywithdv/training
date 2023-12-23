@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:training/controller/UserInfo.dart';
 
 class TestEdit extends ConsumerWidget {
   const TestEdit({super.key});
@@ -24,6 +25,8 @@ class TestEdit extends ConsumerWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.pop(context);
+          updateUserName(_controller.text);
+          print(userId);
         },
         child: Text(" 編集ボタン"),
       ),
