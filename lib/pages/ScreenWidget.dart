@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
+import 'package:training/components/backgroundAnimation.dart';
 import 'package:training/components/backgroundAnimationToLower.dart';
 import 'package:training/components/backgroundAnimationToUpper.dart';
 import 'package:training/components/menuBarComponents/animated_bar.dart';
@@ -63,8 +64,7 @@ class _ScreenState extends State<Screen> {
                             cureentWidget = Fitness();
                           case 1:
                             cureentWidget = Container(
-                              color: Colors.red,
-                              child: Center(child: Text("red")),
+                              child: BackgroundAnimation(),
                             );
                           case 2:
                             cureentWidget = MainContents();

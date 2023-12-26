@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 var userId;
-var userName = "";
+var userName = "HELLO WORLD";
 var userEmail;
 var userImage;
 var photoURL;

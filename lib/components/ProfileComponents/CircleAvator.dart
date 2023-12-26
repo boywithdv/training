@@ -3,9 +3,23 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:training/components/ProfileComponents/testProfileEdit.dart';
+import 'package:training/controller/UserInfo.dart';
+import 'package:training/main.dart';
 
-class ContainerAvator extends StatelessWidget {
+class ContainerAvator extends StatefulWidget {
   const ContainerAvator({super.key});
+
+  @override
+  State<ContainerAvator> createState() => _ContainerAvatorState();
+}
+
+class _ContainerAvatorState extends State<ContainerAvator> {
+  @override
+  void initState() {
+    super.initState();
+    userName = prefs.getString('username') ?? "";
+  }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -56,7 +70,7 @@ class ContainerAvator extends StatelessWidget {
                                               width: innerWidth * 0.3,
                                             ),
                                             Text(
-                                              "Jhone Doe",
+                                              userName,
                                               style: TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 25,

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:training/components/ProfileComponents/CircleAvator.dart';
 import 'package:training/components/backgroundAnimation.dart';
 import 'package:training/pages/app.dart';
@@ -32,8 +33,11 @@ class _ProfileState extends State<Profile> {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           title: Text(
-            '成功',
-            style: TextStyle(color: Colors.white),
+            'my Profile',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           actions: [
             IconButton(
