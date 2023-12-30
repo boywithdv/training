@@ -2,8 +2,10 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:training/Data/iconData.dart';
 import 'package:training/components/ProfileComponents/testProfileEdit.dart';
 import 'package:training/controller/UserInfo.dart';
+import 'package:training/controller/fitnessRecord.dart';
 import 'package:training/main.dart';
 
 class ContainerAvator extends StatefulWidget {
@@ -14,16 +16,40 @@ class ContainerAvator extends StatefulWidget {
 }
 
 class _ContainerAvatorState extends State<ContainerAvator> {
+  List<TrainingData> dataList = []; // TrainingDataのリスト
   @override
   void initState() {
     super.initState();
-    userName = prefs.getString('username') ?? "";
+    _initData();
+  }
+
+  Future<void> _initData() async {
+    userId = prefs.getString("uid");
+    userName = prefs.getString('userName') ?? "";
+    await _getDataFromFirebase();
+    // データ取得後にsetStateを呼び出して反映させる
+    setState(() {});
+  }
+
+  Future<void> _getDataFromFirebase() async {
+    final service = FirestoreService();
+    final List<TrainingData> data = await service.read123();
+    dataList = data;
   }
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    double sizedBoxHeight = height * 0.03;
+    if (dataList.isEmpty) {
+      return Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: SingleChildScrollView(
@@ -33,11 +59,11 @@ class _ContainerAvatorState extends State<ContainerAvator> {
             child: Column(
               children: [
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 Container(
                   color: Colors.transparent,
-                  height: height * 0.4,
+                  height: height * 0.26,
                   child: LayoutBuilder(
                     builder: (context, constraints) {
                       double innerHeight = constraints.maxHeight;
@@ -53,7 +79,7 @@ class _ContainerAvatorState extends State<ContainerAvator> {
                               child: BackdropFilter(
                                 filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
                                 child: Container(
-                                    height: innerHeight * 0.65,
+                                    height: innerHeight * 0.45,
                                     width: innerWidth,
                                     decoration: BoxDecoration(
                                       color: Colors.green,
@@ -120,10 +146,67 @@ class _ContainerAvatorState extends State<ContainerAvator> {
                   ),
                 ),
                 //ここからコンテナ外のことをかく
+                SizedBox(
+                  height: sizedBoxHeight,
+                ),
+                Container(
+                  height: height * 0.65,
+                  width: width * 0.9,
+                  decoration: BoxDecoration(
+                    color: Colors.green,
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: ListView.builder(
+                    itemCount: dataList.length,
+                    itemBuilder: (context, index) {
+                      final data = dataList[index];
+                      return Column(
+                        children: [
+                          SizedBox(
+                            height: sizedBoxHeight,
+                          ),
+                          Divider(
+                            height: 1,
+                          ),
+                          ListTile(
+                            tileColor: Colors.transparent,
+                            onTap: () {
+                              print(data.title);
+                            },
+                            leading: Icon(
+                              fitness_center_outlined,
+                              color: Colors.white,
+                            ),
+                            title: Text(
+                              data.title,
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            subtitle: Text(
+                              data.time.toString(),
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                          Divider(
+                            height: 1,
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+                ),
               ],
             ),
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          final FirestoreService service = FirestoreService();
+          service.create();
+          print(userId);
+          setState(() {});
+        },
+        label: Icon(CupertinoIcons.add),
       ),
     );
   }

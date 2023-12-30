@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:training/Lottie/LottieFiles.dart';
+import 'package:training/components/LottieFiles.dart';
 import 'package:training/components/backgroundAnimation.dart';
 import 'package:training/services/auth/LoginPage.dart';
 

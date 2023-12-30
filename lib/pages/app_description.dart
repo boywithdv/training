@@ -57,10 +57,7 @@ class AppDescriptionNavigation extends ConsumerWidget {
                       ],
                     ),
                     onPressed: () {
-                      updateUid(ref);
-                      final userID = ref.watch(userInfoProvider);
                       //riverpodで値を示している
-                      print('これがユーザID : ' + userID);
                       Navigator.push(
                         context,
                         CupertinoPageRoute(

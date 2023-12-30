@@ -33,6 +33,12 @@ class RegisterModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
   Future signUp(BuildContext context) async {
     this.email = titleController.text;
     this.password = authorController.text;
@@ -45,9 +51,12 @@ class RegisterModel extends ChangeNotifier {
       //uidの取得をする
       if (user != null) {
         userId = user.uid;
+        userName = user.displayName;
+        setPrefItems();
         // firestoreに追加
         final doc = FirebaseFirestore.instance.collection('users').doc(userId);
         print(userId);
+
         //登録時に成功したら画面遷移
         Navigator.pushReplacement(
           context,

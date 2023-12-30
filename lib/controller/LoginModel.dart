@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:training/controller/UserInfo.dart';
 
 class LoginModel extends ChangeNotifier {
@@ -24,6 +23,9 @@ class LoginModel extends ChangeNotifier {
         password: password,
       );
       userId = result.user!.uid;
+      userName = result.user!.displayName;
+      setPrefItems();
+
       // TODO 端末に保存
     } on FirebaseAuthException catch (error) {
       if (error.code == "wrong-password") {

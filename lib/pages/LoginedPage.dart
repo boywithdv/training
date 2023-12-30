@@ -25,9 +25,6 @@ class BGAnimationImageFillter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ImageFiltered(
-      imageFilter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-      child: BackgroundAnimation(),
-    );
+    return BackgroundAnimation();
   }
 }

@@ -1,18 +1,18 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 var userId;
-var userName = "HELLO WORLD";
+var userName;
 var userEmail;
 var userImage;
 var photoURL;
 
-//ログイン後、新規登録後にuidを状態管理する
-final userInfoProvider = StateProvider<String>((ref) {
-  return userId;
-});
-void updateUid(WidgetRef ref) {
-  final notifier = ref.read(userInfoProvider.notifier);
-  notifier.state = userId;
+// Shared PreferenceでuserIdを取得する
+setPrefItems() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  // userIdにuidを入れる
+  prefs.setString('uid', userId);
+  prefs.setString('userName', userName!);
 }
 
 //ログイン後、新規登録後にuserNameを状態管理する

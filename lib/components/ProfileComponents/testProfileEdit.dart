@@ -1,10 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:training/components/backgroundAnimation.dart';
-
 import 'package:training/controller/UserInfo.dart';
 import 'package:training/main.dart';
-import 'package:training/pages/Profile/Profile.dart';
 import 'package:training/pages/ScreenWidget.dart';
 
 class TestEdit extends StatefulWidget {
@@ -20,25 +16,51 @@ class _TestEditState extends State<TestEdit> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Stack(
-          children: [
-            BackgroundAnimation(),
-            Center(
-              child: Container(
-                width: 200,
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_circle_left_outlined,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        ),
+        backgroundColor: Colors.black,
+        body: Center(
+          child: Column(
+            children: [
+              Text(
+                'プロフィール変更',
+                style: TextStyle(color: Colors.white, fontSize: 30),
+              ),
+              Container(
+                width: 300,
+                decoration: BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(color: Colors.white),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                width: 300,
                 height: 40,
                 child: TextField(
+                  style: TextStyle(color: Colors.white),
                   controller: _controller,
                   decoration: InputDecoration(
-                    focusColor: Colors.white,
-                    hoverColor: Colors.white,
                     labelText: 'your name',
                     border: OutlineInputBorder(),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
         floatingActionButton: Container(
           width: 140,
@@ -59,7 +81,7 @@ class _TestEditState extends State<TestEdit> {
 
   void _saveName() {
     setState(() {
-      prefs.setString('username', _controller.text);
+      prefs.setString('userName', _controller.text);
       userName = prefs.getString("username");
     });
   }

@@ -33,6 +33,11 @@ class Screen extends StatefulWidget {
 class _ScreenState extends State<Screen> {
   RiveAsset selectedBottomNav = bottomNavs.last;
   Widget cureentWidget = MainContents();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

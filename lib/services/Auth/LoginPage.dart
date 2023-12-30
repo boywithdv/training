@@ -7,12 +7,22 @@ import 'package:training/controller/UserInfo.dart';
 import 'package:training/pages/LoginedPage.dart';
 import 'package:training/services/auth/RegisterForm.dart';
 
-class LoginPage extends StatelessWidget {
-  // TextEditingControllerの作成
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   TextEditingController _mailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
-  LoginPage({super.key});
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<LoginModel>(
@@ -87,8 +97,9 @@ class LoginPage extends StatelessWidget {
                       child: MaterialButton(
                         onPressed: () async {
                           try {
-                            print(userId);
                             await model.login();
+                            print(userId);
+                            print(userName);
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
@@ -139,14 +150,14 @@ class LoginPage extends StatelessWidget {
       ),
     );
   }
+}
 
-  void _showDialog(BuildContext context, String title) {
-    showDialog(
-        context: context,
-        builder: (BuildContext contxt) {
-          return AlertDialog(
-            title: Text(title),
-          );
-        });
-  }
+void _showDialog(BuildContext context, String title) {
+  showDialog(
+      context: context,
+      builder: (BuildContext contxt) {
+        return AlertDialog(
+          title: Text(title),
+        );
+      });
 }

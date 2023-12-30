@@ -52,9 +52,7 @@ class _RegisterFormState extends State<RegisterForm> {
                         content: Text(e.toString()));
                     ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     print(e);
-                  } finally {
-                    model.endLoading();
-                  }
+                  } finally {}
                 },
               ),
               Column(

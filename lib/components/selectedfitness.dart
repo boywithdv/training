@@ -2,7 +2,7 @@ import 'package:animated_background/animated_background.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:training/Lottie/LottieAnimation.dart';
+import 'package:training/components/LottieAnimation.dart';
 import 'package:training/components/FitnessTimer.dart';
 import 'package:training/components/ImageCircle.dart';
 import 'package:training/models/models.dart';
