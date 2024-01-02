@@ -19,8 +19,10 @@ class LoginModel extends ChangeNotifier {
       email: mail,
       password: password,
     );
-    userId = result.user!.uid;
-    userName = result.user!.displayName;
+    if (result.user != null) {
+      userId = result.user!.uid;
+      userName = result.user!.displayName;
+    }
     setPrefItems();
     /**
      * result.userには以下のプロパティがある
