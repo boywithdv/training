@@ -42,14 +42,7 @@ class _ContainerAvatorState extends State<ContainerAvator> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     double sizedBoxHeight = height * 0.03;
-    if (dataList.isEmpty) {
-      return Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Center(
-          child: CircularProgressIndicator(),
-        ),
-      );
-    }
+
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: SingleChildScrollView(
@@ -106,17 +99,19 @@ class _ContainerAvatorState extends State<ContainerAvator> {
                                               onPressed: () {
                                                 //iconボタンが押下された時に編集ウィジェットが画面下部から表示されるようになる
                                                 Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (BuildContext
-                                                                context) =>
-                                                            TestEdit()));
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (BuildContext
+                                                            context) =>
+                                                        TestEdit(),
+                                                  ),
+                                                );
                                               },
                                               icon: Icon(
                                                 CupertinoIcons.pencil,
                                                 color: Colors.white,
                                               ),
-                                            )
+                                            ),
                                           ],
                                         ),
                                         Text(

@@ -35,7 +35,6 @@ class RegisterModel extends ChangeNotifier {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
   }
 
@@ -51,7 +50,8 @@ class RegisterModel extends ChangeNotifier {
       //uidの取得をする
       if (user != null) {
         userId = user.uid;
-        userName = user.displayName;
+        updateDisplayName('yourName');
+        userName = 'yourName';
         setPrefItems();
         // firestoreに追加
         final doc = FirebaseFirestore.instance.collection('users').doc(userId);

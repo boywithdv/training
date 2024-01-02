@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -12,13 +13,26 @@ setPrefItems() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   // userIdにuidを入れる
   prefs.setString('uid', userId);
-  prefs.setString('userName', userName!);
+  prefs.setString('userName', userName);
+  print("これはLoginModel.dartファイルです" + userName);
 }
 
-//ログイン後、新規登録後にuserNameを状態管理する
-final userNameProvider = StateProvider<String>((ref) {
-  return userName;
-});
+//ユーザネーム更新
+void updateDisplayName(String displayName) async {
+  try {
+    User? user = FirebaseAuth.instance.currentUser;
 
+    if (user != null) {
+      await user?.updateDisplayName(displayName);
+      user = FirebaseAuth.instance.currentUser; // 更新後のユーザー情報を再度取得
+
+      print("DisplayName updated: ${user?.displayName}");
+    } else {
+      print("User not signed in.");
+    }
+  } catch (e) {
+    print("Error updating DisplayName: $e");
+  }
+}
 
 //ユーザIDなどはローカル上に保存するようにプログラムを作成する

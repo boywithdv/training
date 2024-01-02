@@ -69,6 +69,7 @@ class _TestEditState extends State<TestEdit> {
             foregroundColor: Colors.white,
             onPressed: () {
               _saveName();
+              updateDisplayName(userName);
               Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
@@ -82,7 +83,7 @@ class _TestEditState extends State<TestEdit> {
   void _saveName() {
     setState(() {
       prefs.setString('userName', _controller.text);
-      userName = prefs.getString("username");
+      userName = prefs.getString("userName");
     });
   }
 }

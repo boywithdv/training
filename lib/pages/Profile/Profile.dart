@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:training/components/ProfileComponents/CircleAvator.dart';
 import 'package:training/components/backgroundAnimation.dart';
+import 'package:training/controller/UserInfo.dart';
+import 'package:training/main.dart';
 import 'package:training/pages/app.dart';
 
 class MainContents extends StatelessWidget {
@@ -40,7 +42,6 @@ class _ProfileState extends State<Profile> {
           ),
           actions: [
             IconButton(
-              //ステップ２
               onPressed: () async {
                 await _auth.signOut();
                 if (_auth.currentUser == null) {
@@ -49,6 +50,7 @@ class _ProfileState extends State<Profile> {
                       content: Text('ログアウトしました'),
                     ),
                   );
+                  prefs.setString('userName', '');
                   print('ログアウトしました！');
                 }
                 Navigator.pushReplacement(

@@ -25,7 +25,6 @@ class LoginModel extends ChangeNotifier {
       userId = result.user!.uid;
       userName = result.user!.displayName;
       setPrefItems();
-
       // TODO 端末に保存
     } on FirebaseAuthException catch (error) {
       if (error.code == "wrong-password") {
@@ -35,7 +34,7 @@ class LoginModel extends ChangeNotifier {
         print("もう認証の上限に達しました。");
         print("時間が経ちましたら再度ログインを行なってください");
       }
-      print(error.code);
+      print(error);
     }
     /**
      * result.userには以下のプロパティがある
