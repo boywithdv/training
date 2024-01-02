@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:training/components/TextColorWhite.dart';
-import 'package:training/main.dart';
 import 'package:training/pages/ScreenWidget.dart';
 import 'package:training/controller/UserInfo.dart';
 

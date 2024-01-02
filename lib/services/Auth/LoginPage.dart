@@ -97,8 +97,6 @@ class _LoginPageState extends State<LoginPage> {
                         onPressed: () async {
                           try {
                             await model.login();
-                            print(userId);
-                            print(userName);
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
@@ -106,7 +104,7 @@ class _LoginPageState extends State<LoginPage> {
                             );
                           } catch (e) {
                             print(e);
-                            _showDialog(context, e.toString());
+                            _showDialog(context, 'ログインできません。');
                             return;
                           }
                         },

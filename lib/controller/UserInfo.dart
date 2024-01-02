@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 var userId;
@@ -23,7 +22,7 @@ void updateDisplayName(String displayName) async {
     User? user = FirebaseAuth.instance.currentUser;
 
     if (user != null) {
-      await user?.updateDisplayName(displayName);
+      await user.updateDisplayName(displayName);
       user = FirebaseAuth.instance.currentUser; // 更新後のユーザー情報を再度取得
 
       print("DisplayName updated: ${user?.displayName}");
