@@ -22,8 +22,8 @@ class LoginModel extends ChangeNotifier {
     if (result.user != null) {
       userId = result.user!.uid;
       userName = result.user!.displayName;
+      setPrefItems();
     }
-    setPrefItems();
     /**
      * result.userには以下のプロパティがある
      * displayName : ユーザーの名前
