@@ -1,10 +1,12 @@
 import 'package:animated_background/animated_background.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:training/components/LottieAnimation.dart';
 import 'package:training/components/FitnessTimer.dart';
 import 'package:training/components/ImageCircle.dart';
+import 'package:training/controller/UserInfo.dart';
 import 'package:training/models/models.dart';
 
 class SelectedFitness extends StatefulWidget {
@@ -27,6 +29,8 @@ class SelectedFitness extends StatefulWidget {
 class _SelectedFitnessState extends State<SelectedFitness>
     with TickerProviderStateMixin {
   CountDownController _controller = CountDownController();
+  final db = FirebaseFirestore.instance;
+
   int _timer = 20;
   bool _isPause = true;
   void initState() {
@@ -60,82 +64,85 @@ class _SelectedFitnessState extends State<SelectedFitness>
       ),
       backgroundColor: Colors.black,
       body: AnimatedBackground(
-          behaviour: RandomParticleBehaviour(
-            options: const ParticleOptions(
-              spawnMaxRadius: 50,
-              spawnMinSpeed: 10.00,
-              particleCount: 68,
-              spawnMaxSpeed: 50,
-              minOpacity: 0.3,
-              spawnOpacity: 0.4,
-              baseColor: Color.fromARGB(119, 0, 34, 23),
-            ),
+        behaviour: RandomParticleBehaviour(
+          options: const ParticleOptions(
+            spawnMaxRadius: 50,
+            spawnMinSpeed: 10.00,
+            particleCount: 68,
+            spawnMaxSpeed: 50,
+            minOpacity: 0.3,
+            spawnOpacity: 0.4,
+            baseColor: Color.fromARGB(119, 0, 34, 23),
           ),
-          vsync: this,
-          child: Stack(
-            children: [
-              Positioned(
-                bottom: sizedBoxHeightToTimer,
-                left: sizedBoxWidthToTimer,
-                child: FitNessT(
-                  timer: _timer,
-                  controller: _controller,
-                  onStart: () {},
-                  autoStart: false,
-                  onComplete: () {
-                    setState(() {
+        ),
+        vsync: this,
+        child: Stack(
+          children: [
+            Positioned(
+              bottom: sizedBoxHeightToTimer,
+              left: sizedBoxWidthToTimer,
+              child: FitNessT(
+                timer: _timer,
+                controller: _controller,
+                onStart: () {},
+                autoStart: false,
+                onComplete: () {
+                  setState(
+                    () {
                       _controller.pause();
-                    });
-                    Alert(
-                            context: context,
-                            title: '終了',
-                            style: AlertStyle(
-                              isCloseButton: true,
-                              isButtonVisible: false,
-                              titleStyle: TextStyle(
-                                color: Colors.black,
-                                fontSize: 30.0,
-                              ),
+                    },
+                  );
+                  create();
+                  Alert(
+                          context: context,
+                          title: '終了',
+                          style: AlertStyle(
+                            isCloseButton: true,
+                            isButtonVisible: false,
+                            titleStyle: TextStyle(
+                              color: Colors.black,
+                              fontSize: 30.0,
                             ),
-                            type: AlertType.success)
-                        .show();
-                  },
-                ),
+                          ),
+                          type: AlertType.success)
+                      .show();
+                },
               ),
-              Positioned(
-                  top: fitnessNameTop,
-                  left: fitnessNameLeft,
-                  child: Container(
-                    width: 390,
-                    height: 90,
-                    decoration: BoxDecoration(
-                      border: Border.all(),
-                    ),
-                    child: ImageCircle(
-                      png: widget.musclePng,
-                      description: widget.muscleDescription,
-                      fontsize: 24,
-                    ),
-                  )),
-              Positioned(
-                  top: fitnessComponentTop,
-                  left: fitnessNameLeft,
-                  child: Container(
-                    width: 390,
-                    height: 290,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Color.fromARGB(188, 63, 81, 181)),
-                  )),
-              Positioned(
-                top: fitnessAnimation,
+            ),
+            Positioned(
+                top: fitnessNameTop,
                 left: fitnessNameLeft,
-                child: LottieFiles(
-                    lottie:
-                        widget.muscleLottie[widget.index].fitnessLottieName),
-              ),
-            ],
-          )),
+                child: Container(
+                  width: 390,
+                  height: 90,
+                  decoration: BoxDecoration(
+                    border: Border.all(),
+                  ),
+                  child: ImageCircle(
+                    png: widget.musclePng,
+                    description: widget.muscleDescription,
+                    fontsize: 24,
+                  ),
+                )),
+            Positioned(
+                top: fitnessComponentTop,
+                left: fitnessNameLeft,
+                child: Container(
+                  width: 390,
+                  height: 290,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Color.fromARGB(188, 63, 81, 181)),
+                )),
+            Positioned(
+              top: fitnessAnimation,
+              left: fitnessNameLeft,
+              child: LottieFiles(
+                  lottie: widget.muscleLottie[widget.index].fitnessLottieName),
+            ),
+          ],
+        ),
+      ),
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: Color.fromARGB(122, 255, 255, 255),
         onPressed: () {
@@ -153,5 +160,19 @@ class _SelectedFitnessState extends State<SelectedFitness>
         label: Text(_isPause ? '開始' : '停止'),
       ),
     );
+  }
+
+  Future<void> create() async {
+    DateTime dt = DateTime.now();
+    await db
+        .collection('userId')
+        .doc(userId)
+        .collection('fitness')
+        .doc('1day')
+        .collection('training')
+        //ここのdocはriverpodによりカウンターを作成してtest○○というようにする
+        .doc(widget.muscleDescription)
+        //Modelを使用してtitleに値を入れる
+        .set({'title': widget.muscleDescription, 'time': dt});
   }
 }

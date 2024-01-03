@@ -154,7 +154,8 @@ class _ContainerAvatorState extends State<ContainerAvator> {
                   child: ListView.builder(
                     itemCount: dataList.length,
                     itemBuilder: (context, index) {
-                      final data = dataList[index];
+                      final reversedIndex = dataList.length - 1 - index;
+                      final data = dataList[reversedIndex];
                       return Column(
                         children: [
                           SizedBox(
