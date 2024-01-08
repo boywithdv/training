@@ -1,9 +1,9 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:training/components/TextFieldForLogin.dart';
 import 'package:training/controller/LoginModel.dart';
-import 'package:training/controller/UserInfo.dart';
 import 'package:training/pages/LoginedPage.dart';
 import 'package:training/services/auth/RegisterForm.dart';
 
@@ -102,9 +102,9 @@ class _LoginPageState extends State<LoginPage> {
                               MaterialPageRoute(
                                   builder: (context) => LoginedPage()),
                             );
-                          } catch (e) {
+                          } on FirebaseAuthException catch (e) {
                             print(e);
-                            _showDialog(context, 'ログインできません。');
+                            _showDialog(context, 'ログインできません');
                             return;
                           }
                         },
@@ -154,7 +154,11 @@ void _showDialog(BuildContext context, String title) {
       context: context,
       builder: (BuildContext contxt) {
         return AlertDialog(
-          title: Text(title),
+          backgroundColor: Colors.transparent,
+          title: Text(
+            title,
+            style: TextStyle(color: Colors.white),
+          ),
         );
       });
 }

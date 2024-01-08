@@ -168,7 +168,7 @@ class _SelectedFitnessState extends State<SelectedFitness>
         .collection('userId')
         .doc(userId)
         .collection('fitness')
-        .doc('1day')
+        .doc(dt.year.toString() + dt.month.toString() + dt.day.toString())
         .collection('training')
         //ここのdocはriverpodによりカウンターを作成してtest○○というようにする
         .doc(widget.muscleDescription)

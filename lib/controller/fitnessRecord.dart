@@ -58,12 +58,13 @@ class FirestoreService {
         .delete();
   }
 
-  Future<List<TrainingData>> read123() async {
+  Future<List<TrainingData>> allread() async {
+    DateTime dt = DateTime.now();
     final snapshot = await db
         .collection('userId')
         .doc(userId)
         .collection('fitness')
-        .doc('1day')
+        .doc(dt.year.toString() + dt.month.toString() + dt.day.toString())
         .collection('training')
         .get();
 

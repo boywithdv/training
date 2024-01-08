@@ -33,7 +33,7 @@ class _ContainerAvatorState extends State<ContainerAvator> {
 
   Future<void> _getDataFromFirebase() async {
     final service = FirestoreService();
-    final List<TrainingData> data = await service.read123();
+    final List<TrainingData> data = await service.allread();
     dataList = data;
   }
 
@@ -41,7 +41,7 @@ class _ContainerAvatorState extends State<ContainerAvator> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    double sizedBoxHeight = height * 0.03;
+    double sizedBoxHeight = height * 0.01;
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -65,63 +65,64 @@ class _ContainerAvatorState extends State<ContainerAvator> {
                         fit: StackFit.expand,
                         children: [
                           Positioned(
-                              bottom: 0,
-                              left: 0,
-                              right: 0,
-                              //ぼかしの実装
-                              child: BackdropFilter(
-                                filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                                child: Container(
-                                    height: innerHeight * 0.45,
-                                    width: innerWidth,
-                                    decoration: BoxDecoration(
-                                      color: Colors.green,
-                                      borderRadius: BorderRadius.circular(30),
+                            bottom: 0,
+                            left: 0,
+                            right: 0,
+                            //ぼかしの実装
+                            child: BackdropFilter(
+                              filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                              child: Container(
+                                height: innerHeight * 0.45,
+                                width: innerWidth,
+                                decoration: BoxDecoration(
+                                  color: Colors.green,
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
+                                child: Column(
+                                  children: [
+                                    SizedBox(
+                                      height: innerHeight * 0.1,
                                     ),
-                                    child: Column(
+                                    Row(
                                       children: [
                                         SizedBox(
-                                          height: innerHeight * 0.1,
-                                        ),
-                                        Row(
-                                          children: [
-                                            SizedBox(
-                                              width: innerWidth * 0.3,
-                                            ),
-                                            Text(
-                                              userName,
-                                              style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 25,
-                                              ),
-                                            ),
-                                            IconButton(
-                                              onPressed: () {
-                                                //iconボタンが押下された時に編集ウィジェットが画面下部から表示されるようになる
-                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                    builder: (BuildContext
-                                                            context) =>
-                                                        TestEdit(),
-                                                  ),
-                                                );
-                                              },
-                                              icon: Icon(
-                                                CupertinoIcons.pencil,
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                          ],
+                                          width: innerWidth * 0.3,
                                         ),
                                         Text(
-                                          "Favorite part of training",
-                                          style:
-                                              TextStyle(color: Colors.white70),
+                                          userName,
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 25,
+                                          ),
+                                        ),
+                                        IconButton(
+                                          onPressed: () {
+                                            //iconボタンが押下された時に編集ウィジェットが画面下部から表示されるようになる
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder:
+                                                    (BuildContext context) =>
+                                                        TestEdit(),
+                                              ),
+                                            );
+                                          },
+                                          icon: Icon(
+                                            CupertinoIcons.pencil,
+                                            color: Colors.white,
+                                          ),
                                         ),
                                       ],
-                                    )),
-                              )),
+                                    ),
+                                    Text(
+                                      "Favorite part of training",
+                                      style: TextStyle(color: Colors.white70),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
                           Positioned(
                             top: 0,
                             left: 0,
@@ -161,12 +162,10 @@ class _ContainerAvatorState extends State<ContainerAvator> {
                           SizedBox(
                             height: sizedBoxHeight,
                           ),
-                          Divider(
-                            height: 1,
-                          ),
                           ListTile(
                             tileColor: Colors.transparent,
                             onTap: () {
+                              //今後の更新で長押しするとその内容が表示されるようにする
                               print(data.title);
                             },
                             leading: Icon(
