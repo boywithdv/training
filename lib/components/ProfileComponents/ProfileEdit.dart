@@ -1,7 +1,35 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:training/components/backgroundAnimation.dart';
 import 'package:training/controller/UserInfo.dart';
 import 'package:training/main.dart';
 import 'package:training/pages/ScreenWidget.dart';
+
+class ProfileEdit extends StatefulWidget {
+  const ProfileEdit({super.key});
+
+  @override
+  State<ProfileEdit> createState() => _ProfileEditState();
+}
+
+class _ProfileEditState extends State<ProfileEdit> {
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        BackgroundAnimation(),
+        Positioned(
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+            child: TestEdit(),
+          ),
+        ),
+      ],
+    );
+  }
+}
 
 class TestEdit extends StatefulWidget {
   const TestEdit({super.key});
@@ -12,24 +40,48 @@ class TestEdit extends StatefulWidget {
 
 class _TestEditState extends State<TestEdit> {
   final TextEditingController _controller = TextEditingController();
-
+  /*
+  final _productFitnessList = [
+    "大胸筋",
+    "三角筋",
+    "広背筋",
+    "僧帽筋",
+    "上腕三頭筋",
+    "腹斜筋",
+    "腹筋",
+    "ハムストリング",
+    "腓腹筋",
+    "大臀筋",
+    "大腿四頭筋"
+  ];
+  String? _selectedVal = "";
+  */
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    double sizedboxWidth = width * 0.9;
+    double sizedBoxHeight = height * 0.7;
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.black,
-          leading: IconButton(
-            icon: Icon(
-              Icons.arrow_circle_left_outlined,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
+      backgroundColor: Colors.transparent,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_circle_left_outlined,
+            color: Colors.white,
           ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
-        backgroundColor: Colors.black,
-        body: Center(
+      ),
+      body: Center(
+        child: Container(
+          width: sizedboxWidth,
+          height: sizedBoxHeight,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20), color: Colors.black54),
           child: Column(
             children: [
               Text(
@@ -71,22 +123,32 @@ class _TestEditState extends State<TestEdit> {
             ],
           ),
         ),
-        floatingActionButton: Container(
-          width: 140,
-          child: FloatingActionButton(
-            backgroundColor: Colors.black,
-            foregroundColor: Colors.white,
-            onPressed: () {
-              _saveName();
-              updateDisplayName(userName);
-              Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (BuildContext context) => ScreenWidget()));
-            },
-            child: Text(" 編集"),
-          ),
-        ));
+      ),
+      floatingActionButton: Container(
+        width: 140,
+        child: FloatingActionButton(
+          backgroundColor: Colors.white24,
+          foregroundColor: Colors.white,
+          onPressed: () {
+            if (_controller.text == "" || _controller.text == null) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('名前が入力されていません。'),
+                ),
+              );
+              return;
+            }
+            _saveName();
+            updateDisplayName(userName);
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) => ScreenWidget()));
+          },
+          child: Icon(Icons.check),
+        ),
+      ),
+    );
   }
 
   void _saveName() {

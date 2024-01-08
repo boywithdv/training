@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:training/components/TextColorWhite.dart';
 import 'package:training/pages/ScreenWidget.dart';
 import 'package:training/controller/UserInfo.dart';
 
@@ -33,7 +32,10 @@ class AppDescriptionNavigation extends ConsumerWidget {
                   CupertinoIcons.person,
                   color: Colors.white,
                 ),
-                largeTitle: TextColorWhite(text: 'Instructions for use')),
+                largeTitle: Text(
+                  'Instructions for use',
+                  style: TextStyle(color: Colors.white),
+                )),
             SliverFillRemaining(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -43,8 +45,10 @@ class AppDescriptionNavigation extends ConsumerWidget {
                     style: TextStyle(color: Colors.white, fontSize: 25),
                     textAlign: TextAlign.center,
                   ),
-                  const TextColorWhite(
-                      text: 'Go to NEXT PAGESボタンをクリックすることで次のページに進めます。'),
+                  const Text(
+                    'Go to NEXT PAGESボタンをクリックすることで次のページに進めます。',
+                    style: TextStyle(color: Colors.white),
+                  ),
                   CupertinoButton(
                     color: Colors.transparent,
                     child: const Row(

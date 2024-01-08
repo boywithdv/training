@@ -74,7 +74,7 @@ class _ContainerAvatorState extends State<ContainerAvator> {
                                 height: innerHeight * 0.45,
                                 width: innerWidth,
                                 decoration: BoxDecoration(
-                                  color: Colors.green,
+                                  color: Colors.black38,
                                   borderRadius: BorderRadius.circular(30),
                                 ),
                                 child: Column(
@@ -83,32 +83,16 @@ class _ContainerAvatorState extends State<ContainerAvator> {
                                       height: innerHeight * 0.1,
                                     ),
                                     Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
-                                        SizedBox(
-                                          width: innerWidth * 0.3,
-                                        ),
-                                        Text(
-                                          userName,
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 25,
-                                          ),
-                                        ),
-                                        IconButton(
-                                          onPressed: () {
-                                            //iconボタンが押下された時に編集ウィジェットが画面下部から表示されるようになる
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder:
-                                                    (BuildContext context) =>
-                                                        TestEdit(),
-                                              ),
-                                            );
-                                          },
-                                          icon: Icon(
-                                            CupertinoIcons.pencil,
-                                            color: Colors.white,
+                                        Center(
+                                          child: Text(
+                                            userName,
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 25,
+                                            ),
                                           ),
                                         ),
                                       ],
@@ -210,6 +194,21 @@ class _ContainerAvatorState extends State<ContainerAvator> {
               ],
             ),
           ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: Colors.white60,
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (BuildContext context) => ProfileEdit(),
+            ),
+          );
+        },
+        label: Text(
+          "プロフィール編集",
+          style: TextStyle(color: Colors.black),
         ),
       ),
     );

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:showcaseview/showcaseview.dart';
 import 'package:training/components/selectedfitness.dart';
 import 'package:training/models/models.dart';
 

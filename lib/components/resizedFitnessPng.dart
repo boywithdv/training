@@ -14,14 +14,16 @@ class ResizedFitnessPng extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: onTap,
-        child: Container(
-            width: 400,
-            height: 120,
-            child: ImageCircle(
-              png: png,
-              description: description,
-              fontsize: 11,
-            )));
+      onTap: onTap,
+      child: Container(
+        width: 400,
+        height: 120,
+        child: ImageCircle(
+          png: png,
+          description: description,
+          fontsize: 11,
+        ),
+      ),
+    );
   }
 }
