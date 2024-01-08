@@ -39,8 +39,10 @@ class TestEdit extends StatefulWidget {
 }
 
 class _TestEditState extends State<TestEdit> {
+  _TestEditState() {
+    _selectedVal = _productFitnessList[0];
+  }
   final TextEditingController _controller = TextEditingController();
-  /*
   final _productFitnessList = [
     "大胸筋",
     "三角筋",
@@ -55,7 +57,6 @@ class _TestEditState extends State<TestEdit> {
     "大腿四頭筋"
   ];
   String? _selectedVal = "";
-  */
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -106,6 +107,7 @@ class _TestEditState extends State<TestEdit> {
                   style: TextStyle(color: Colors.white),
                   controller: _controller,
                   decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.person),
                     labelText: 'your name',
                     border: OutlineInputBorder(),
                   ),
@@ -114,12 +116,38 @@ class _TestEditState extends State<TestEdit> {
               SizedBox(
                 height: 40,
               ),
-              Center(
-                child: Text(
-                  "Favorite part of training",
-                  style: TextStyle(color: Colors.white70),
+              Container(
+                width: 200,
+                child: DropdownButtonFormField(
+                  dropdownColor: Colors.black87,
+                  style: TextStyle(color: Colors.white),
+                  value: _selectedVal,
+                  items: _productFitnessList
+                      .map((e) => DropdownMenuItem(
+                            child: Text(e),
+                            value: e,
+                          ))
+                      .toList(),
+                  onChanged: (val) {
+                    setState(() {
+                      _selectedVal = val;
+                    });
+                  },
+                  icon: Icon(
+                    Icons.arrow_drop_down_circle,
+                    color: Colors.white70,
+                  ),
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: "Favorite part of training",
+                    labelStyle: TextStyle(color: Colors.white),
+                    prefixIcon: Icon(
+                      Icons.accessibility_new_rounded,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
-              ),
+              )
             ],
           ),
         ),
