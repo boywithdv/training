@@ -116,7 +116,7 @@ class _LoginPageState extends State<LoginPage> {
                             return;
                           }
                         },
-                        color: Color.fromRGBO(49, 39, 79, 1),
+                        color: Color.fromARGB(186, 126, 137, 126),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50),
                         ),

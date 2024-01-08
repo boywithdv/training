@@ -86,8 +86,14 @@ class TextFieldComponents extends StatelessWidget {
             ),
             Container(
               decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(20)),
-              child: TextButton(child: Text("SIGN UP"), onPressed: onSignUP),
+                  color: Color.fromARGB(186, 126, 137, 126),
+                  borderRadius: BorderRadius.circular(20)),
+              child: TextButton(
+                  child: Text(
+                    "サインアップ",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onPressed: onSignUP),
             ),
           ],
         )),
