@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                           width: 300,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
-                              color: Colors.white,
+                              color: Colors.black87,
                               border: Border(
                                   bottom: BorderSide(
                                       color:
@@ -69,7 +69,10 @@ class _LoginPageState extends State<LoginPage> {
                           child: Column(
                             children: <Widget>[
                               TextFieldForLogin(
-                                icon: Icon(Icons.mail),
+                                icon: Icon(
+                                  Icons.mail,
+                                  color: Colors.white70,
+                                ),
                                 onChanged: (text) {
                                   model.mail = text;
                                 },
@@ -78,7 +81,10 @@ class _LoginPageState extends State<LoginPage> {
                                 pw: false,
                               ),
                               TextFieldForLogin(
-                                icon: Icon(Icons.password),
+                                icon: Icon(
+                                  Icons.password,
+                                  color: Colors.white70,
+                                ),
                                 onChanged: (text) {
                                   model.password = text;
                                 },
