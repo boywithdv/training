@@ -63,7 +63,11 @@ class FirestoreService {
         .collection('userId')
         .doc(userId)
         .collection('fitness')
-        .doc(dt.year.toString() + dt.month.toString() + dt.day.toString())
+        .doc(dt.year.toString() +
+            '-' +
+            dt.month.toString() +
+            '-' +
+            dt.day.toString())
         .collection('training')
         .get();
 

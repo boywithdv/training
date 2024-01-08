@@ -146,10 +146,23 @@ class _ContainerAvatorState extends State<ContainerAvator> {
                   height: sizedBoxHeight,
                 ),
                 Container(
+                  width: width * 0.9,
+                  height: height * 0.05,
+                  child: Center(
+                    child: Text(
+                      "fitness 記録",
+                      style: TextStyle(color: Colors.white, fontSize: 32),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: sizedBoxHeight,
+                ),
+                Container(
                   height: height * 0.65,
                   width: width * 0.9,
                   decoration: BoxDecoration(
-                    color: Colors.green,
+                    color: Colors.transparent,
                     borderRadius: BorderRadius.circular(30),
                   ),
                   child: ListView.builder(
@@ -162,28 +175,31 @@ class _ContainerAvatorState extends State<ContainerAvator> {
                           SizedBox(
                             height: sizedBoxHeight,
                           ),
-                          ListTile(
-                            tileColor: Colors.transparent,
-                            onTap: () {
-                              //今後の更新で長押しするとその内容が表示されるようにする
-                              print(data.title);
-                            },
-                            leading: Icon(
-                              fitness_center_outlined,
-                              color: Colors.white,
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
                             ),
-                            title: Text(
-                              data.title,
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            subtitle: Text(
-                              data.time.toString(),
-                              style: TextStyle(color: Colors.white),
+                            child: ListTile(
+                              tileColor: Colors.transparent,
+                              onTap: () {
+                                //今後の更新で長押しするとその内容が表示されるようにする
+                                print(data.title);
+                              },
+                              leading: Icon(
+                                fitness_center_outlined,
+                                color: Colors.white,
+                              ),
+                              title: Text(
+                                data.title,
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              subtitle: Text(
+                                data.time.toString(),
+                                style: TextStyle(color: Colors.white),
+                              ),
                             ),
                           ),
-                          Divider(
-                            height: 1,
-                          ),
+                          Divider(),
                         ],
                       );
                     },
@@ -198,7 +214,6 @@ class _ContainerAvatorState extends State<ContainerAvator> {
         onPressed: () {
           final FirestoreService service = FirestoreService();
           service.create();
-          print(userId);
           setState(() {});
         },
         label: Icon(CupertinoIcons.add),
