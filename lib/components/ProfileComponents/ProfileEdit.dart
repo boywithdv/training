@@ -70,7 +70,7 @@ class _TestEditState extends State<TestEdit> {
               ),
             ],
           ),
-        )
+        ),
         floatingActionButton: Container(
           width: 140,
           child: FloatingActionButton(
