@@ -69,6 +69,7 @@ class _LoginPageState extends State<LoginPage> {
                           child: Column(
                             children: <Widget>[
                               TextFieldForLogin(
+                                icon: Icon(Icons.mail),
                                 onChanged: (text) {
                                   model.mail = text;
                                 },
@@ -77,6 +78,7 @@ class _LoginPageState extends State<LoginPage> {
                                 pw: false,
                               ),
                               TextFieldForLogin(
+                                icon: Icon(Icons.password),
                                 onChanged: (text) {
                                   model.password = text;
                                 },

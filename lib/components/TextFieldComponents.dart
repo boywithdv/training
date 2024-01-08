@@ -29,7 +29,7 @@ class TextFieldComponents extends StatelessWidget {
             width: 400,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Color.fromARGB(166, 1, 198, 109),
+              color: Colors.black87,
             ),
             child: Column(
               children: [
@@ -38,8 +38,11 @@ class TextFieldComponents extends StatelessWidget {
                     SizedBox(
                       width: sizedBoxWidth,
                     ),
-                    Icon(Icons.mail),
                     TextFieldForLogin(
+                        icon: Icon(
+                          Icons.mail,
+                          color: Colors.white70,
+                        ),
                         hinttext: "メールアドレス",
                         pw: false,
                         textController: mailController,
@@ -51,8 +54,11 @@ class TextFieldComponents extends StatelessWidget {
                     SizedBox(
                       width: sizedBoxWidth,
                     ),
-                    Icon(Icons.password),
                     TextFieldForLogin(
+                      icon: Icon(
+                        Icons.password_rounded,
+                        color: Colors.white70,
+                      ),
                       hinttext: "パスワード",
                       pw: true,
                       textController: passwordController,

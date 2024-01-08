@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class TextFieldForLogin extends StatelessWidget {
   const TextFieldForLogin(
       {super.key,
+      required this.icon,
       required this.hinttext,
       required this.pw,
       required this.textController,
@@ -11,6 +12,7 @@ class TextFieldForLogin extends StatelessWidget {
   final bool pw;
   final TextEditingController textController;
   final void Function(String) onChanged;
+  final Icon icon;
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +26,9 @@ class TextFieldForLogin extends StatelessWidget {
         controller: textController,
         decoration: InputDecoration(
           border: InputBorder.none,
+          prefixIcon: icon,
           hintText: hinttext,
-          hintStyle: TextStyle(color: Colors.grey.shade800),
+          hintStyle: TextStyle(color: Colors.white70),
         ),
       ),
     ));

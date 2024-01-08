@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:training/components/Circle.dart';
 import 'package:training/components/TextFieldComponents.dart';
 import 'package:training/components/backgroundAnimation.dart';
-import 'package:training/components/menuBarComponents/ThemeColor.dart';
 import 'package:training/controller/RegisterModel.dart';
 
 class RegisterForm extends StatefulWidget {
@@ -28,7 +27,6 @@ class _RegisterFormState extends State<RegisterForm> {
           return Stack(
             children: [
               BackgroundAnimation(),
-              Circle(),
               TextFieldComponents(
                 mailController: model.titleController,
                 passwordController: model.authorController,
@@ -78,7 +76,7 @@ class _RegisterFormState extends State<RegisterForm> {
                       );
                       print('パスワードは６文字以上にしてください');
                     }
-                  } finally {}
+                  }
                 },
               ),
               Column(
