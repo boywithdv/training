@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:training/Data/iconData.dart';
-import 'package:training/components/ProfileComponents/testProfileEdit.dart';
+import 'package:training/components/ProfileComponents/ProfileEdit.dart';
 import 'package:training/controller/UserInfo.dart';
 import 'package:training/controller/fitnessRecord.dart';
 import 'package:training/main.dart';
@@ -150,8 +150,11 @@ class _ContainerAvatorState extends State<ContainerAvator> {
                   height: height * 0.05,
                   child: Center(
                     child: Text(
-                      "fitness 記録",
-                      style: TextStyle(color: Colors.white, fontSize: 32),
+                      "本日の筋トレ記録",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
