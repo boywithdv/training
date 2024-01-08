@@ -213,14 +213,6 @@ class _ContainerAvatorState extends State<ContainerAvator> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          final FirestoreService service = FirestoreService();
-          service.create();
-          setState(() {});
-        },
-        label: Icon(CupertinoIcons.add),
-      ),
     );
   }
 }
