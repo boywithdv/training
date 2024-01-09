@@ -131,7 +131,7 @@ class _FitnessState extends State<Fitness> {
         backgroundColor: Colors.transparent,
         appBar: AppBar(
           title: Text(
-            "部位選択",
+            "Part Selection",
             style: TextStyle(
                 color: const Color.fromARGB(204, 255, 255, 255),
                 fontWeight: FontWeight.bold),
