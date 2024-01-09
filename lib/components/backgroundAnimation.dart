@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_background/animated_background.dart';
 
@@ -27,7 +30,15 @@ class _BackgroundAnimationState extends State<BackgroundAnimation>
           ),
         ),
         vsync: this,
-        child: Container(),
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 5),
+              child: Container(),
+            )
+          ],
+        ),
       ),
     );
   }

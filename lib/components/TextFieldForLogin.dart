@@ -24,6 +24,7 @@ class TextFieldForLogin extends StatelessWidget {
         onChanged: onChanged,
         obscureText: pw,
         controller: textController,
+        style: TextStyle(color: Colors.white),
         decoration: InputDecoration(
           border: InputBorder.none,
           prefixIcon: icon,
