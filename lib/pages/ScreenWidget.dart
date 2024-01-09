@@ -132,7 +132,9 @@ class _FitnessState extends State<Fitness> {
         appBar: AppBar(
           title: Text(
             "部位選択",
-            style: TextStyle(color: const Color.fromARGB(204, 255, 255, 255)),
+            style: TextStyle(
+                color: const Color.fromARGB(204, 255, 255, 255),
+                fontWeight: FontWeight.bold),
           ),
           backgroundColor: Colors.transparent,
           bottom: TabBar(
