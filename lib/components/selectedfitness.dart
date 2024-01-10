@@ -46,7 +46,7 @@ class _SelectedFitnessState extends State<SelectedFitness>
     double sizedBoxHeightToTimer = deviceHeight * 0.47;
     double fitnessNameTop = deviceHeight * 0.31;
     double fitnessComponentTop = deviceHeight * 0.42;
-    double fitnessNameLeft = deviceWidth * 0.05;
+    double fitnessNameLeft = deviceWidth * 0;
     double fitnessAnimation = deviceHeight * 0.4;
     return Scaffold(
       appBar: AppBar(
@@ -113,7 +113,7 @@ class _SelectedFitnessState extends State<SelectedFitness>
                 top: fitnessNameTop,
                 left: fitnessNameLeft,
                 child: Container(
-                  width: 390,
+                  width: 380,
                   height: 90,
                   decoration: BoxDecoration(
                     border: Border.all(),
@@ -121,7 +121,7 @@ class _SelectedFitnessState extends State<SelectedFitness>
                   child: ImageCircle(
                     png: widget.musclePng,
                     description: widget.muscleDescription,
-                    fontsize: 24,
+                    fontsize: 14,
                   ),
                 )),
             Positioned(

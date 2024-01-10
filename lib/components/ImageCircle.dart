@@ -26,7 +26,7 @@ class ImageCircle extends StatelessWidget {
               png: png,
             ),
             Container(
-              height: 30,
+              height: 50,
               width: 170,
               child: Text(
                 description,

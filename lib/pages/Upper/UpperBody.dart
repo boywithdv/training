@@ -35,9 +35,10 @@ class _ToUpperBodyState extends State<ToUpperBody> {
           description: '三角筋',
           onTap: () {
             _navigateToSelectedFitness(
-                '三角筋', "assets/img/kata_sankakukin.PNG", pectoralisMajorMuscle);
+                '三角筋', "assets/img/kata_sankakukin.PNG", deltoid);
           },
         ),
+        /*
         const SizedBox(
           height: 15,
         ),
@@ -71,6 +72,7 @@ class _ToUpperBodyState extends State<ToUpperBody> {
                 "assets/img/jouwansantoukin.PNG", pectoralisMajorMuscle);
           },
         ),
+        */
         const SizedBox(
           height: 15,
         ),
@@ -79,7 +81,7 @@ class _ToUpperBodyState extends State<ToUpperBody> {
           description: '腹斜筋',
           onTap: () {
             _navigateToSelectedFitness(
-                '腹斜筋', "assets/img/gaihukusyakin.PNG", abs);
+                '腹斜筋', "assets/img/gaihukusyakin.PNG", obliqueAbdominal);
           },
         ),
         const SizedBox(

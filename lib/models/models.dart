@@ -16,85 +16,125 @@ class FitnessModel {
 List<FitnessModel> pectoralisMajorMuscle = [
   FitnessModel(
       fitnessId: 1,
-      fitnessLottieName: 'assets/Lottie/daikyoukin1.json',
+      fitnessLottieName: 'assets/Lottie/daikyoukin2.json',
+      fitnessName: 'プッシュアップ',
       fitnessPngName: 'assets/img/daikyoukin.png',
-      fitnessName: '腕立て伏せ',
       fitnessTags: '大胸筋'),
   FitnessModel(
       fitnessId: 2,
-      fitnessLottieName: 'assets/Lottie/daikyoukin2.json',
-      fitnessName: '腕立て伏せB',
+      fitnessLottieName: 'assets/Lottie/daikyoukin1.json',
       fitnessPngName: 'assets/img/daikyoukin.png',
-      fitnessTags: '大胸筋')
+      fitnessName: 'スタッガードプッシュアップ',
+      fitnessTags: '大胸筋'),
 ];
-
+List<FitnessModel> deltoid = [
+  FitnessModel(
+      fitnessId: 1,
+      fitnessLottieName: 'assets/Lottie/hukkin2.json',
+      fitnessName: 'プランクプッシュアップ',
+      fitnessPngName: 'assets/img/kata_sankakukin.PNG',
+      fitnessTags: '三角筋'),
+  FitnessModel(
+      fitnessId: 2,
+      fitnessLottieName: 'assets/Lottie/hukkin9.json',
+      fitnessName: 'スパイダープランク',
+      fitnessPngName: 'assets/img/kata_sankakukin.PNG',
+      fitnessTags: '三角筋'),
+  FitnessModel(
+      fitnessId: 3,
+      fitnessLottieName: 'assets/Lottie/sannkakukin.json',
+      fitnessName: 'プランクプッシュアップ',
+      fitnessPngName: 'assets/img/kata_sankakukin.PNG',
+      fitnessTags: '三角筋')
+];
+//腹筋
 List<FitnessModel> abs = [
   FitnessModel(
       fitnessId: 1,
       fitnessLottieName: 'assets/Lottie/hukkin1.json',
       fitnessPngName: 'assets/img/hukkin.png',
-      fitnessName: '腹筋1',
+      fitnessName: '腹筋',
       fitnessTags: 'お腹'),
   FitnessModel(
       fitnessId: 2,
       fitnessLottieName: 'assets/Lottie/hukkin2.json',
       fitnessPngName: 'assets/img/hukkin.png',
-      fitnessName: '腹筋2',
+      fitnessName: 'プランクプッシュアップ',
       fitnessTags: 'お腹'),
   FitnessModel(
       fitnessId: 3,
       fitnessLottieName: 'assets/Lottie/hukkin3.json',
       fitnessPngName: 'assets/img/hukkin.png',
-      fitnessName: '腹筋3',
+      fitnessName: 'プランク・リーチバック',
       fitnessTags: 'お腹'),
   FitnessModel(
       fitnessId: 4,
       fitnessLottieName: 'assets/Lottie/hukkin4.json',
       fitnessPngName: 'assets/img/hukkin.png',
-      fitnessName: '腹筋4',
+      fitnessName: 'クランチ',
       fitnessTags: 'お腹'),
   FitnessModel(
       fitnessId: 5,
       fitnessLottieName: 'assets/Lottie/hukkin5.json',
       fitnessPngName: 'assets/img/hukkin.png',
-      fitnessName: '腹筋5',
+      fitnessName: 'ヒップヒンジ&ハイブランク',
       fitnessTags: 'お腹'),
   FitnessModel(
       fitnessId: 6,
       fitnessLottieName: 'assets/Lottie/hukkin6.json',
       fitnessPngName: 'assets/img/hukkin.png',
-      fitnessName: '腹筋6',
+      fitnessName: 'ベントレッグレイズ',
       fitnessTags: 'お腹'),
   FitnessModel(
       fitnessId: 7,
       fitnessLottieName: 'assets/Lottie/hukkin7.json',
       fitnessPngName: 'assets/img/hukkin.png',
-      fitnessName: '腹筋7',
+      fitnessName: 'レッグサークル',
       fitnessTags: 'お腹'),
   FitnessModel(
       fitnessId: 8,
       fitnessLottieName: 'assets/Lottie/hukkin8.json',
       fitnessPngName: 'assets/img/hukkin.png',
-      fitnessName: '腹筋8',
+      fitnessName: 'デッドバグ',
       fitnessTags: 'お腹'),
   FitnessModel(
       fitnessId: 9,
       fitnessLottieName: 'assets/Lottie/hukkin9.json',
       fitnessPngName: 'assets/img/hukkin.png',
-      fitnessName: '腹筋9',
+      fitnessName: 'スパイダープランク',
       fitnessTags: 'お腹'),
   FitnessModel(
       fitnessId: 10,
       fitnessLottieName: 'assets/Lottie/hukkin10.json',
       fitnessPngName: 'assets/img/hukkin.png',
-      fitnessName: '腹筋10',
+      fitnessName: 'ヒップリフト',
       fitnessTags: 'お腹'),
+];
+List<FitnessModel> obliqueAbdominal = [
+  FitnessModel(
+      fitnessId: 1,
+      fitnessLottieName: 'assets/Lottie/hukusyakin.json',
+      fitnessName: 'サイドレッグリフト',
+      fitnessPngName: 'assets/img/gaihukusyakin.PNG',
+      fitnessTags: '腹斜筋'),
   FitnessModel(
       fitnessId: 11,
       fitnessLottieName: 'assets/Lottie/hukkin11.json',
+      fitnessPngName: 'assets/img/gaihukusyakin.PNG',
+      fitnessName: 'メイソンツイスト',
+      fitnessTags: '腹斜筋'),
+  FitnessModel(
+      fitnessId: 3,
+      fitnessLottieName: 'assets/Lottie/hukkin2.json',
       fitnessPngName: 'assets/img/hukkin.png',
-      fitnessName: '腹筋11',
-      fitnessTags: 'お腹')
+      fitnessName: 'プランクプッシュアップ',
+      fitnessTags: '腹斜筋'),
+  FitnessModel(
+      fitnessId: 4,
+      fitnessLottieName: 'assets/Lottie/cross_crunch.json',
+      fitnessPngName: 'assets/img/hukkin.png',
+      fitnessName: 'クロスクランチ',
+      fitnessTags: '腹斜筋'),
 ];
 
 List<FitnessModel> thigh = [
