@@ -126,6 +126,21 @@ class _LoginPageState extends State<LoginPage> {
                       child: MaterialButton(
                         onPressed: () async {
                           try {
+                            if (_mailController.text == "") {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('メールアドレスが入力されていません。'),
+                                ),
+                              );
+                              return;
+                            } else if (_passwordController.text == "") {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('パスワードが入力されていません。'),
+                                ),
+                              );
+                              return;
+                            }
                             await model.login();
                             Navigator.pushReplacement(
                               context,
@@ -134,7 +149,6 @@ class _LoginPageState extends State<LoginPage> {
                             );
                           } on FirebaseAuthException catch (e) {
                             print(e.code);
-
                             _showDialog(context, 'ログインできません');
                             return;
                           }
