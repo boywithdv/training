@@ -56,7 +56,7 @@ class _ProfileState extends State<Profile> {
                     context, MaterialPageRoute(builder: (context) => App()));
               },
               icon: Icon(
-                CupertinoIcons.person,
+                Icons.logout,
                 color: Colors.white,
               ),
             ),
