@@ -3,16 +3,18 @@ import 'package:flutter/material.dart';
 class TextFieldForLogin extends StatelessWidget {
   const TextFieldForLogin(
       {super.key,
-      required this.icon,
+      required this.prefixIcon,
       required this.hinttext,
       required this.pw,
       required this.textController,
-      required this.onChanged});
+      required this.onChanged,
+      this.suffixIcon});
   final String hinttext;
   final bool pw;
   final TextEditingController textController;
   final void Function(String) onChanged;
-  final Icon icon;
+  final Icon prefixIcon;
+  final IconButton? suffixIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +28,9 @@ class TextFieldForLogin extends StatelessWidget {
         controller: textController,
         style: TextStyle(color: Colors.white),
         decoration: InputDecoration(
+          suffixIcon: suffixIcon,
           border: InputBorder.none,
-          prefixIcon: icon,
+          prefixIcon: prefixIcon,
           hintText: hinttext,
           hintStyle: TextStyle(color: Colors.white70),
         ),

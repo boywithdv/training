@@ -17,9 +17,18 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   TextEditingController _mailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+  var _isObscured = true;
+  var password = true;
   @override
   void initState() {
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _mailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
   }
 
   @override
@@ -69,7 +78,7 @@ class _LoginPageState extends State<LoginPage> {
                           child: Column(
                             children: <Widget>[
                               TextFieldForLogin(
-                                icon: Icon(
+                                prefixIcon: Icon(
                                   Icons.mail,
                                   color: Colors.white70,
                                 ),
@@ -81,7 +90,20 @@ class _LoginPageState extends State<LoginPage> {
                                 pw: false,
                               ),
                               TextFieldForLogin(
-                                icon: Icon(
+                                suffixIcon: IconButton(
+                                  icon: _isObscured
+                                      ? Icon(Icons.visibility)
+                                      : Icon(Icons.visibility_off),
+                                  onPressed: () {
+                                    setState(
+                                      () {
+                                        _isObscured = !_isObscured;
+                                        password = !password;
+                                      },
+                                    );
+                                  },
+                                ),
+                                prefixIcon: Icon(
                                   Icons.password,
                                   color: Colors.white70,
                                 ),
@@ -90,7 +112,7 @@ class _LoginPageState extends State<LoginPage> {
                                 },
                                 textController: _passwordController,
                                 hinttext: "パスワード",
-                                pw: true,
+                                pw: password,
                               )
                             ],
                           ),
@@ -111,7 +133,8 @@ class _LoginPageState extends State<LoginPage> {
                                   builder: (context) => LoginedPage()),
                             );
                           } on FirebaseAuthException catch (e) {
-                            print(e);
+                            print(e.code);
+
                             _showDialog(context, 'ログインできません');
                             return;
                           }
