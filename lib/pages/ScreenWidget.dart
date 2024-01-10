@@ -68,10 +68,13 @@ class _ScreenState extends State<Screen> {
                           case 0:
                             cureentWidget = Fitness();
                           case 1:
+                            /*
                             cureentWidget = Container(
                               child: BackgroundAnimation(),
                             );
+                            
                           case 2:
+                          */
                             cureentWidget = MainContents();
                         }
                       });

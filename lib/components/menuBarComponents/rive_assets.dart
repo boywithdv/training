@@ -20,10 +20,12 @@ List<RiveAsset> bottomNavs = [
       artboard: "TIMER",
       stateMachineName: "TIMER_Interactivity",
       title: "Chat"),
+  /*
   RiveAsset("assets/Rive/icons.riv",
       artboard: "BELL",
       stateMachineName: "BELL_Interactivity",
       title: "Notifications"),
+      */
   RiveAsset("assets/Rive/icons.riv",
       artboard: "USER",
       stateMachineName: "USER_Interactivity",

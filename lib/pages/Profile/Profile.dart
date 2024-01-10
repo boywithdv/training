@@ -25,6 +25,7 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   final _auth = FirebaseAuth.instance;
+  var userEmail = prefs.getString('userEmail') ?? "";
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,7 @@ class _ProfileState extends State<Profile> {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           title: Text(
-            'my Profile',
+            userEmail,
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,

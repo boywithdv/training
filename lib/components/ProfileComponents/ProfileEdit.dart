@@ -158,7 +158,7 @@ class _TestEditState extends State<TestEdit> {
           backgroundColor: Colors.white24,
           foregroundColor: Colors.white,
           onPressed: () {
-            if (_controller.text == "" || _controller.text == null) {
+            if (_controller.text == "") {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text('名前が入力されていません。'),

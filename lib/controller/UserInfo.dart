@@ -6,6 +6,7 @@ var userName;
 var userEmail;
 var userImage;
 var photoURL;
+var favorite_part_of_training;
 
 // Shared PreferenceでuserIdを取得する
 setPrefItems() async {
@@ -13,6 +14,7 @@ setPrefItems() async {
   // userIdにuidを入れる
   prefs.setString('uid', userId);
   prefs.setString('userName', userName);
+  prefs.setString('userEmail', userEmail);
   print("これはLoginModel.dartファイルです" + userName);
 }
 

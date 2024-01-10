@@ -15,7 +15,7 @@ class ContainerAvator extends StatefulWidget {
 }
 
 class _ContainerAvatorState extends State<ContainerAvator> {
-  List<TrainingData> dataList = []; // TrainingDataのリスト
+  List<TrainingData> dataList = [];
   @override
   void initState() {
     super.initState();
