@@ -19,6 +19,7 @@ class _ToLowerBodyState extends State<ToLowerBody> {
           SizedBox(
             height: 40,
           ),
+          /*
           ResizedFitnessPng(
             png: "assets/img/hamusutoring.PNG",
             description: 'ハムストリングス',
@@ -42,6 +43,7 @@ class _ToLowerBodyState extends State<ToLowerBody> {
           SizedBox(
             height: 15,
           ),
+          */
           ResizedFitnessPng(
             png: "assets/img/oshiri.PNG",
             description: '大臀筋',

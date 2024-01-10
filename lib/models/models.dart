@@ -142,31 +142,31 @@ List<FitnessModel> thigh = [
       fitnessId: 1,
       fitnessLottieName: 'assets/Lottie/hutomomo1.json',
       fitnessPngName: 'assets/img/hamusutoring.PNG',
-      fitnessName: '太もも1',
+      fitnessName: 'ウォークングランジ',
       fitnessTags: '太もも'),
   FitnessModel(
       fitnessId: 2,
       fitnessLottieName: 'assets/Lottie/hutomomo2.json',
       fitnessPngName: 'assets/img/hamusutoring.PNG',
-      fitnessName: '太もも2',
+      fitnessName: 'ワイド・スクワット',
       fitnessTags: '太もも'),
   FitnessModel(
       fitnessId: 3,
       fitnessLottieName: 'assets/Lottie/hutomomo3.json',
       fitnessPngName: 'assets/img/hamusutoring.PNG',
-      fitnessName: '太もも3',
+      fitnessName: '足上げスクワット',
       fitnessTags: '太もも'),
   FitnessModel(
       fitnessId: 4,
       fitnessLottieName: 'assets/Lottie/hutomomo4.json',
       fitnessPngName: 'assets/img/hamusutoring.PNG',
-      fitnessName: '太もも4',
+      fitnessName: 'スクワット',
       fitnessTags: '太もも'),
   FitnessModel(
       fitnessId: 5,
       fitnessLottieName: 'assets/Lottie/hutomomo5.json',
       fitnessPngName: 'assets/img/hamusutoring.PNG',
-      fitnessName: '太もも5',
+      fitnessName: 'ハイニーズ',
       fitnessTags: '太もも')
 ];
 
@@ -175,12 +175,12 @@ List<FitnessModel> buttocks = [
       fitnessId: 1,
       fitnessLottieName: 'assets/Lottie/oshiri.json',
       fitnessPngName: 'assets/img/oshiri.PNG',
-      fitnessName: 'お尻1',
+      fitnessName: 'リバースバードドッグ',
       fitnessTags: 'お尻'),
   FitnessModel(
       fitnessId: 2,
-      fitnessLottieName: 'assets/Lottie/oshiri1.json',
-      fitnessPngName: 'assets/img/oshiri.PNG',
-      fitnessName: 'お尻2',
-      fitnessTags: 'お尻')
+      fitnessLottieName: 'assets/Lottie/hukkin10.json',
+      fitnessPngName: 'assets/img/hukkin.png',
+      fitnessName: 'ヒップリフト',
+      fitnessTags: 'お尻'),
 ];
