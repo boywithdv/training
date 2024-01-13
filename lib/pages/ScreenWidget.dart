@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
-import 'package:training/components/backgroundAnimation.dart';
 import 'package:training/components/backgroundAnimationToLower.dart';
 import 'package:training/components/backgroundAnimationToUpper.dart';
 import 'package:training/components/menuBarComponents/animated_bar.dart';
@@ -35,7 +34,6 @@ class _ScreenState extends State<Screen> {
   Widget cureentWidget = MainContents();
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
