@@ -31,7 +31,7 @@ class _CustomComponentsState extends State<CustomComponents> {
               children: [
                 Components(
                   text: "身長",
-                  child: HeightRegister(),
+                  child: Height(),
                 ),
                 Components(
                   text: "体重",
