@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
+import 'package:training/controller/UserInfo.dart';
 import 'package:training/pages/Profile/Profile.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Height extends StatefulWidget {
   const Height({Key? key}) : super(key: key);
@@ -104,6 +105,7 @@ class _HeightState extends State<Height> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
+          height_create();
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -114,6 +116,17 @@ class _HeightState extends State<Height> {
         label: Icon(Icons.check),
       ),
     );
+  }
+
+  Future<void> height_create() async {
+    final db = FirebaseFirestore.instance;
+    DateTime dt = DateTime.now();
+    await db
+        .collection('userId')
+        .doc(userId)
+        .collection('height')
+        .doc('data')
+        .set({'HeightData': index, 'time': dt});
   }
 }
 

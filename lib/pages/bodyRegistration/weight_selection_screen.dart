@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/physics.dart';
-import 'package:tuple/tuple.dart';
+import 'package:training/controller/UserInfo.dart';
+import 'package:training/pages/Profile/Profile.dart';
 
 class WeightSelectionScreen extends StatefulWidget {
   const WeightSelectionScreen({super.key});
@@ -10,8 +12,6 @@ class WeightSelectionScreen extends StatefulWidget {
 }
 
 class _WeightSelectionScreenState extends State<WeightSelectionScreen> {
-  WeightType weightType = WeightType.kg;
-
   double weight = 0;
   @override
   Widget build(BuildContext context) {
@@ -27,222 +27,9 @@ class _WeightSelectionScreenState extends State<WeightSelectionScreen> {
           from: 0,
           max: 190,
           initialValue: weight,
-          type: weightType,
           onChanged: (value) => setState(() => weight = value),
         )
       ]),
-    );
-  }
-}
-
-class WeightSelection extends StatefulWidget {
-  const WeightSelection({super.key});
-
-  @override
-  State<WeightSelection> createState() => _WeightSelection();
-}
-
-//体重のタイプを作成
-enum WeightType {
-  kg,
-  lb,
-}
-
-class _WeightSelection extends State<WeightSelection> {
-  WeightType weightType = WeightType.kg;
-
-  double weight = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('$weight ${weightType.name}'),
-            //ボタンがクリックされると画面下部から表示される
-            ElevatedButton(
-              onPressed: () => _openBottomSheet(context),
-              child: const Text('Change'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  void _openBottomSheet(BuildContext context) async {
-    final res = await showModalBottomSheet<Tuple2<WeightType, double>>(
-      context: context,
-      elevation: 0,
-      backgroundColor: Colors.transparent,
-      barrierColor: Colors.transparent,
-      builder: (context) {
-        return StatefulBuilder(builder: (context, setState) {
-          return Container(
-            decoration: _bottomSheetDecoration,
-            height: 500,
-            child: Column(
-              children: [
-                //ヘッダー部分
-                _Header(
-                  weightType: weightType,
-                  inKg: weight,
-                ),
-                //Kgかlibのどちらかを選択する
-                _Switcher(
-                  weightType: weightType,
-                  onChanged: (type) => setState(() => weightType = type),
-                ),
-                const SizedBox(height: 10),
-                Expanded(
-                  child: DivisionSlider(
-                    from: 0,
-                    max: 190,
-                    initialValue: weight,
-                    type: weightType,
-                    onChanged: (value) => setState(() => weight = value),
-                  ),
-                )
-              ],
-            ),
-          );
-        });
-      },
-    );
-    if (res != null) {
-      setState(() {
-        weightType = res.item1;
-        weight = res.item2;
-      });
-    }
-  }
-}
-
-const _bottomSheetDecoration = BoxDecoration(
-  color: Color(0xffD9D9D9),
-  borderRadius: BorderRadius.only(
-    topLeft: Radius.circular(30),
-    topRight: Radius.circular(30),
-  ),
-);
-
-class _Header extends StatelessWidget {
-  const _Header({
-    required this.weightType,
-    required this.inKg,
-  });
-
-  final WeightType weightType;
-  final double inKg;
-
-  @override
-  Widget build(BuildContext context) {
-    final navigator = Navigator.of(context);
-    return Padding(
-      padding: const EdgeInsets.all(10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          IconButton(
-            color: Colors.black54,
-            onPressed: () => navigator.pop(),
-            icon: const Icon(Icons.close),
-          ),
-          const Text('Weight',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
-          IconButton(
-            color: Colors.black54,
-            onPressed: () => navigator.pop<Tuple2<WeightType, double>>(
-              Tuple2(weightType, inKg),
-            ),
-            icon: const Icon(Icons.check),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-extension WeightTypeExtension on WeightType {
-  String get name {
-    switch (this) {
-      case WeightType.kg:
-        return 'kg';
-      case WeightType.lb:
-        return 'lb';
-    }
-  }
-}
-
-class _Switcher extends StatelessWidget {
-  final WeightType weightType;
-  final ValueChanged<WeightType> onChanged;
-  const _Switcher({
-    Key? key,
-    required this.weightType,
-    required this.onChanged,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 40,
-      width: 250,
-      decoration: BoxDecoration(
-        color: Colors.grey[400],
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Stack(
-        children: [
-          AnimatedPositioned(
-            top: 2,
-            width: 121,
-            height: 36,
-            left: weightType == WeightType.kg ? 2 : 127,
-            duration: const Duration(milliseconds: 300),
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(8),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
-                    blurRadius: 5,
-                    spreadRadius: 1,
-                    offset: const Offset(0, 1),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Positioned.fill(
-              child: Row(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              _buildButton(WeightType.kg),
-              _buildButton(WeightType.lb)
-            ],
-          ))
-        ],
-      ),
-    );
-  }
-
-  Widget _buildButton(WeightType type) {
-    return Expanded(
-      child: GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTap: () => onChanged(type),
-        child: Center(
-          child: Text(
-            type.name,
-            style: const TextStyle(fontWeight: FontWeight.bold),
-            textAlign: TextAlign.center,
-          ),
-        ),
-      ),
     );
   }
 }
@@ -252,14 +39,12 @@ class DivisionSlider extends StatefulWidget {
   final double max;
   final double initialValue;
   final Function(double) onChanged;
-  final WeightType type;
 
   const DivisionSlider({
     required this.from,
     required this.max,
     required this.initialValue,
     required this.onChanged,
-    required this.type,
     super.key,
   });
 
@@ -271,7 +56,7 @@ class _DivisionSliderState extends State<DivisionSlider> {
   PageController? numbersController;
   final itemsExtension = 1000;
   late double value;
-
+  TextEditingController _weightController = TextEditingController();
   @override
   void initState() {
     value = widget.initialValue;
@@ -305,8 +90,26 @@ class _DivisionSliderState extends State<DivisionSlider> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 10),
+              Container(
+                width: 80,
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: '入力',
+                  ),
+                  controller: _weightController,
+                  keyboardType: TextInputType.numberWithOptions(decimal: true),
+                  onChanged: (idx) {
+                    setState(() {
+                      value = double.parse(idx);
+                      numbersController
+                          ?.jumpToPage(itemsExtension + value.toInt());
+                      _updateValue();
+                    });
+                  },
+                ),
+              ),
               Text(
-                'Weight: $value ${widget.type.name}',
+                'Weight: $value kg',
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
@@ -314,6 +117,7 @@ class _DivisionSliderState extends State<DivisionSlider> {
                 ),
               ),
               const SizedBox(height: 10),
+              //中心の棒
               SizedBox(
                 height: 10,
                 width: 11.5,
@@ -321,17 +125,44 @@ class _DivisionSliderState extends State<DivisionSlider> {
                   painter: TrianglePainter(),
                 ),
               ),
+              //横にスライドできるもの
               _Numbers(
                 itemsExtension: itemsExtension,
                 controller: numbersController,
                 start: widget.from.toInt(),
+                onSlide: (idx) {
+                  value = idx.toDouble();
+                },
                 end: widget.max.toInt(),
+              ),
+              FloatingActionButton(
+                onPressed: () {
+                  weight_create();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => MainContents(),
+                    ),
+                  );
+                },
+                child: Icon(Icons.check),
               ),
             ],
           );
         },
       ),
     );
+  }
+
+  Future<void> weight_create() async {
+    final db = FirebaseFirestore.instance;
+    DateTime dt = DateTime.now();
+    await db
+        .collection('userId')
+        .doc(userId)
+        .collection('weight')
+        .doc('data')
+        .set({'WeightData': value, 'time': dt});
   }
 
   @override
@@ -376,21 +207,28 @@ class TrianglePainter extends CustomPainter {
   }
 }
 
-const greenColor = Color(0xff90D855);
-
-class _Numbers extends StatelessWidget {
+class _Numbers extends StatefulWidget {
   final PageController? controller;
   final int itemsExtension;
   final int start;
   final int end;
+  final ValueChanged<double> onSlide;
 
   const _Numbers({
     required this.controller,
     required this.itemsExtension,
     required this.start,
     required this.end,
+    required this.onSlide,
     Key? key,
   }) : super(key: key);
+
+  @override
+  _NumbersState createState() => _NumbersState();
+}
+
+class _NumbersState extends State<_Numbers> {
+  double currentValue = 0.0;
 
   @override
   Widget build(BuildContext context) {
@@ -398,15 +236,17 @@ class _Numbers extends StatelessWidget {
       height: 42,
       child: PageView.builder(
         pageSnapping: false,
-        controller: controller,
+        controller: widget.controller,
         physics: _CustomPageScrollPhysics(
-          start: itemsExtension + start.toDouble(),
-          end: itemsExtension + end.toDouble(),
+          start: widget.itemsExtension + widget.start.toDouble(),
+          end: widget.itemsExtension + widget.end.toDouble(),
         ),
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, rawIndex) {
-          final index = rawIndex - itemsExtension;
-          return _Item(index: index >= start && index <= end ? index : null);
+          final index = rawIndex - widget.itemsExtension;
+          return _Item(
+            index: index >= widget.start && index <= widget.end ? index : null,
+          );
         },
       ),
     );

@@ -7,20 +7,6 @@ class FirestoreService {
   final db = FirebaseFirestore.instance;
   DateTime dt = DateTime.now();
 
-  //CRUDの関数たち
-  Future<void> create() async {
-    await db
-        .collection('userId')
-        .doc(userId)
-        .collection('fitness')
-        .doc(dt.year.toString() + dt.month.toString() + dt.day.toString())
-        .collection('training')
-        //ここのdocはriverpodによりカウンターを作成してtest○○というようにする
-        .doc('test3')
-        //Modelを使用してtitleに値を入れる
-        .set({'title': '大胸筋', 'time': dt});
-  }
-
   Future<void> read() async {
     final doc = await db
         .collection('userId')
@@ -32,19 +18,6 @@ class FirestoreService {
         .get();
     final fitness = doc.data();
     print(fitness);
-  }
-
-  Future<void> update() async {
-    await db
-        .collection('userId')
-        .doc(userId)
-        .collection('fitness')
-        .doc(dt.year.toString() + dt.month.toString() + dt.day.toString())
-        .collection('training')
-        .doc('test1')
-        .update({
-      'title': '胸',
-    });
   }
 
   Future<void> delete() async {
