@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:training/controller/UserInfo.dart';
+import 'package:training/pages/Profile/Profile.dart';
 import 'package:training/pages/bodyRegistration/height_selection_screen.dart';
 import 'package:training/pages/bodyRegistration/weight_selection_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 var fitnessHeight;
 var fitnessWeight;
+
+double calculateBMI(double heightInCentimeters, double weightInKilograms) {
+  // 身長をメートルに変換
+  double heightInMeters = heightInCentimeters / 100;
+  // BMIを計算
+  double bmi = weightInKilograms / (heightInMeters * heightInMeters);
+  return bmi;
+}
 
 class CustomComponents extends StatefulWidget {
   const CustomComponents({Key? key}) : super(key: key);
@@ -25,7 +34,7 @@ class _CustomComponentsState extends State<CustomComponents> {
     await readHeight();
     await readWeight();
     print(fitnessHeight);
-    // setState()を呼んでビルドを再度トリガーする
+    print(fitnessWeight);
     setState(() {});
   }
 
@@ -51,15 +60,28 @@ class _CustomComponentsState extends State<CustomComponents> {
               Components(
                 text: "身長",
                 params: '$fitnessHeight cm',
-                child: Height(),
+                width: 150,
+                height: 150,
+                ontap: Height(),
               ),
               Components(
                 text: "体重",
                 params: '$fitnessWeight kg',
-                child: WeightSelectionScreen(),
+                width: 150,
+                height: 150,
+                ontap: WeightSelectionScreen(),
               )
             ],
           ),
+          SizedBox(
+            height: 40,
+          ),
+          Components(
+              text: 'BMI',
+              ontap: MainContents(),
+              params: "test",
+              width: 360,
+              height: 200)
         ],
       ),
     );
@@ -96,7 +118,6 @@ class _CustomComponentsState extends State<CustomComponents> {
     if (doc.exists) {
       // 'height' フィールドが存在する場合にのみ代入する
       fitnessWeight = doc.data()?['WeightData'].toStringAsFixed(1);
-      print(fitnessWeight);
     } else {
       fitnessWeight = null; // デフォルト値を設定するか、エラー処理を行うなど
     }
@@ -106,13 +127,17 @@ class _CustomComponentsState extends State<CustomComponents> {
 class Components extends StatefulWidget {
   final String text;
   final String params;
-  final Widget child;
+  final Widget ontap;
+  final double width;
+  final double height;
 
   const Components({
     Key? key,
     required this.text,
-    required this.child,
+    required this.ontap,
     required this.params,
+    required this.width,
+    required this.height,
   }) : super(key: key);
 
   @override
@@ -140,7 +165,7 @@ class _ComponentsState extends State<Components>
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (BuildContext context) => widget.child));
+                  builder: (BuildContext context) => widget.ontap));
         });
       },
       onTapDown: (_) => _controller.forward(),
@@ -149,8 +174,8 @@ class _ComponentsState extends State<Components>
       child: ScaleTransition(
         scale: _animation,
         child: Container(
-          width: 150,
-          height: 150,
+          width: widget.width,
+          height: widget.height,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               border: Border.all(color: Colors.grey),
