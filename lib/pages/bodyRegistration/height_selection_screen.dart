@@ -9,6 +9,7 @@ class HeightRegister extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final _height = ref.watch(heightProvider);
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Height"),
