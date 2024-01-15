@@ -1,23 +1,69 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
+import 'package:training/pages/Profile/Profile.dart';
+import 'package:training/pages/bodyRegistration/height_provider.dart';
+
+class HeightRegister extends ConsumerWidget {
+  const HeightRegister({super.key});
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final _height = ref.watch(heightProvider);
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Height"),
+      ),
+      body: Stack(
+        children: [
+          Height(
+            height: _height,
+          ),
+          Positioned(
+            top: 80,
+            left: 40,
+            child: FloatingActionButton(
+              onPressed: () {
+                _heightSave(ref, _height);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => MainContents(),
+                  ),
+                );
+              },
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  _heightSave(WidgetRef ref, double _height) {
+    final notifier = ref.read(heightProvider.notifier);
+    notifier.state = _height;
+  }
+}
 
 class Height extends StatefulWidget {
-  const Height({Key? key}) : super(key: key);
+  double height;
+  Height({Key? key, required this.height}) : super(key: key);
 
   @override
   State<Height> createState() => _HeightState();
 }
 
 class _HeightState extends State<Height> {
-  double index = 0;
   TextEditingController heightController = TextEditingController();
+
+  @override
+  void dispose() {
+    heightController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Height"),
-      ),
       body: Column(
         children: [
           Row(
@@ -39,9 +85,11 @@ class _HeightState extends State<Height> {
                   controller: heightController,
                   keyboardType: TextInputType.numberWithOptions(decimal: true),
                   onChanged: (value) {
-                    setState(() {
-                      index = double.parse(value);
-                    });
+                    setState(
+                      () {
+                        widget.height = double.parse(value);
+                      },
+                    );
                   },
                 ),
               ),
@@ -76,14 +124,15 @@ class _HeightState extends State<Height> {
                   LinearShapePointer(
                     onChanged: (value) {
                       setState(() {
-                        index = value;
-                        heightController.text = index.toStringAsFixed(1);
+                        widget.height = value;
+                        heightController.text =
+                            widget.height.toStringAsFixed(1);
                       });
                     },
                     dragBehavior: LinearMarkerDragBehavior.free,
                     shapeType: LinearShapePointerType.circle,
                     color: Colors.green,
-                    value: index,
+                    value: widget.height,
                     borderWidth: 2,
                     borderColor: Colors.green,
                     position: LinearElementPosition.cross,
@@ -91,7 +140,7 @@ class _HeightState extends State<Height> {
                 ],
                 barPointers: [
                   LinearBarPointer(
-                    value: index,
+                    value: widget.height,
                     color: Colors.green,
                   ),
                 ],
