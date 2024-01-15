@@ -24,6 +24,7 @@ class CustomComponents extends StatefulWidget {
 }
 
 class _CustomComponentsState extends State<CustomComponents> {
+  double bmi = 0.0;
   @override
   void initState() {
     _initializeData();
@@ -33,9 +34,18 @@ class _CustomComponentsState extends State<CustomComponents> {
   Future<void> _initializeData() async {
     await readHeight();
     await readWeight();
-    print(fitnessHeight);
-    print(fitnessWeight);
+    calculateAndSetBMI();
     setState(() {});
+  }
+
+  void calculateAndSetBMI() {
+    if (fitnessHeight != null && fitnessWeight != null) {
+      double height = double.parse(fitnessHeight);
+      double weight = double.parse(fitnessWeight);
+      setState(() {
+        bmi = calculateBMI(height, weight);
+      });
+    }
   }
 
   @override
@@ -79,7 +89,7 @@ class _CustomComponentsState extends State<CustomComponents> {
           Components(
               text: 'BMI',
               ontap: MainContents(),
-              params: "test",
+              params: bmi.toStringAsFixed(1),
               width: 360,
               height: 200)
         ],
@@ -99,7 +109,8 @@ class _CustomComponentsState extends State<CustomComponents> {
         .get();
     if (doc.exists) {
       // 'height' フィールドが存在する場合にのみ代入する
-      fitnessHeight = doc.data()?['HeightData'].toStringAsFixed(1);
+      fitnessHeight = doc.data()?['HeightData'] as double;
+      fitnessHeight = fitnessHeight.toStringAsFixed(1);
     } else {
       fitnessHeight = null; // デフォルト値を設定するか、エラー処理を行うなど
     }
@@ -117,7 +128,8 @@ class _CustomComponentsState extends State<CustomComponents> {
         .get();
     if (doc.exists) {
       // 'height' フィールドが存在する場合にのみ代入する
-      fitnessWeight = doc.data()?['WeightData'].toStringAsFixed(1);
+      fitnessWeight = doc.data()?['WeightData'] as double;
+      fitnessWeight = fitnessWeight.toStringAsFixed(1);
     } else {
       fitnessWeight = null; // デフォルト値を設定するか、エラー処理を行うなど
     }
