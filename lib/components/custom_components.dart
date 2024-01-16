@@ -129,6 +129,9 @@ class _CustomComponentsState extends State<CustomComponents> {
     if (doc.exists) {
       // 'height' フィールドが存在する場合にのみ代入する
       fitnessWeight = doc.data()?['WeightData'] as double;
+      //これでhourやday,yearが取得できる
+      final fitnessTime = (doc.data()?["time"] as Timestamp).toDate();
+      print(fitnessTime.day);
       fitnessWeight = fitnessWeight.toStringAsFixed(1);
     } else {
       fitnessWeight = null; // デフォルト値を設定するか、エラー処理を行うなど
