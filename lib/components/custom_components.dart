@@ -58,7 +58,7 @@ class _CustomComponentsState extends State<CustomComponents> {
             height: 40,
           ),
           Text(
-            '登録するパラメータを選択してください',
+            '体重は毎日更新してください',
             style: TextStyle(color: Colors.white),
           ),
           SizedBox(
@@ -228,9 +228,14 @@ class _ComponentsState extends State<Components>
               ),
               Positioned(
                 top: 35,
-                left: 0,
+                left: 10,
                 child: Padding(
-                    padding: EdgeInsets.all(8.0), child: Text(widget.params)),
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    widget.params,
+                    style: TextStyle(color: Colors.black),
+                  ),
+                ),
               ),
             ],
           ),
