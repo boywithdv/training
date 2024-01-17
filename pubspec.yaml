@@ -52,6 +52,7 @@ dependencies:
   get: ^4.6.6
   tuple: ^2.0.2
   syncfusion_flutter_gauges: ^21.2.4
+  fl_chart: ^0.66.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

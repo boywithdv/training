@@ -1,6 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:rive/rive.dart';
+import 'package:training/components/graph/LinerGraph.dart';
 import 'package:training/controller/UserInfo.dart';
 import 'package:training/pages/Profile/Profile.dart';
+import 'package:training/pages/ScreenWidget.dart';
 import 'package:training/pages/bodyRegistration/height_selection_screen.dart';
 import 'package:training/pages/bodyRegistration/weight_selection_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -73,6 +77,10 @@ class _CustomComponentsState extends State<CustomComponents> {
                 width: 150,
                 height: 150,
                 ontap: Height(),
+                icon: Icon(
+                  Icons.arrow_forward_ios,
+                  size: 15,
+                ),
               ),
               Components(
                 text: "体重",
@@ -80,6 +88,10 @@ class _CustomComponentsState extends State<CustomComponents> {
                 width: 150,
                 height: 150,
                 ontap: WeightSelectionScreen(),
+                icon: Icon(
+                  Icons.arrow_forward_ios,
+                  size: 15,
+                ),
               )
             ],
           ),
@@ -87,11 +99,17 @@ class _CustomComponentsState extends State<CustomComponents> {
             height: 40,
           ),
           Components(
-              text: 'BMI',
-              ontap: MainContents(),
-              params: bmi.toStringAsFixed(1),
-              width: 360,
-              height: 200)
+            text: 'BMI',
+            ontap: null,
+            params: bmi.toStringAsFixed(1),
+            width: 360,
+            height: 240,
+            child: GraphContainer(),
+            icon: Icon(
+              CupertinoIcons.person,
+              size: 35,
+            ),
+          )
         ],
       ),
     );
@@ -99,12 +117,14 @@ class _CustomComponentsState extends State<CustomComponents> {
 
   Future<void> readHeight() async {
     final db = FirebaseFirestore.instance;
+    DateTime dt = DateTime.now();
+    final days = dt.year.toString() + dt.month.toString() + dt.day.toString();
     final doc = await db
         .collection('userId')
         .doc(userId)
         .collection('height')
         //ここのdocはriverpodによりカウンターを作成してtest○○というようにする
-        .doc('data')
+        .doc('date')
         //Modelを使用してtitleに値を入れる
         .get();
     if (doc.exists) {
@@ -118,12 +138,15 @@ class _CustomComponentsState extends State<CustomComponents> {
 
   Future<void> readWeight() async {
     final db = FirebaseFirestore.instance;
+    DateTime dt = DateTime.now();
+    final days = dt.year.toString() + dt.month.toString() + dt.day.toString();
     final doc = await db
         .collection('userId')
         .doc(userId)
         .collection('weight')
         //ここのdocはriverpodによりカウンターを作成してtest○○というようにする
-        .doc('data')
+        //こうすることで翌日読み込むことが難しくなる days.toString()
+        .doc(days)
         //Modelを使用してtitleに値を入れる
         .get();
     if (doc.exists) {
@@ -142,17 +165,21 @@ class _CustomComponentsState extends State<CustomComponents> {
 class Components extends StatefulWidget {
   final String text;
   final String params;
-  final Widget ontap;
+  final Widget? ontap;
   final double width;
   final double height;
+  final Widget? child;
+  final Icon? icon;
 
   const Components({
     Key? key,
     required this.text,
-    required this.ontap,
+    this.ontap,
     required this.params,
     required this.width,
     required this.height,
+    this.child,
+    this.icon,
   }) : super(key: key);
 
   @override
@@ -176,12 +203,17 @@ class _ComponentsState extends State<Components>
           isTapped = !isTapped;
         });
         // Navigatorをアニメーション後に呼び出す
-        _controller.reverse().then((_) {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (BuildContext context) => widget.ontap));
-        });
+        _controller.reverse().then(
+          (_) {
+            // widget.ontapを評価し、nullでない場合のみNavigator.pushを呼び出す
+            if (widget.ontap != null) {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (BuildContext context) {
+                return widget.ontap!;
+              }));
+            }
+          },
+        );
       },
       onTapDown: (_) => _controller.forward(),
       onTapUp: (_) => _controller.reverse(),
@@ -221,13 +253,8 @@ class _ComponentsState extends State<Components>
               Positioned(
                 top: 5,
                 right: 0,
-                child: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Icon(
-                    Icons.arrow_forward_ios,
-                    size: 15,
-                  ),
-                ),
+                child:
+                    Padding(padding: EdgeInsets.all(8.0), child: widget.icon),
               ),
               Positioned(
                 top: 35,
@@ -238,6 +265,13 @@ class _ComponentsState extends State<Components>
                     widget.params,
                     style: TextStyle(color: Colors.black),
                   ),
+                ),
+              ),
+              Positioned(
+                top: 65,
+                left: 10,
+                child: Center(
+                  child: widget.child,
                 ),
               ),
             ],

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:training/components/backgroundAnimationToLower.dart';
 import 'package:training/components/backgroundAnimationToUpper.dart';
+import 'package:training/components/graph/LinerGraph.dart';
 import 'package:training/components/menuBarComponents/animated_bar.dart';
 import 'package:training/components/menuBarComponents/rive_assets.dart';
 import 'package:training/components/menuBarComponents/rive_utils.dart';
@@ -31,7 +32,7 @@ class Screen extends StatefulWidget {
 
 class _ScreenState extends State<Screen> {
   RiveAsset selectedBottomNav = bottomNavs.last;
-  Widget cureentWidget = MainContents();
+  Widget cureentWidget = LinerGraph();
   @override
   void initState() {
     super.initState();

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/physics.dart';
 import 'package:training/controller/UserInfo.dart';
 import 'package:training/pages/Profile/Profile.dart';
+import 'package:training/pages/ScreenWidget.dart';
 
 class WeightSelectionScreen extends StatefulWidget {
   const WeightSelectionScreen({super.key});
@@ -141,7 +142,7 @@ class _DivisionSliderState extends State<DivisionSlider> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (BuildContext context) => MainContents(),
+                      builder: (BuildContext context) => ScreenWidget(),
                     ),
                   );
                 },
@@ -157,11 +158,12 @@ class _DivisionSliderState extends State<DivisionSlider> {
   Future<void> weight_create() async {
     final db = FirebaseFirestore.instance;
     DateTime dt = DateTime.now();
+    final days = dt.year.toString() + dt.month.toString() + dt.day.toString();
     await db
         .collection('userId')
         .doc(userId)
         .collection('weight')
-        .doc('data')
+        .doc(days.toString())
         .set({'WeightData': value, 'time': dt});
   }
 

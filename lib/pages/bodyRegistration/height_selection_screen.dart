@@ -3,6 +3,7 @@ import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:training/controller/UserInfo.dart';
 import 'package:training/pages/Profile/Profile.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:training/pages/ScreenWidget.dart';
 
 class Height extends StatefulWidget {
   const Height({Key? key}) : super(key: key);
@@ -109,7 +110,7 @@ class _HeightState extends State<Height> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (BuildContext context) => MainContents(),
+              builder: (BuildContext context) => ScreenWidget(),
             ),
           );
         },
@@ -121,11 +122,12 @@ class _HeightState extends State<Height> {
   Future<void> height_create() async {
     final db = FirebaseFirestore.instance;
     DateTime dt = DateTime.now();
+    final days = dt.year.toString() + dt.month.toString() + dt.day.toString();
     await db
         .collection('userId')
         .doc(userId)
         .collection('height')
-        .doc('data')
+        .doc('date')
         .set({'HeightData': index, 'time': dt});
   }
 }
