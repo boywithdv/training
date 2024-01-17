@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:training/components/custom_components.dart';
 import 'package:training/components/graph/app_colors.dart';
 import 'package:training/controller/UserInfo.dart';
+import 'package:training/controller/fitnessRecord.dart';
 
 import '../../main.dart';
 
@@ -48,19 +49,18 @@ class _LinerGraphState extends State<LinerGraph> {
         title: Text("test"),
       ),
       body: Center(
-        child: Components(
-          text: 'BMI',
-          ontap: null,
-          params: _controller.text,
-          width: 360,
-          height: 240,
-          child: GraphContainer(),
-          icon: Icon(
-            CupertinoIcons.person,
-            size: 35,
-          ),
+          child: Components(
+        text: 'BMI',
+        ontap: null,
+        params: _controller.text,
+        width: 360,
+        height: 240,
+        child: GraphContainer(),
+        icon: Icon(
+          CupertinoIcons.person,
+          size: 35,
         ),
-      ),
+      )),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
           await readWeight();
