@@ -32,7 +32,7 @@ class Screen extends StatefulWidget {
 
 class _ScreenState extends State<Screen> {
   RiveAsset selectedBottomNav = bottomNavs.last;
-  Widget cureentWidget = LinerGraph();
+  Widget cureentWidget = MainContents();
   @override
   void initState() {
     super.initState();
