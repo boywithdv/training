@@ -3,7 +3,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:training/components/custom_components.dart';
-import 'package:training/components/graph/app_colors.dart';
+import 'package:training/Data/app_colors.dart';
 import 'package:training/controller/UserInfo.dart';
 
 import '../../main.dart';
@@ -39,7 +39,7 @@ class _LinerGraphState extends State<LinerGraph> {
         title: Text("test"),
       ),
       body: Center(
-          child: Components(
+          child: CustomComponents(
         text: 'BMI',
         ontap: null,
         params: _controller.text,

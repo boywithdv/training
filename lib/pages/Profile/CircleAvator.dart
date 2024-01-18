@@ -2,7 +2,8 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:training/Data/iconData.dart';
-import 'package:training/components/ProfileComponents/ProfileEdit.dart';
+import 'package:training/pages/Profile/ProfileEdit.dart';
+import 'package:training/components/custom_components.dart';
 import 'package:training/controller/UserInfo.dart';
 import 'package:training/controller/fitnessRecord.dart';
 import 'package:training/main.dart';
@@ -133,11 +134,12 @@ class _ContainerAvatorState extends State<ContainerAvator> {
                   height: height * 0.05,
                   child: Center(
                     child: Text(
-                      "本日の筋トレ記録",
+                      "Today Fitness Record",
                       style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold),
+                        color: Colors.white,
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -196,17 +198,12 @@ class _ContainerAvatorState extends State<ContainerAvator> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        backgroundColor: Colors.white60,
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (BuildContext context) => ProfileEdit(),
-            ),
-          );
-        },
-        label: Text(
+      floatingActionButton: CustomComponents(
+        colors: Colors.white60,
+        ontap: ProfileEdit(),
+        width: 130,
+        height: 50,
+        profileEditButton: Text(
           "プロフィール編集",
           style: TextStyle(color: Colors.black),
         ),

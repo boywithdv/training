@@ -1,10 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-var fitnessHeight;
-var fitnessWeight;
-
-class CustomComponents extends StatefulWidget {
+class Components extends StatefulWidget {
   final String? text;
   final String? params;
   final Widget? ontap;
@@ -15,7 +12,7 @@ class CustomComponents extends StatefulWidget {
   final Color? colors;
   final Widget? profileEditButton;
 
-  const CustomComponents({
+  const Components({
     Key? key,
     this.text,
     this.colors,
@@ -29,10 +26,10 @@ class CustomComponents extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _CustomComponentsState createState() => _CustomComponentsState();
+  _ComponentsState createState() => _ComponentsState();
 }
 
-class _CustomComponentsState extends State<CustomComponents>
+class _ComponentsState extends State<Components>
     with SingleTickerProviderStateMixin {
   bool isTapped = false;
   late final _controller = AnimationController(

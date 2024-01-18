@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:training/components/ProfileComponents/CircleAvator.dart';
+import 'package:training/pages/Profile/CircleAvator.dart';
 import 'package:training/components/backgroundAnimation.dart';
 import 'package:training/main.dart';
 import 'package:training/pages/app.dart';
