@@ -84,7 +84,7 @@ class _CustomComponentsState extends State<CustomComponents> {
               ),
               Components(
                 text: "体重",
-                params: '$fitnessWeight kg',
+                params: 'Today : $fitnessWeight kg',
                 width: 150,
                 height: 150,
                 ontap: WeightSelectionScreen(),
@@ -101,7 +101,7 @@ class _CustomComponentsState extends State<CustomComponents> {
           Components(
             text: 'BMI',
             ontap: null,
-            params: bmi.toStringAsFixed(1),
+            params: 'Today BMI : ' + bmi.toStringAsFixed(1),
             width: 360,
             height: 240,
             child: GraphContainer(),
