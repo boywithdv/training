@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:training/firebase_options.dart';
 import 'package:training/pages/app.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:training/pages/test.dart';
 
 var prefs;
 void main() async {
@@ -15,4 +16,13 @@ void main() async {
   );
   final scope = ProviderScope(child: App());
   runApp(scope);
+}
+
+class MyWidget extends StatelessWidget {
+  const MyWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return NotificationPage();
+  }
 }

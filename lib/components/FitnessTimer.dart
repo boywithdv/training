@@ -4,6 +4,7 @@ import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 class FitNessT extends StatelessWidget {
   const FitNessT(
       {super.key,
+      this.child,
       required this.controller,
       required this.onStart,
       required this.onComplete,
@@ -14,6 +15,7 @@ class FitNessT extends StatelessWidget {
   final Function() onComplete;
   final int timer;
   final bool autoStart;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {

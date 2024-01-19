@@ -2,12 +2,18 @@ import 'package:animated_background/animated_background.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:training/components/LottieAnimation.dart';
 import 'package:training/components/FitnessTimer.dart';
 import 'package:training/components/ImageCircle.dart';
 import 'package:training/controller/UserInfo.dart';
+import 'package:training/controller/notifications.dart';
 import 'package:training/models/models.dart';
+
+final notificationProvider = Provider<NotificationViewModel>((ref) {
+  return NotificationViewModel(ref.read);
+});
 
 class SelectedFitness extends StatefulWidget {
   final String muscleDescription;
@@ -79,36 +85,43 @@ class _SelectedFitnessState extends State<SelectedFitness>
         child: Stack(
           children: [
             Positioned(
-              bottom: sizedBoxHeightToTimer,
-              left: sizedBoxWidthToTimer,
-              child: FitNessT(
-                timer: _timer,
-                controller: _controller,
-                onStart: () {},
-                autoStart: false,
-                onComplete: () {
-                  setState(
-                    () {
-                      _controller.pause();
-                    },
-                  );
-                  create();
-                  Alert(
-                          context: context,
-                          title: '終了',
-                          style: AlertStyle(
-                            isCloseButton: true,
-                            isButtonVisible: false,
-                            titleStyle: TextStyle(
-                              color: Colors.black,
-                              fontSize: 30.0,
-                            ),
-                          ),
-                          type: AlertType.success)
-                      .show();
-                },
-              ),
-            ),
+                bottom: sizedBoxHeightToTimer,
+                left: sizedBoxWidthToTimer,
+                child: Consumer(
+                  builder: (context, watch, child) {
+                    final notificationViewModel =
+                        watch.read(notificationProvider);
+
+                    return FitNessT(
+                      timer: _timer,
+                      controller: _controller,
+                      onStart: () {},
+                      autoStart: false,
+                      onComplete: () {
+                        setState(
+                          () {
+                            _controller.pause();
+                            notificationViewModel.showNotification();
+                          },
+                        );
+                        create();
+                        Alert(
+                                context: context,
+                                title: '終了',
+                                style: AlertStyle(
+                                  isCloseButton: true,
+                                  isButtonVisible: false,
+                                  titleStyle: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 30.0,
+                                  ),
+                                ),
+                                type: AlertType.success)
+                            .show();
+                      },
+                    );
+                  },
+                )),
             Positioned(
                 top: fitnessNameTop,
                 left: fitnessNameLeft,
