@@ -274,6 +274,7 @@ class _GraphContainerState extends State<GraphContainer> {
     ).toList();
     // documentsを使って何かしらの処理を行う
     for (var doc in documents) {}
+
     return documents;
   }
 }

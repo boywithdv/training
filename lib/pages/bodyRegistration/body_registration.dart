@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:training/components/backgroundAnimation.dart';
-import 'package:training/components/custom_components.dart';
 import 'package:training/pages/bodyRegistration/body_register_page.dart';
 
 class BodyRegistration extends StatefulWidget {

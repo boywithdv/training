@@ -86,7 +86,7 @@ class _BodyRegisterPageState extends State<BodyRegisterPage> {
                 params: 'Today : $fitnessWeight kg',
                 width: 150,
                 height: 150,
-                ontap: WeightSelectionScreen(),
+                ontap: Weight(),
                 icon: Icon(
                   Icons.arrow_forward_ios,
                   size: 15,
@@ -118,8 +118,8 @@ class _BodyRegisterPageState extends State<BodyRegisterPage> {
 
   Future<void> readHeight() async {
     final db = FirebaseFirestore.instance;
-    DateTime dt = DateTime.now();
-    final days = dt.year.toString() + dt.month.toString() + dt.day.toString();
+    //DateTime dt = DateTime.now();
+    //final days = dt.year.toString() + dt.month.toString() + dt.day.toString();
     final doc = await db
         .collection('userId')
         .doc(userId)

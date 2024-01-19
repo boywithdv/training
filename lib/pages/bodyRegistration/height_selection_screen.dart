@@ -1,7 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:training/controller/UserInfo.dart';
-import 'package:training/pages/Profile/Profile.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:training/pages/ScreenWidget.dart';
 
@@ -106,13 +106,24 @@ class _HeightState extends State<Height> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          height_create();
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (BuildContext context) => ScreenWidget(),
-            ),
-          );
+          if (heightController.text == "" || heightController.text == null) {
+            showDialog(
+              context: context,
+              builder: (_) => CupertinoAlertDialog(
+                title: Text("Input values are incorrect."),
+                content: Text("身長を入力してください"),
+                actions: [],
+              ),
+            );
+          } else {
+            height_create();
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (BuildContext context) => ScreenWidget(),
+              ),
+            );
+          }
         },
         label: Icon(Icons.check),
       ),
@@ -131,45 +142,3 @@ class _HeightState extends State<Height> {
         .set({'HeightData': index, 'time': dt});
   }
 }
-
-/*
-class HeightRegister extends ConsumerWidget {
-  const HeightRegister({super.key});
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final _height = ref.watch(heightProvider);
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Height"),
-      ),
-      body: Stack(
-        children: [
-          Height(
-            height: _height,
-          ),
-          Positioned(
-            top: 80,
-            left: 40,
-            child: FloatingActionButton(
-              onPressed: () {
-                _heightSave(ref, 200);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (BuildContext context) => MainContents(),
-                  ),
-                );
-              },
-            ),
-          )
-        ],
-      ),
-    );
-  }
-
-  _heightSave(WidgetRef ref, double _height) {
-    final notifier = ref.read(heightProvider.notifier);
-    notifier.state = _height;
-  }
-}
-*/

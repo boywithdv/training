@@ -1,18 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/physics.dart';
 import 'package:training/controller/UserInfo.dart';
-import 'package:training/pages/Profile/Profile.dart';
 import 'package:training/pages/ScreenWidget.dart';
 
-class WeightSelectionScreen extends StatefulWidget {
-  const WeightSelectionScreen({super.key});
+class Weight extends StatefulWidget {
+  const Weight({super.key});
 
   @override
-  State<WeightSelectionScreen> createState() => _WeightSelectionScreenState();
+  State<Weight> createState() => _WeightState();
 }
 
-class _WeightSelectionScreenState extends State<WeightSelectionScreen> {
+class _WeightState extends State<Weight> {
   double weight = 0;
   @override
   Widget build(BuildContext context) {
@@ -138,13 +138,24 @@ class _DivisionSliderState extends State<DivisionSlider> {
               ),
               FloatingActionButton(
                 onPressed: () {
-                  weight_create();
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (BuildContext context) => ScreenWidget(),
-                    ),
-                  );
+                  if (value == "" || value == 0) {
+                    showDialog(
+                      context: context,
+                      builder: (_) => CupertinoAlertDialog(
+                        title: Text("Input values are incorrect."),
+                        content: Text("体重を入力してください"),
+                        actions: [],
+                      ),
+                    );
+                  } else {
+                    weight_create();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => ScreenWidget(),
+                      ),
+                    );
+                  }
                 },
                 child: Icon(Icons.check),
               ),
