@@ -52,6 +52,8 @@ class RegisterModel extends ChangeNotifier {
         userId = user.uid;
         updateDisplayName('yourName');
         userName = 'yourName';
+        userEmail = user.email;
+
         setPrefItems();
         // firestoreに追加
         final doc = FirebaseFirestore.instance.collection('users').doc(userId);

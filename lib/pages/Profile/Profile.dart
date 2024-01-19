@@ -93,9 +93,9 @@ class _ProfileState extends State<Profile> {
                   ),
                 ),
                 ListTile(
-                  leading: Icon(CupertinoIcons.chat_bubble),
+                  leading: Icon(Icons.directions_run),
                   title: Text(
-                    "お問い合わせ",
+                    "歩数",
                     style: TextStyle(color: Colors.white),
                   ),
                   onTap: () {},
