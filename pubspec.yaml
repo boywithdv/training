@@ -54,6 +54,7 @@ dependencies:
   syncfusion_flutter_gauges: ^21.2.4
   fl_chart: ^0.66.0
   flutter_local_notifications: ^16.3.0
+  permission_handler: ^11.2.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
