@@ -1,10 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:training/components/Circle.dart';
 import 'package:training/components/TextFieldForLogin.dart';
 import 'package:training/components/backgroundAnimation.dart';
-import 'package:training/controller/LoginModel.dart';
 import 'package:training/controller/PwResetModel.dart';
 
 class PasswordForgetForm extends StatefulWidget {
@@ -19,7 +17,7 @@ class _PasswordForgetFormState extends State<PasswordForgetForm> {
   Widget build(BuildContext context) {
     return Stack(
       fit: StackFit.expand,
-      children: [BackgroundAnimation(), Circle(), PasswordResetForm()],
+      children: [BackgroundAnimation(), PasswordResetForm()],
     );
   }
 }
@@ -75,15 +73,16 @@ class _PasswordResetFormState extends State<PasswordResetForm> {
                     ),
                   ),
                   Positioned(
-                      top: deviceHeight * 0.42,
-                      left: deviceWidth * 0.2,
-                      child: Container(
-                        child: Text(
-                          "メールアドレスを入力してください",
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold),
-                        ),
-                      )),
+                    top: deviceHeight * 0.42,
+                    left: deviceWidth * 0.2,
+                    child: Container(
+                      child: Text(
+                        "メールアドレスを入力してください",
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
                   Positioned(
                     top: deviceHeight * 0.46,
                     left: deviceWidth * 0.12,
@@ -91,11 +90,9 @@ class _PasswordResetFormState extends State<PasswordResetForm> {
                       width: 300,
                       height: 70,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.black87,
-                          border: Border(
-                              bottom: BorderSide(
-                                  color: Color.fromRGBO(0, 255, 174, 0.467)))),
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.black87,
+                      ),
                       child: TextFieldForLogin(
                         prefixIcon: Icon(
                           Icons.mail,
