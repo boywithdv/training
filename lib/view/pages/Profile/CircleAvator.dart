@@ -17,6 +17,7 @@ class ContainerAvator extends StatefulWidget {
 
 class _ContainerAvatorState extends State<ContainerAvator> {
   List<TrainingData> dataList = [];
+  String? fav;
   @override
   void initState() {
     super.initState();
@@ -26,6 +27,8 @@ class _ContainerAvatorState extends State<ContainerAvator> {
   Future<void> _initData() async {
     userId = prefs.getString("uid");
     userName = prefs.getString('userName') ?? "";
+    favorite_part_of_training =
+        prefs.getString("favorite_part_of_training") ?? "";
     await _getDataFromFirebase();
     // データ取得後にsetStateを呼び出して反映させる
     setState(() {});
@@ -34,6 +37,8 @@ class _ContainerAvatorState extends State<ContainerAvator> {
   Future<void> _getDataFromFirebase() async {
     final service = FirestoreService();
     final List<TrainingData> data = await service.allread();
+    await service.read();
+
     dataList = data;
   }
 
@@ -56,7 +61,7 @@ class _ContainerAvatorState extends State<ContainerAvator> {
                 ),
                 Container(
                   color: Colors.transparent,
-                  height: height * 0.26,
+                  height: height * 0.28,
                   child: LayoutBuilder(
                     builder: (context, constraints) {
                       double innerHeight = constraints.maxHeight;
@@ -81,7 +86,7 @@ class _ContainerAvatorState extends State<ContainerAvator> {
                                 child: Column(
                                   children: [
                                     SizedBox(
-                                      height: innerHeight * 0.1,
+                                      height: innerHeight * 0.06,
                                     ),
                                     Row(
                                       mainAxisAlignment:
@@ -102,6 +107,12 @@ class _ContainerAvatorState extends State<ContainerAvator> {
                                       "Favorite part of training",
                                       style: TextStyle(color: Colors.white70),
                                     ),
+                                    Text(
+                                      favorite_part_of_training ?? "",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold),
+                                    )
                                   ],
                                 ),
                               ),

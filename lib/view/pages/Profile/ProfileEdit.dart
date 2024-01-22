@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:training/components/backgroundAnimation.dart';
 import 'package:training/controller/UserInfo.dart';
@@ -167,6 +168,7 @@ class _TestEditState extends State<TestEdit> {
               return;
             }
             _saveName();
+            create();
             updateDisplayName(userName);
             Navigator.pushReplacement(
                 context,
@@ -182,7 +184,21 @@ class _TestEditState extends State<TestEdit> {
   void _saveName() {
     setState(() {
       prefs.setString('userName', _controller.text);
+      prefs.setString("favorite_part_of_training", _selectedVal);
       userName = prefs.getString("userName");
     });
+  }
+
+  Future<void> create() async {
+    final db = FirebaseFirestore.instance;
+    DateTime dt = DateTime.now();
+
+    await db
+        .collection('userId')
+        .doc(userId)
+        .collection('favorite')
+        .doc("fitness")
+        //Modelを使用してtitleに値を入れる
+        .set({'title': _selectedVal, 'time': dt});
   }
 }

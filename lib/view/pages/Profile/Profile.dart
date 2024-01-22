@@ -43,9 +43,7 @@ class Profile extends StatelessWidget {
         title: Text(
           userEmail,
           style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
         ),
         actions: [
           IconButton(
@@ -71,6 +69,7 @@ class Profile extends StatelessWidget {
                         await _auth.signOut();
                         if (_auth.currentUser == null) {
                           prefs.setString('userName', '');
+                          prefs.setString("favorite_part_of_training", "");
                         }
                         Navigator.pushReplacement(context,
                             MaterialPageRoute(builder: (context) => App()));

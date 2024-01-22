@@ -11,13 +11,14 @@ class FirestoreService {
     final doc = await db
         .collection('userId')
         .doc(userId)
-        .collection('fitness')
-        .doc(dt.year.toString() + dt.month.toString() + dt.day.toString())
-        .collection('training')
-        .doc('test2')
+        .collection('favorite')
+        .doc("fitness")
         .get();
-    final fitness = doc.data();
-    print(fitness);
+    if (doc.exists == false) {
+      favorite_part_of_training = "大胸筋";
+    } else {
+      favorite_part_of_training = doc.data()?["title"];
+    }
   }
 
   Future<void> delete() async {

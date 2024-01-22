@@ -15,7 +15,7 @@ setPrefItems() async {
   prefs.setString('uid', userId);
   prefs.setString('userName', userName);
   prefs.setString('userEmail', userEmail);
-  print("これはLoginModel.dartファイルです" + userName);
+  prefs.setString('favoriteFitness', favorite_part_of_training);
 }
 
 //ユーザネーム更新

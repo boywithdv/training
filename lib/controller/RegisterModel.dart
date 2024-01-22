@@ -56,7 +56,7 @@ class RegisterModel extends ChangeNotifier {
 
         setPrefItems();
         // firestoreに追加
-        final doc = FirebaseFirestore.instance.collection('users').doc(userId);
+        final doc = FirebaseFirestore.instance.collection('userId').doc(userId);
         print(userId);
 
         //登録時に成功したら画面遷移

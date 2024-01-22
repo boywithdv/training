@@ -133,7 +133,6 @@ class _HeightState extends State<Height> {
   Future<void> height_create() async {
     final db = FirebaseFirestore.instance;
     DateTime dt = DateTime.now();
-    final days = dt.year.toString() + dt.month.toString() + dt.day.toString();
     await db
         .collection('userId')
         .doc(userId)
