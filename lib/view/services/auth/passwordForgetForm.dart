@@ -120,13 +120,12 @@ class _PasswordResetFormState extends State<PasswordResetForm> {
                       ),
                       child: TextButton(
                         onPressed: () async {
-                          if (model.mailController == "") {
+                          if (model.mailController.text == "") {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
-                                content: Text('パスワードが入力されていません。'),
+                                content: Text('メールアドレスが入力されていません。'),
                               ),
                             );
-                            return;
                           }
                           try {
                             await model.passwordReset();
