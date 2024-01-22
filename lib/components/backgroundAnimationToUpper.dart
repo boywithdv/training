@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:animated_background/animated_background.dart';
-import 'package:training/pages/Upper/UpperBody.dart';
+import 'package:training/view/pages/Upper/UpperBody.dart';
 
 class BackgroundAnimationToUpper extends StatefulWidget {
   const BackgroundAnimationToUpper({super.key});

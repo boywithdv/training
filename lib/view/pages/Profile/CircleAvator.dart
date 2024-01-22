@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:training/Data/iconData.dart';
-import 'package:training/pages/Profile/ProfileEdit.dart';
+import 'package:training/view/pages/Profile/ProfileEdit.dart';
 import 'package:training/components/custom_components.dart';
 import 'package:training/controller/UserInfo.dart';
 import 'package:training/controller/fitnessRecord.dart';

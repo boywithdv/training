@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:training/login/sign_up.dart';
-import 'package:training/pages/Profile/Profile.dart';
+import 'package:training/view/pages/Profile/Profile.dart';
 
 class UserLogin extends StatefulWidget {
   const UserLogin({Key? key}) : super(key: key);

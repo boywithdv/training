@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:training/pages/ScreenWidget.dart';
+import 'package:training/view/pages/ScreenWidget.dart';
 import 'package:training/controller/UserInfo.dart';
 
 class AppDescription extends StatelessWidget {

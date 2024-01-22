@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/physics.dart';
 import 'package:training/controller/UserInfo.dart';
-import 'package:training/pages/ScreenWidget.dart';
+import 'package:training/view/pages/ScreenWidget.dart';
 
 class Weight extends StatefulWidget {
   const Weight({super.key});

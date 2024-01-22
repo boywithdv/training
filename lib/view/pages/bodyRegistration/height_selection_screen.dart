@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:training/controller/UserInfo.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:training/pages/ScreenWidget.dart';
+import 'package:training/view/pages/ScreenWidget.dart';
 
 class Height extends StatefulWidget {
   const Height({Key? key}) : super(key: key);

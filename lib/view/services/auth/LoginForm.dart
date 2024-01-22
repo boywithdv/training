@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:training/components/LottieFiles.dart';
 import 'package:training/components/backgroundAnimation.dart';
-import 'package:training/services/auth/LoginPage.dart';
+import 'package:training/view/services/auth/LoginPage.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});

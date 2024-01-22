@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:training/controller/UserInfo.dart';
-import 'package:training/pages/LoginedPage.dart';
+import 'package:training/view/pages/LoginedPage.dart';
 
 class RegisterModel extends ChangeNotifier {
   final titleController = TextEditingController();

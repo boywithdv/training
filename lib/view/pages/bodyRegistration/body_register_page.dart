@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:training/components/custom_components.dart';
 import 'package:training/components/graphComponents/LinerGraph.dart';
 import 'package:training/controller/UserInfo.dart';
-import 'package:training/pages/bodyRegistration/height_selection_screen.dart';
-import 'package:training/pages/bodyRegistration/weight_selection_screen.dart';
+import 'package:training/view/pages/bodyRegistration/height_selection_screen.dart';
+import 'package:training/view/pages/bodyRegistration/weight_selection_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 var fitnessHeight;

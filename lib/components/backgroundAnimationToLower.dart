@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:animated_background/animated_background.dart';
-import 'package:training/pages/Lower/LowerBody.dart';
+import 'package:training/view/pages/Lower/LowerBody.dart';
 
 class BackgroundAnimationToLower extends StatefulWidget {
   const BackgroundAnimationToLower({super.key});

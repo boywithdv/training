@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:training/components/TextFieldForLogin.dart';
 import 'package:training/controller/LoginModel.dart';
-import 'package:training/pages/LoginedPage.dart';
-import 'package:training/services/auth/RegisterForm.dart';
+import 'package:training/view/pages/LoginedPage.dart';
+import 'package:training/view/services/auth/RegisterForm.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   SizedBox(
-                    height: 240,
+                    height: 220,
                   ),
                   FadeInUp(
                       duration: Duration(milliseconds: 1500),
@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       )),
                   SizedBox(
-                    height: 200,
+                    height: 250,
                   ),
                   FadeInUp(
                       duration: Duration(milliseconds: 1700),
@@ -179,6 +179,23 @@ class _LoginPageState extends State<LoginPage> {
                         },
                         child: Text(
                           "Create Account",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ),
+                  FadeInUp(
+                    duration: Duration(milliseconds: 2000),
+                    child: Center(
+                      child: TextButton(
+                        onPressed: () async {
+                          await Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => RegisterForm()),
+                          );
+                        },
+                        child: Text(
+                          "パスワードを忘れた方はこちら",
                           style: TextStyle(color: Colors.white),
                         ),
                       ),

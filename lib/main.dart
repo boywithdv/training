@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:training/firebase_options.dart';
-import 'package:training/pages/app.dart';
+import 'package:training/view/pages/app.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:training/pages/test.dart';
 
 var prefs;
 void main() async {
@@ -23,6 +22,6 @@ class MyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return NotificationPage();
+    return App();
   }
 }
