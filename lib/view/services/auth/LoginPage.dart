@@ -6,6 +6,7 @@ import 'package:training/components/TextFieldForLogin.dart';
 import 'package:training/controller/LoginModel.dart';
 import 'package:training/view/pages/LoginedPage.dart';
 import 'package:training/view/services/auth/RegisterForm.dart';
+import 'package:training/view/services/auth/passwordForgetForm.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -69,12 +70,10 @@ class _LoginPageState extends State<LoginPage> {
                         child: Container(
                           width: 300,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.black87,
-                              border: Border(
-                                  bottom: BorderSide(
-                                      color:
-                                          Color.fromRGBO(0, 255, 174, 0.467)))),
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.black87,
+                            border: Border(),
+                          ),
                           child: Column(
                             children: <Widget>[
                               TextFieldForLogin(
@@ -122,48 +121,50 @@ class _LoginPageState extends State<LoginPage> {
                     height: 30,
                   ),
                   FadeInUp(
-                      duration: Duration(milliseconds: 1900),
-                      child: MaterialButton(
-                        onPressed: () async {
-                          try {
-                            if (_mailController.text == "") {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text('メールアドレスが入力されていません。'),
-                                ),
-                              );
-                              return;
-                            } else if (_passwordController.text == "") {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text('パスワードが入力されていません。'),
-                                ),
-                              );
-                              return;
-                            }
-                            await model.login();
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => LoginedPage()),
+                    duration: Duration(milliseconds: 1900),
+                    child: MaterialButton(
+                      onPressed: () async {
+                        try {
+                          if (_mailController.text == "") {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text('メールアドレスが入力されていません。'),
+                              ),
                             );
-                          } on FirebaseAuthException catch (e) {
-                            print(e.code);
-                            _showDialog(context, 'ログインできません');
+                            return;
+                          } else if (_passwordController.text == "") {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text('パスワードが入力されていません。'),
+                              ),
+                            );
                             return;
                           }
-                        },
-                        color: Color.fromARGB(186, 126, 137, 126),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        height: 50,
-                        child: Center(
-                            child: Text(
+                          await model.login();
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginedPage()),
+                          );
+                        } on FirebaseAuthException catch (e) {
+                          print(e.code);
+                          _showDialog(context, 'ログインできません');
+                          return;
+                        }
+                      },
+                      color: Color.fromARGB(186, 126, 137, 126),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50),
+                      ),
+                      height: 50,
+                      child: Center(
+                        child: Text(
                           "ログイン",
                           style: TextStyle(color: Colors.white),
-                        )),
-                      )),
+                        ),
+                      ),
+                    ),
+                  ),
                   SizedBox(
                     height: 10,
                   ),
@@ -191,7 +192,7 @@ class _LoginPageState extends State<LoginPage> {
                         onPressed: () async {
                           await Navigator.of(context).push(
                             MaterialPageRoute(
-                                builder: (context) => RegisterForm()),
+                                builder: (context) => PasswordForgetForm()),
                           );
                         },
                         child: Text(

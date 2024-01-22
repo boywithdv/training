@@ -105,22 +105,6 @@ class Profile extends StatelessWidget {
                 ),
               ),
               ListTile(
-                leading: Icon(Icons.directions_run),
-                title: Text(
-                  "歩数",
-                  style: TextStyle(color: Colors.white),
-                ),
-                onTap: () {},
-              ),
-              ListTile(
-                leading: Icon(Icons.fitness_center_sharp),
-                title: Text(
-                  "筋トレ記録",
-                  style: TextStyle(color: Colors.white),
-                ),
-                onTap: () {},
-              ),
-              ListTile(
                 leading: Icon(Icons.notifications),
                 title: Text(
                   "通知設定",

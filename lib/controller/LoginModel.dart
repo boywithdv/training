@@ -11,7 +11,6 @@ class LoginModel extends ChangeNotifier {
     if (mail.isEmpty) {
       throw ('メールアドレスを入力してください');
     }
-
     if (password.isEmpty) {
       throw ('パスワードを入力してください');
     }
