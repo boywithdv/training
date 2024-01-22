@@ -7,6 +7,7 @@ import 'package:training/main.dart';
 import 'package:training/view/pages/app.dart';
 import 'package:training/view/pages/bodyRegistration/body_registration.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:share_plus/share_plus.dart';
 
 class MainContents extends StatelessWidget {
   MainContents({super.key});
@@ -125,6 +126,16 @@ class Profile extends StatelessWidget {
                       MaterialPageRoute(
                           builder: (BuildContext context) =>
                               BodyRegistration()));
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.share),
+                title: Text(
+                  "共有",
+                  style: TextStyle(color: Colors.white),
+                ),
+                onTap: () {
+                  Share.share('シェアしたい文', subject: 'Flutterシェア機能');
                 },
               ),
             ],
