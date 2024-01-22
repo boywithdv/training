@@ -127,7 +127,35 @@ class _PasswordResetFormState extends State<PasswordResetForm> {
                           try {
                             await model.passwordReset();
                           } on FirebaseAuthException catch (e) {
-                            print(e.code);
+                            if (e.code == 'invalid-email') {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('メールアドレスのフォーマットが正しくありません'),
+                                ),
+                              );
+                              print('メールアドレスのフォーマットが正しくありません');
+                            } else if (e.code == 'user-disabled') {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('現在指定したメールアドレスは使用できません'),
+                                ),
+                              );
+                              print('現在指定したメールアドレスは使用できません');
+                            } else if (e.code == 'user-not-found') {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('指定したメールアドレスは登録されていません'),
+                                ),
+                              );
+                              print('指定したメールアドレスは登録されていません');
+                            } else if (e.code == 'wrong-password') {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('パスワードが間違っています'),
+                                ),
+                              );
+                              print('パスワードが間違っています');
+                            }
                           }
                         },
                         child: Text(
