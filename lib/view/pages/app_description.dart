@@ -1,136 +1,147 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:training/view/pages/ScreenWidget.dart';
-import 'package:training/controller/UserInfo.dart';
+import 'dart:async';
 
-class AppDescription extends StatelessWidget {
-  const AppDescription({super.key});
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:training/components/imageContainer.dart';
+import 'package:training/view/pages/ScreenWidget.dart';
+
+class AppDescription extends StatefulWidget {
+  const AppDescription({Key? key}) : super(key: key);
+
+  @override
+  State<AppDescription> createState() => _AppDescriptionState();
+}
+
+class _AppDescriptionState extends State<AppDescription> {
+  late final PageController _pageController;
+  int pageNo = 0;
+  late final Timer _timer;
+  Timer getTimer() {
+    return Timer.periodic(const Duration(seconds: 2), (timer) {
+      if (pageNo == 3) {
+        pageNo = 0;
+      }
+      _pageController.animateToPage(pageNo,
+          duration: const Duration(seconds: 1), curve: Curves.easeInOutCirc);
+      pageNo++;
+    });
+  }
+
+  @override
+  void initState() {
+    _pageController = PageController(initialPage: 0, viewportFraction: 0.85);
+    _timer = getTimer();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoApp(
-      theme: CupertinoThemeData(brightness: Brightness.light),
-      debugShowCheckedModeBanner: false,
-      home: AppDescriptionNavigation(),
-    );
-  }
-}
-
-class AppDescriptionNavigation extends ConsumerWidget {
-  const AppDescriptionNavigation({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return CupertinoPageScaffold(
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      appBar: AppBar(
+        title: Text(
+          "AppDescription",
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
-        child: CustomScrollView(
-          slivers: <Widget>[
-            const CupertinoSliverNavigationBar(
-                backgroundColor: Colors.transparent,
-                leading: Icon(
-                  CupertinoIcons.person,
+      ),
+      body: Stack(
+        children: [
+          PageView.builder(
+            controller: _pageController,
+            onPageChanged: (index) {
+              pageNo = index;
+              setState(() {
+                if (pageNo == 4) {
+                  pageNo = 0;
+                }
+              });
+            },
+            itemBuilder: (_, index) {
+              return AnimatedBuilder(
+                animation: _pageController,
+                builder: (context, child) {
+                  return child!;
+                },
+                child: getPageContainer(index),
+              );
+            },
+            itemCount: 3,
+          ),
+          Positioned(
+            top: 650,
+            left: 165,
+            child: Row(
+              children: List.generate(
+                3,
+                (index) => Container(
+                  margin: EdgeInsets.all(3.0),
+                  child: Icon(
+                    Icons.circle,
+                    size: 12.0,
+                    color: pageNo == index ? Colors.green : Colors.grey,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+              top: 660,
+              left: 330,
+              child: IconButton(
+                icon: Icon(
+                  pageNo == 2 ? Icons.arrow_forward : null,
+                  size: 30,
                   color: Colors.white,
                 ),
-                largeTitle: Text(
-                  'Instructions for use',
-                  style: TextStyle(color: Colors.white),
-                )),
-            SliverFillRemaining(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  const Text(
-                    "HELLO WORLD !",
-                    style: TextStyle(color: Colors.white, fontSize: 25),
-                    textAlign: TextAlign.center,
-                  ),
-                  const Text(
-                    'Go to NEXT PAGESボタンをクリックすることで次のページに進めます。',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  CupertinoButton(
-                    color: Colors.transparent,
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Go to NEXT PAGES",
-                        ),
-                        Icon(CupertinoIcons.hand_point_right)
-                      ],
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                      builder: (BuildContext context) {
+                        return const ScreenWidget();
+                      },
                     ),
-                    onPressed: () {
-                      print(userName);
-                      Navigator.push(
-                        context,
-                        CupertinoPageRoute(
-                          builder: (BuildContext context) {
-                            return const ScreenWidget();
-                          },
-                        ),
-                      );
-                    },
-                  ),
-                ],
-              ),
-            )
-          ],
-        ));
-  }
-}
-
-class NextPage extends StatelessWidget {
-  const NextPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final Brightness brightness = CupertinoTheme.brightnessOf(context);
-    return CupertinoPageScaffold(
-      backgroundColor: Colors.transparent,
-      child: CustomScrollView(
-        slivers: <Widget>[
-          CupertinoSliverNavigationBar(
-            leading: IconButton(
-              icon: Icon(
-                CupertinoIcons.arrow_left_circle,
-                color: Colors.white,
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-            backgroundColor: const Color.fromARGB(0, 255, 204, 0),
-            border: Border(
-              bottom: BorderSide(
-                color: brightness == Brightness.light
-                    ? CupertinoColors.black
-                    : CupertinoColors.white,
-              ),
-            ),
-            middle: const Text(
-              'Instructions for use',
-              style: TextStyle(color: Colors.white),
-            ),
-            largeTitle: const Text(
-              'Description(説明)',
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-          const SliverFillRemaining(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Text(
-                  'Drag me up',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.white),
-                ),
-              ],
-            ),
-          ),
+                  );
+                },
+              ))
         ],
       ),
     );
+  }
+
+  Widget getPageContainer(int index) {
+    switch (index) {
+      case 0:
+        return Container(
+          child: ImageContainer(
+            img: Image.asset("assets/img/profile.png"),
+            txt: 'プロフィール画面で1日の筋トレを記録することができます^_^',
+          ),
+        );
+      case 1:
+        return Container(
+          child: ImageContainer(
+            img: Image.asset("assets/img/selection.png"),
+            txt: '筋トレの部位選択をしてトレーニングをしよう！',
+          ),
+        );
+      case 2:
+        return Container(
+          child: ImageContainer(
+            img: Image.asset("assets/img/body.png"),
+            txt: 'プロフィール画面から身長と体重を入力してBMIの数値を記録してくれます!',
+          ),
+        );
+      default:
+        return Container();
+    }
   }
 }
