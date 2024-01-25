@@ -190,7 +190,7 @@ class _ContainerAvatorState extends State<ContainerAvator> {
                                 print(data.title);
                               },
                               leading: Icon(
-                                fitness_center_outlined,
+                                Icons.fitness_center,
                                 color: Colors.white,
                               ),
                               title: Text(
