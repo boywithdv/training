@@ -5,7 +5,6 @@ import 'package:training/view/pages/Profile/ProfileEdit.dart';
 import 'package:training/components/custom_components.dart';
 import 'package:training/controller/UserInfo.dart';
 import 'package:training/controller/fitnessRecord.dart';
-import 'package:training/main.dart';
 
 class ContainerAvator extends StatefulWidget {
   const ContainerAvator({super.key});

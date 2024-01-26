@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
-import 'package:training/components/backgroundAnimationToLower.dart';
-import 'package:training/components/backgroundAnimationToUpper.dart';
+import 'package:training/components/backgroundAnimation.dart';
+
 import 'package:training/components/menuBarComponents/animated_bar.dart';
 import 'package:training/components/menuBarComponents/rive_assets.dart';
 import 'package:training/components/menuBarComponents/rive_utils.dart';
-import 'package:training/main.dart';
+import 'package:training/view/pages/Lower/LowerBody.dart';
 import 'package:training/view/pages/Profile/Profile.dart';
+import 'package:training/view/pages/Upper/UpperBody.dart';
 
 class ScreenWidget extends StatelessWidget {
   const ScreenWidget({super.key});
@@ -153,11 +154,9 @@ class _FitnessState extends State<Fitness> {
         ),
         body: Stack(
           children: [
+            BackgroundAnimation(),
             TabBarView(
-              children: [
-                BackgroundAnimationToUpper(),
-                BackgroundAnimationToLower()
-              ],
+              children: [ToUpperBody(), ToLowerBody()],
             ),
           ],
         ));
