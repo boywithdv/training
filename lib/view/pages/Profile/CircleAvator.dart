@@ -1,6 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:training/controller/admob.dart';
 import 'package:training/view/pages/Profile/ProfileEdit.dart';
 import 'package:training/components/custom_components.dart';
 import 'package:training/controller/UserInfo.dart';
@@ -14,12 +16,15 @@ class ContainerAvator extends StatefulWidget {
 }
 
 class _ContainerAvatorState extends State<ContainerAvator> {
+  final AdMob _adMob = AdMob();
+
   List<TrainingData> dataList = [];
   String? fav;
   @override
   void initState() {
     super.initState();
     _initData();
+    _adMob.load();
   }
 
   Future<void> _initData() async {
@@ -43,6 +48,7 @@ class _ContainerAvatorState extends State<ContainerAvator> {
   @override
   void dispose() {
     super.dispose();
+    _adMob.dispose();
   }
 
   @override
@@ -142,6 +148,26 @@ class _ContainerAvatorState extends State<ContainerAvator> {
                 //ここからコンテナ外のことをかく
                 SizedBox(
                   height: sizedBoxHeight,
+                ),
+                FutureBuilder(
+                  future: AdSize.getAnchoredAdaptiveBannerAdSize(
+                    Orientation.portrait,
+                    MediaQuery.of(context).size.width.truncate(),
+                  ),
+                  builder: (BuildContext context,
+                      AsyncSnapshot<AnchoredAdaptiveBannerAdSize?> snapshot) {
+                    if (snapshot.hasData) {
+                      return SizedBox(
+                        width: double.infinity,
+                        child: _adMob.getAdBanner(),
+                      );
+                    } else {
+                      return Container(
+                        height: _adMob.getAdBannerHeight(),
+                        color: Colors.white,
+                      );
+                    }
+                  },
                 ),
                 Container(
                   width: width * 0.9,

@@ -57,6 +57,7 @@ dependencies:
   permission_handler: ^11.2.0
   share_plus: ^7.2.1
   flutter_native_splash: ^2.3.9
+  google_mobile_ads: ^4.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
