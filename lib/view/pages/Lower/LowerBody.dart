@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:training/components/backgroundAnimationToFitness.dart';
 import 'package:training/components/resizedFitnessPng.dart';
+import 'package:training/controller/admob.dart';
 import 'package:training/models/models.dart';
 
 class ToLowerBody extends StatefulWidget {
@@ -11,11 +13,44 @@ class ToLowerBody extends StatefulWidget {
 }
 
 class _ToLowerBodyState extends State<ToLowerBody> {
+  final AdMob _adMob = AdMob();
+  @override
+  void initState() {
+    super.initState();
+    _adMob.load();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _adMob.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView(children: [
       Column(
         children: [
+          FutureBuilder(
+            future: AdSize.getAnchoredAdaptiveBannerAdSize(
+              Orientation.portrait,
+              MediaQuery.of(context).size.width.truncate(),
+            ),
+            builder: (BuildContext context,
+                AsyncSnapshot<AnchoredAdaptiveBannerAdSize?> snapshot) {
+              if (snapshot.hasData) {
+                return SizedBox(
+                  width: double.infinity,
+                  child: _adMob.getAdBanner(),
+                );
+              } else {
+                return Container(
+                  height: _adMob.getAdBannerHeight(),
+                  color: Colors.white,
+                );
+              }
+            },
+          ),
           SizedBox(
             height: 40,
           ),
