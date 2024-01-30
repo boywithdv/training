@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 	<dict>
+		<key>NSLocationWhenInUseUsageDescription</key>
+		<string>Your location is required to share you location within tweets</string>
+		<key>NSLocationAlwaysUsageDescription</key>
+		<string>警告削除</string>
 		<key>GADApplicationIdentifier</key>
 		<string>ca-app-pub-6993257000706929~4964373836</string>
 		<key>CADisableMinimumFrameDurationOnPhone</key>
