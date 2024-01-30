@@ -5,7 +5,7 @@
 		<key>NSCameraUsageDescription</key>
 		<string>アプリに表示・使用するための写真や動画を撮影する目的でリクエストします。</string>
 		<key>NSPhotoLibraryUsageDescription</key>
-		<string>アプリに表示・使用するための写真や動画をライブラリから選択する目的でリクエストします。</string>
+		<string>アプリが写真ライブラリにアクセスする理由を説明する文言を入力してください。</string>
 		<key>NSLocationWhenInUseUsageDescription</key>
 		<string>Your location is required to share you location within tweets</string>
 		<key>NSLocationAlwaysUsageDescription</key>
