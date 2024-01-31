@@ -48,178 +48,173 @@ class _RegisterFormState extends State<RegisterForm> {
         backgroundColor: Colors.transparent,
         body: Consumer<RegisterModel>(
           builder: (context, model, child) {
-            return Container(
-              child: Stack(
-                children: [
-                  Center(
-                    child: Container(
-                      height: 140,
-                      width: 400,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.black87,
-                      ),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              SizedBox(
-                                width: _sizedBoxWidth,
-                              ),
-                              TextFieldForLogin(
-                                prefixIcon: Icon(
-                                  Icons.mail,
-                                  color: Colors.white70,
-                                ),
-                                hinttext: "メールアドレス",
-                                pw: false,
-                                textController: model.titleController,
-                                onChanged: (String) {
-                                  (text) {
-                                    print(text);
-                                    model.setEmail(text);
-                                  };
-                                },
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              SizedBox(
-                                width: _sizedBoxWidth,
-                              ),
-                              TextFieldForLogin(
-                                suffixIcon: IconButton(
-                                  icon: _isObscured
-                                      ? Icon(Icons.visibility)
-                                      : Icon(Icons.visibility_off),
-                                  onPressed: () {
-                                    setState(
-                                      () {
-                                        _isObscured = !_isObscured;
-                                        _password = !_password;
-                                      },
-                                    );
-                                  },
-                                ),
-                                prefixIcon: Icon(
-                                  Icons.password_rounded,
-                                  color: Colors.white70,
-                                ),
-                                hinttext: "パスワード",
-                                pw: _password,
-                                textController: model.authorController,
-                                onChanged: (String) {
-                                  (text) {
-                                    print(text);
-                                    model.setPassword(text);
-                                  };
-                                },
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+            return Stack(
+              children: [
+                Center(
+                  child: Container(
+                    height: 140,
+                    width: 400,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.black87,
                     ),
-                  ),
-                  Center(
-                    child: Divider(
-                      indent: 22,
-                      endIndent: 22,
-                      thickness: 1,
-                      color: Colors.white70,
-                    ),
-                  ),
-                  Align(
                     child: Column(
                       children: [
-                        SizedBox(
-                          height: _sizedBoxHeight,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                              color: Color.fromARGB(186, 126, 137, 126),
-                              borderRadius: BorderRadius.circular(20)),
-                          child: TextButton(
-                            child: Text(
-                              "サインアップ",
-                              style: TextStyle(color: Colors.white),
+                        Row(
+                          children: [
+                            SizedBox(
+                              width: _sizedBoxWidth,
                             ),
-                            onPressed: () async {
-                              model.startLoading();
-                              try {
-                                await model.signUp(context);
-                              } on FirebaseAuthException catch (e) {
-                                if (e.code == 'email-already-in-use') {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text('指定したメールアドレスは登録済みです'),
-                                    ),
+                            TextFieldForLogin(
+                              prefixIcon: Icon(
+                                Icons.mail,
+                                color: Colors.white70,
+                              ),
+                              hinttext: "メールアドレス",
+                              pw: false,
+                              textController: model.titleController,
+                              onChanged: (String) {
+                                (text) {
+                                  print(text);
+                                  model.setEmail(text);
+                                };
+                              },
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            SizedBox(
+                              width: _sizedBoxWidth,
+                            ),
+                            TextFieldForLogin(
+                              suffixIcon: IconButton(
+                                icon: _isObscured
+                                    ? Icon(Icons.visibility)
+                                    : Icon(Icons.visibility_off),
+                                onPressed: () {
+                                  setState(
+                                    () {
+                                      _isObscured = !_isObscured;
+                                      _password = !_password;
+                                    },
                                   );
-                                  print('指定したメールアドレスは登録済みです');
-                                } else if (e.code == 'invalid-email') {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text('メールアドレスのフォーマットが正しくありません'),
-                                    ),
-                                  );
-                                  print('メールアドレスのフォーマットが正しくありません');
-                                } else if (e.code == 'operation-not-allowed') {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content:
-                                          Text('指定したメールアドレス・パスワードは現在使用できません'),
-                                    ),
-                                  );
-                                  print('指定したメールアドレス・パスワードは現在使用できません');
-                                } else if (e.code == 'weak-password') {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text('パスワードは６文字以上にしてください'),
-                                    ),
-                                  );
-                                  print('パスワードは６文字以上にしてください');
-                                }
-                              }
-                            },
-                          ),
+                                },
+                              ),
+                              prefixIcon: Icon(
+                                Icons.password_rounded,
+                                color: Colors.white70,
+                              ),
+                              hinttext: "パスワード",
+                              pw: _password,
+                              textController: model.authorController,
+                              onChanged: (String) {
+                                (text) {
+                                  print(text);
+                                  model.setPassword(text);
+                                };
+                              },
+                            ),
+                          ],
                         ),
                       ],
                     ),
                   ),
-                  Column(
-                    children: [
-                      SizedBox(height: sizedBoxHeight),
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: sizedBoxWidth,
-                          ),
-                          Container(
-                            child: TextButton(
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.arrow_circle_left_outlined,
-                                    color: Colors.white,
-                                  ),
-                                  Text(
-                                    "ログイン画面に戻る",
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                ],
-                              ),
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
+                ),
+                Center(
+                  child: Divider(
+                    indent: 22,
+                    endIndent: 22,
+                    thickness: 1,
+                    color: Colors.white70,
+                  ),
+                ),
+                Column(
+                  children: [
+                    SizedBox(
+                      height: _sizedBoxHeight,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          color: Color.fromARGB(186, 126, 137, 126),
+                          borderRadius: BorderRadius.circular(20)),
+                      child: TextButton(
+                        child: Text(
+                          "サインアップ",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        onPressed: () async {
+                          model.startLoading();
+                          try {
+                            await model.signUp(context);
+                          } on FirebaseAuthException catch (e) {
+                            if (e.code == 'email-already-in-use') {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('指定したメールアドレスは登録済みです'),
+                                ),
+                              );
+                              print('指定したメールアドレスは登録済みです');
+                            } else if (e.code == 'invalid-email') {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('メールアドレスのフォーマットが正しくありません'),
+                                ),
+                              );
+                              print('メールアドレスのフォーマットが正しくありません');
+                            } else if (e.code == 'operation-not-allowed') {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('指定したメールアドレス・パスワードは現在使用できません'),
+                                ),
+                              );
+                              print('指定したメールアドレス・パスワードは現在使用できません');
+                            } else if (e.code == 'weak-password') {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('パスワードは６文字以上にしてください'),
+                                ),
+                              );
+                              print('パスワードは６文字以上にしてください');
+                            }
+                          }
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    SizedBox(height: sizedBoxHeight),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: sizedBoxWidth,
+                        ),
+                        Container(
+                          child: TextButton(
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.arrow_circle_left_outlined,
+                                  color: Colors.white,
+                                ),
+                                Text(
+                                  "ログイン画面に戻る",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ],
                             ),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
                           ),
-                        ],
-                      )
-                    ],
-                  )
-                ],
-              ),
+                        ),
+                      ],
+                    )
+                  ],
+                )
+              ],
             );
           },
         ),
