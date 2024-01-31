@@ -5,6 +5,25 @@ import 'package:training/components/TextFieldForLogin.dart';
 import 'package:training/components/backgroundAnimation.dart';
 import 'package:training/controller/RegisterModel.dart';
 
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
+
+  @override
+  State<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      body: Stack(
+        children: [BackgroundAnimation(), RegisterPage()],
+      ),
+    );
+  }
+}
+
 class RegisterForm extends StatefulWidget {
   const RegisterForm({super.key});
 
@@ -19,11 +38,7 @@ class _RegisterFormState extends State<RegisterForm> {
   @override
   Widget build(BuildContext context) {
     double deviceWidth = MediaQuery.of(context).size.width;
-    double deviceHeight = MediaQuery.of(context).size.height;
-    double sizedBoxWidth = deviceWidth * 0.26;
-    double sizedBoxHeight = deviceHeight * 0.35;
     double _sizedBoxWidth = deviceWidth * 0.1;
-    double _sizedBoxHeight = deviceHeight * 0.6;
     return ChangeNotifierProvider<RegisterModel>(
       create: (_) => RegisterModel(),
       child: Scaffold(
