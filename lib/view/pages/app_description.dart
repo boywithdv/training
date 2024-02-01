@@ -36,6 +36,7 @@ class _AppDescriptionState extends State<AppDescription> {
 
   @override
   void dispose() {
+    _timer.cancel();
     _pageController.dispose();
     super.dispose();
   }

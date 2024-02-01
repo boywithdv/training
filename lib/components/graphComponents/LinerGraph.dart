@@ -6,8 +6,6 @@ import 'package:training/components/custom_components.dart';
 import 'package:training/Data/app_colors.dart';
 import 'package:training/controller/UserInfo.dart';
 
-import '../../main.dart';
-
 var fitnessWeight;
 
 class LinerGraph extends StatefulWidget {
@@ -171,6 +169,24 @@ class _GraphContainerState extends State<GraphContainer> {
       return FlSpot(index.toDouble(), data.weight);
     }).toList();
     // グラフのy軸範囲を更新
+    // グラフのy軸範囲を更新
+    //updateYAxisRange();
+
+    // 表示データを制限
+    if (spots.length > 30) {
+      spots = spots.sublist(spots.length - 7);
+    }
+  }
+
+  void updateYAxisRange() {
+    if (spots.isNotEmpty) {
+      minY = spots
+          .map((spot) => spot.y)
+          .reduce((value, element) => value < element ? value : element);
+      maxY = spots
+          .map((spot) => spot.y)
+          .reduce((value, element) => value > element ? value : element);
+    }
   }
 
   @override
@@ -216,7 +232,7 @@ class _GraphContainerState extends State<GraphContainer> {
           ),
 
           minX: 0,
-          maxX: 7,
+          maxX: 30,
           minY: minY,
           maxY: maxY,
           lineBarsData: [
@@ -273,8 +289,6 @@ class _GraphContainerState extends State<GraphContainer> {
       },
     ).toList();
     // documentsを使って何かしらの処理を行う
-    for (var doc in documents) {}
-
     return documents;
   }
 }
