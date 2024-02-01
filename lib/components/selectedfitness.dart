@@ -37,7 +37,7 @@ class _SelectedFitnessState extends State<SelectedFitness>
   CountDownController _controller = CountDownController();
   final db = FirebaseFirestore.instance;
 
-  int _timer = 20;
+  int _timer = 30;
   bool _isPause = true;
   void initState() {
     super.initState();
@@ -52,7 +52,7 @@ class _SelectedFitnessState extends State<SelectedFitness>
     double sizedBoxHeightToTimer = deviceHeight * 0.47;
     double fitnessNameTop = deviceHeight * 0.31;
     double fitnessComponentTop = deviceHeight * 0.42;
-    double fitnessNameLeft = deviceWidth * 0;
+    double fitnessNameLeft = deviceWidth * 0.05;
     double fitnessAnimation = deviceHeight * 0.4;
     return Scaffold(
       appBar: AppBar(
@@ -123,20 +123,21 @@ class _SelectedFitnessState extends State<SelectedFitness>
                   },
                 )),
             Positioned(
-                top: fitnessNameTop,
-                left: fitnessNameLeft,
-                child: Container(
-                  width: 380,
-                  height: 90,
-                  decoration: BoxDecoration(
-                    border: Border.all(),
-                  ),
-                  child: ImageCircle(
-                    png: widget.musclePng,
-                    description: widget.muscleDescription,
-                    fontsize: 14,
-                  ),
-                )),
+              top: fitnessNameTop,
+              left: fitnessNameLeft,
+              child: Container(
+                width: 380,
+                height: 90,
+                decoration: BoxDecoration(
+                  border: Border.all(),
+                ),
+                child: ImageCircle(
+                  png: widget.musclePng,
+                  description: widget.muscleDescription,
+                  fontsize: 14,
+                ),
+              ),
+            ),
             Positioned(
                 top: fitnessComponentTop,
                 left: fitnessNameLeft,
