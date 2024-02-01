@@ -59,6 +59,7 @@ dependencies:
   google_mobile_ads: ^4.0.0
   image_picker: ^1.0.7
   firebase_storage: ^11.6.0
+  flutter_launcher_icons: ^0.13.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -113,3 +114,7 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/img/zenwan.PNG"
