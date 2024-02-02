@@ -2,8 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 	<dict>
+		<key>CFBundleDisplayName</key>
+		<string>イエトレ</string>
 		<key>CADisableMinimumFrameDurationOnPhone</key>
-		<true/>
+		<true />
 		<key>CFBundleDevelopmentRegion</key>
 		<string>$(DEVELOPMENT_LANGUAGE)</string>
 		<key>CFBundleDisplayName</key>
@@ -27,7 +29,7 @@
 		<key>GADApplicationIdentifier</key>
 		<string>ca-app-pub-6993257000706929~4964373836</string>
 		<key>LSRequiresIPhoneOS</key>
-		<true/>
+		<true />
 		<key>NSCameraUsageDescription</key>
 		<string>アプリに表示・使用するための写真や動画を撮影する目的でリクエストします。</string>
 		<key>NSLocationAlwaysUsageDescription</key>
@@ -39,13 +41,13 @@
 		<key>PermissionGroupNotification</key>
 		<string>通知をするため</string>
 		<key>UIApplicationSupportsIndirectInputEvents</key>
-		<true/>
+		<true />
 		<key>UILaunchStoryboardName</key>
 		<string>LaunchScreen</string>
 		<key>UIMainStoryboardFile</key>
 		<string>Main</string>
 		<key>UIStatusBarHidden</key>
-		<false/>
+		<false />
 		<key>UISupportedInterfaceOrientations</key>
 		<array>
 			<string>UIInterfaceOrientationPortrait</string>
