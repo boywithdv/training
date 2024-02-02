@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:training/components/Avator.dart';
 import 'package:training/controller/admob.dart';
 import 'package:training/components/photo.dart';
 import 'package:training/view/pages/Profile/ProfileEdit.dart';
@@ -67,78 +68,9 @@ class _ContainerAvatorState extends State<ContainerAvator> {
             child: Column(
               children: [
                 SizedBox(
-                  height: 10,
+                  height: height * 0.01,
                 ),
-                Container(
-                  color: Colors.transparent,
-                  height: height * 0.28,
-                  child: LayoutBuilder(
-                    builder: (context, constraints) {
-                      double innerHeight = constraints.maxHeight;
-                      double innerWidth = constraints.maxWidth;
-                      return Stack(
-                        fit: StackFit.expand,
-                        children: [
-                          Positioned(
-                            bottom: 0,
-                            left: 0,
-                            right: 0,
-                            //ぼかしの実装
-                            child: BackdropFilter(
-                              filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                              child: Container(
-                                height: innerHeight * 0.45,
-                                width: innerWidth,
-                                decoration: BoxDecoration(
-                                  color: Colors.black38,
-                                  borderRadius: BorderRadius.circular(30),
-                                ),
-                                child: Column(
-                                  children: [
-                                    SizedBox(
-                                      height: innerHeight * 0.06,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Center(
-                                          child: Text(
-                                            userName,
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 25,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Text(
-                                      "Favorite part of training",
-                                      style: TextStyle(color: Colors.white70),
-                                    ),
-                                    Text(
-                                      favorite_part_of_training ?? "",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                            top: 0,
-                            left: 0,
-                            right: 0,
-                            child: Photo(width: innerWidth * 0.17),
-                          ),
-                        ],
-                      );
-                    },
-                  ),
-                ),
+                Avator(),
                 //ここからコンテナ外のことをかく
                 SizedBox(
                   height: sizedBoxHeight,

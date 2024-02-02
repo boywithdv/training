@@ -32,8 +32,15 @@ class _PhotoState extends State<Photo> {
             )
           : CircleAvatar(
               backgroundColor: Colors.transparent,
-              radius: widget.width,
-              backgroundImage: AssetImage("assets/img/user1.png"),
+              radius: 120,
+              child: ClipOval(
+                child: Image.asset(
+                  "assets/img/user1.png",
+                  width: 120,
+                  height: 120,
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
     );
   }
