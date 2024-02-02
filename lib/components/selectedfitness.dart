@@ -7,9 +7,11 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:training/components/LottieAnimation.dart';
 import 'package:training/components/FitnessTimer.dart';
 import 'package:training/components/ImageCircle.dart';
+import 'package:training/components/fitnessContainer.dart';
 import 'package:training/controller/UserInfo.dart';
 import 'package:training/controller/notifications.dart';
 import 'package:training/models/models.dart';
+import 'package:training/view/pages/bodyRegistration/height_selection_screen.dart';
 
 final notificationProvider = Provider<NotificationViewModel>((ref) {
   return NotificationViewModel(ref.read);
@@ -46,14 +48,6 @@ class _SelectedFitnessState extends State<SelectedFitness>
 
   @override
   Widget build(BuildContext context) {
-    double deviceWidth = MediaQuery.of(context).size.width;
-    double deviceHeight = MediaQuery.of(context).size.height;
-    double sizedBoxWidthToTimer = deviceWidth * 0.25;
-    double sizedBoxHeightToTimer = deviceHeight * 0.47;
-    double fitnessNameTop = deviceHeight * 0.44;
-    double fitnessComponentTop = deviceHeight * 0.52;
-    double fitnessNameLeft = deviceWidth * 0.3;
-    double fitnessAnimation = deviceHeight * 0.5;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -82,78 +76,47 @@ class _SelectedFitnessState extends State<SelectedFitness>
           ),
         ),
         vsync: this,
-        child: Stack(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Positioned(
-                bottom: sizedBoxHeightToTimer,
-                left: sizedBoxWidthToTimer,
-                child: Consumer(
-                  builder: (context, watch, child) {
-                    final notificationViewModel =
-                        watch.read(notificationProvider);
-
-                    return FitNessT(
-                      timer: _timer,
-                      controller: _controller,
-                      onStart: () {},
-                      autoStart: false,
-                      onComplete: () {
-                        setState(
-                          () {
-                            _controller.pause();
-                            notificationViewModel.showNotification();
-                          },
-                        );
-                        create();
-                        Alert(
-                                context: context,
-                                title: '終了',
-                                style: AlertStyle(
-                                  isCloseButton: true,
-                                  isButtonVisible: false,
-                                  titleStyle: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 30.0,
-                                  ),
-                                ),
-                                type: AlertType.success)
-                            .show();
+            Consumer(
+              builder: (context, watch, child) {
+                final notificationViewModel = watch.read(notificationProvider);
+                return FitNessT(
+                  timer: _timer,
+                  controller: _controller,
+                  onStart: () {},
+                  autoStart: false,
+                  onComplete: () {
+                    setState(
+                      () {
+                        _controller.pause();
+                        notificationViewModel.showNotification();
                       },
                     );
+                    create();
+                    Alert(
+                            context: context,
+                            title: '終了',
+                            style: AlertStyle(
+                              isCloseButton: true,
+                              isButtonVisible: false,
+                              titleStyle: TextStyle(
+                                color: Colors.black,
+                                fontSize: 30.0,
+                              ),
+                            ),
+                            type: AlertType.success)
+                        .show();
                   },
-                )),
-            Positioned(
-              top: fitnessNameTop,
-              left: fitnessNameLeft,
-              child: Container(
-                width: 380,
-                height: 90,
-                decoration: BoxDecoration(
-                  border: Border.all(),
-                ),
-                child: ImageCircle(
-                  png: widget.musclePng,
-                  description: widget.muscleDescription,
-                  fontsize: 14,
-                ),
-              ),
+                );
+              },
             ),
-            Positioned(
-                top: fitnessComponentTop,
-                left: fitnessNameLeft,
-                child: Container(
-                  width: 390,
-                  height: 290,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Color.fromARGB(188, 63, 81, 181)),
-                )),
-            Positioned(
-              top: fitnessAnimation,
-              left: fitnessNameLeft,
-              child: LottieFiles(
-                  lottie: widget.muscleLottie[widget.index].fitnessLottieName),
-            ),
+            FitnessContainer(
+                muscleDescription: widget.muscleDescription,
+                musclePng: widget.musclePng,
+                muscleLottie: widget.muscleLottie,
+                index: widget.index)
           ],
         ),
       ),
