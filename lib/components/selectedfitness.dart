@@ -50,10 +50,10 @@ class _SelectedFitnessState extends State<SelectedFitness>
     double deviceHeight = MediaQuery.of(context).size.height;
     double sizedBoxWidthToTimer = deviceWidth * 0.25;
     double sizedBoxHeightToTimer = deviceHeight * 0.47;
-    double fitnessNameTop = deviceHeight * 0.31;
-    double fitnessComponentTop = deviceHeight * 0.42;
-    double fitnessNameLeft = deviceWidth * 0.05;
-    double fitnessAnimation = deviceHeight * 0.4;
+    double fitnessNameTop = deviceHeight * 0.44;
+    double fitnessComponentTop = deviceHeight * 0.52;
+    double fitnessNameLeft = deviceWidth * 0.3;
+    double fitnessAnimation = deviceHeight * 0.5;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(

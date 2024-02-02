@@ -38,7 +38,7 @@ class _RegisterFormState extends State<RegisterForm> {
   @override
   Widget build(BuildContext context) {
     double deviceWidth = MediaQuery.of(context).size.width;
-    double _sizedBoxWidth = deviceWidth * 0.1;
+    double _sizedBoxWidth = deviceWidth * 0;
     return ChangeNotifierProvider<RegisterModel>(
       create: (_) => RegisterModel(),
       child: Scaffold(
@@ -112,14 +112,6 @@ class _RegisterFormState extends State<RegisterForm> {
                         ),
                       ],
                     ),
-                  ),
-                ),
-                Center(
-                  child: Divider(
-                    indent: 22,
-                    endIndent: 22,
-                    thickness: 1,
-                    color: Colors.white70,
                   ),
                 ),
                 Positioned(
