@@ -7,19 +7,17 @@ class ImageContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double sizedboxheight = height * 0.01;
     return Container(
       child: Container(
-        decoration: BoxDecoration(),
         child: Column(
           children: [
-            SizedBox(
-              height: 20,
-            ),
             CustomContainer(
               img: img,
             ),
             SizedBox(
-              height: 20,
+              height: sizedboxheight,
             ),
             TextComponent(
               text: txt,
@@ -50,6 +48,8 @@ class _CustomContainerState extends State<CustomContainer>
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return GestureDetector(
       onTap: () {
         setState(() {
@@ -62,8 +62,8 @@ class _CustomContainerState extends State<CustomContainer>
       child: ScaleTransition(
         scale: _animation,
         child: Container(
-          width: 240,
-          height: 460,
+          width: width * 0.6,
+          height: height * 0.56,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             border: Border.all(color: Colors.grey),
@@ -95,9 +95,11 @@ class TextComponent extends StatefulWidget {
 class _TextComponentState extends State<TextComponent> {
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Container(
-      width: 250,
-      height: 170,
+      width: width * 0.6,
+      height: height * 0.12,
       decoration: BoxDecoration(
         color: Colors.transparent,
         borderRadius: BorderRadius.circular(20),

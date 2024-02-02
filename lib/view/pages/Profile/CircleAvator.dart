@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:training/controller/admob.dart';
-import 'package:training/controller/photo.dart';
+import 'package:training/components/photo.dart';
 import 'package:training/view/pages/Profile/ProfileEdit.dart';
 import 'package:training/components/custom_components.dart';
 import 'package:training/controller/UserInfo.dart';
@@ -132,7 +132,7 @@ class _ContainerAvatorState extends State<ContainerAvator> {
                             top: 0,
                             left: 0,
                             right: 0,
-                            child: Photo(width: innerWidth * 0.2),
+                            child: Photo(width: innerWidth * 0.17),
                           ),
                         ],
                       );

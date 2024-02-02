@@ -43,6 +43,12 @@ class _AppDescriptionState extends State<AppDescription> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    double circlewidth = width * 0.43;
+    double circleheight = height * 0.86;
+    double arrowForwardWidth = width * 0.8;
+    double arrowForwardHeight = height * 0.84;
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: AppBar(
@@ -77,8 +83,8 @@ class _AppDescriptionState extends State<AppDescription> {
             itemCount: 3,
           ),
           Positioned(
-            top: 650,
-            left: 165,
+            top: circleheight * 0.9,
+            left: circlewidth,
             child: Row(
               children: List.generate(
                 3,
@@ -94,8 +100,8 @@ class _AppDescriptionState extends State<AppDescription> {
             ),
           ),
           Positioned(
-              top: 660,
-              left: 330,
+              top: arrowForwardHeight * 0.9,
+              left: arrowForwardWidth,
               child: IconButton(
                 icon: Icon(
                   pageNo == 2 ? Icons.arrow_forward : null,
@@ -138,7 +144,7 @@ class _AppDescriptionState extends State<AppDescription> {
         return Container(
           child: ImageContainer(
             img: Image.asset("assets/img/body.png"),
-            txt: 'プロフィール画面から身長と体重を入力してBMIの数値を記録してくれます!',
+            txt: '身長と体重を入力してBMIの数値を記録してくれます!',
           ),
         );
       default:
