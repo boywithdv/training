@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -13,6 +14,12 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  if (prefs.getBool('first_launch') ?? true) {
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    await auth.signOut();
+
+    prefs.setBool('first_launch', false);
+  }
   MobileAds.instance.initialize();
   final scope = ProviderScope(child: App());
   runApp(scope);
