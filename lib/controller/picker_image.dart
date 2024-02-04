@@ -7,8 +7,7 @@ class PhotoController {
   Future<void> uploadImageToFirebase(Uint8List imageBytes) async {
     try {
       //アップロード作業
-      String fileName =
-          DateTime.now().millisecondsSinceEpoch.toString(); // ファイル名をユニークにする
+      String fileName = DateTime.now().millisecondsSinceEpoch.toString();
       Reference storageReference =
           FirebaseStorage.instance.ref().child('images/$fileName.png');
       UploadTask uploadTask = storageReference.putData(imageBytes);
