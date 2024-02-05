@@ -32,7 +32,7 @@ class _AvatorState extends State<Avator> {
     double height = MediaQuery.of(context).size.height;
     return Container(
       color: Colors.transparent,
-      height: height * 0.4,
+      height: height * 0.45,
       child: LayoutBuilder(
         builder: (context, constraints) {
           double innerHeight = constraints.maxHeight;
@@ -51,12 +51,12 @@ class _AvatorState extends State<Avator> {
                     width: innerWidth,
                     decoration: BoxDecoration(
                       color: const Color.fromARGB(95, 255, 255, 255),
-                      borderRadius: BorderRadius.circular(30),
+                      borderRadius: BorderRadius.circular(40),
                     ),
                     child: Column(
                       children: [
                         SizedBox(
-                          height: innerHeight * 0.15,
+                          height: innerHeight * 0.1,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,

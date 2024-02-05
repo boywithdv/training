@@ -66,14 +66,9 @@ class _ContainerAvatorState extends State<ContainerAvator> {
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
             child: Column(
               children: [
-                SizedBox(
-                  height: height * 0.01,
-                ),
                 Avator(),
                 //ここからコンテナ外のことをかく
-                SizedBox(
-                  height: sizedBoxHeight,
-                ),
+
                 FutureBuilder(
                   future: AdSize.getAnchoredAdaptiveBannerAdSize(
                     Orientation.portrait,
