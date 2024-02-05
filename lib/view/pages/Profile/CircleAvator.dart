@@ -68,7 +68,6 @@ class _ContainerAvatorState extends State<ContainerAvator> {
               children: [
                 Avator(),
                 //ここからコンテナ外のことをかく
-
                 FutureBuilder(
                   future: AdSize.getAnchoredAdaptiveBannerAdSize(
                     Orientation.portrait,
