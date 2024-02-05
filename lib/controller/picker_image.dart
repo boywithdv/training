@@ -8,14 +8,16 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:training/controller/UserInfo.dart';
 
 class PhotoController {
+  var fileName;
   final db = FirebaseFirestore.instance;
   DateTime dt = DateTime.now();
   Future<void> uploadImageToFirebase(Uint8List imageBytes) async {
     try {
+      deletePhoto();
       //アップロード作業
-      String fileName = DateTime.now().millisecondsSinceEpoch.toString();
+      fileName = DateTime.now().millisecondsSinceEpoch.toString();
       Reference storageReference =
-          FirebaseStorage.instance.ref().child('images/$fileName.png');
+          FirebaseStorage.instance.ref().child('$userId/img/$fileName.png');
       UploadTask uploadTask = storageReference.putData(imageBytes);
       //
       TaskSnapshot taskSnapshot = await uploadTask.whenComplete(() => null);
@@ -73,5 +75,11 @@ class PhotoController {
     final HttpClientResponse response = await request.close();
     return Uint8List.fromList(
         await consolidateHttpClientResponseBytes(response));
+  }
+
+  Future<void> deletePhoto() async {
+    Reference storageReference =
+        FirebaseStorage.instance.ref().child('$userId/img/$fileName.png');
+    await storageReference.delete();
   }
 }
