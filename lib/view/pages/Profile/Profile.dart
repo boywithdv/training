@@ -131,11 +131,12 @@ class Profile extends StatelessWidget {
               ListTile(
                 leading: Icon(Icons.share),
                 title: Text(
-                  "共有",
+                  "友達に教える",
                   style: TextStyle(color: Colors.white),
                 ),
                 onTap: () {
-                  Share.share('シェアしたい文', subject: 'Flutterシェア機能');
+                  Share.share('初心者でも始められる集中的にトレーニングを行うアプリ！',
+                      subject: 'イエトレ(Home Fitness)');
                 },
               ),
             ],
