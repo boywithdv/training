@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:training/components/TextFieldForLogin.dart';
 import 'package:training/controller/LoginModel.dart';
-import 'package:training/controller/fitnessRecord.dart';
 import 'package:training/view/pages/LoginedPage.dart';
 import 'package:training/view/services/auth/RegisterForm.dart';
 import 'package:training/view/services/auth/passwordForgetForm.dart';

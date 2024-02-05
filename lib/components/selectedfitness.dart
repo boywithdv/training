@@ -4,14 +4,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:training/components/LottieAnimation.dart';
 import 'package:training/components/FitnessTimer.dart';
-import 'package:training/components/ImageCircle.dart';
 import 'package:training/components/fitnessContainer.dart';
 import 'package:training/controller/UserInfo.dart';
 import 'package:training/controller/notifications.dart';
 import 'package:training/models/models.dart';
-import 'package:training/view/pages/bodyRegistration/height_selection_screen.dart';
 
 final notificationProvider = Provider<NotificationViewModel>((ref) {
   return NotificationViewModel(ref.read);

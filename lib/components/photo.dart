@@ -1,7 +1,6 @@
 import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_launcher_icons/xml_templates.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:training/controller/picker_image.dart';
 
@@ -73,12 +72,14 @@ class _PhotoState extends State<Photo> {
                 radius: 120,
                 child: ClipOval(
                   child: Container(
-                      width: 120,
-                      height: 120,
-                      child: Icon(
-                        CupertinoIcons.person,
-                        color: Colors.green,
-                      )),
+                    width: 120,
+                    height: 120,
+                    child: Icon(
+                      CupertinoIcons.person,
+                      color: Colors.white70,
+                      size: 80,
+                    ),
+                  ),
                 ),
               ),
               onTap: () {
