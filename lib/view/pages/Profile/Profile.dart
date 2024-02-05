@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_launcher_icons/xml_templates.dart';
 import 'package:training/controller/UserInfo.dart';
+import 'package:training/controller/open_web_page.dart';
 import 'package:training/view/pages/Profile/CircleAvator.dart';
 import 'package:training/components/backgroundAnimation.dart';
 import 'package:training/view/pages/app.dart';
@@ -137,6 +139,19 @@ class Profile extends StatelessWidget {
                 onTap: () {
                   Share.share('初心者でも始められる集中的にトレーニングを行うアプリ！',
                       subject: 'イエトレ(Home Fitness)');
+                },
+              ),
+              ListTile(
+                leading:
+                    Icon(CupertinoIcons.person_crop_circle_badge_checkmark),
+                title: Text(
+                  "問い合わせ",
+                  style: TextStyle(color: Colors.white),
+                ),
+                onTap: () {
+                  final _openWebUrl = OpenWebPage();
+                  _openWebUrl.launchUriWithString(
+                      context, "https://boywithdv.github.io/InquiryForm/");
                 },
               ),
             ],
