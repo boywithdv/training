@@ -1,5 +1,7 @@
 import 'dart:typed_data';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_launcher_icons/xml_templates.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:training/controller/picker_image.dart';
 
@@ -14,6 +16,20 @@ class Photo extends StatefulWidget {
 class _PhotoState extends State<Photo> {
   Uint8List? _image;
   final _photoController = PhotoController();
+  @override
+  void initState() {
+    super.initState();
+    _loadImage();
+  }
+
+  Future<void> _loadImage() async {
+    final firebase_storage = PhotoController();
+    Uint8List? img =
+        await firebase_storage.read(); // readメソッドが非同期になっているためawaitを使用
+    setState(() {
+      _image = img;
+    });
+  }
 
   void selectImage() async {
     Uint8List? img = await _photoController.pickImage(ImageSource.gallery);
@@ -48,7 +64,6 @@ class _PhotoState extends State<Photo> {
                 ),
               ),
               onTap: () {
-                print(_image);
                 selectImage();
               },
             )
@@ -58,17 +73,15 @@ class _PhotoState extends State<Photo> {
                 radius: 120,
                 child: ClipOval(
                   child: Container(
-                    width: 120,
-                    height: 120,
-                    child: Image.asset(
-                      "assets/img/user1.png",
-                      fit: BoxFit.cover,
-                    ),
-                  ),
+                      width: 120,
+                      height: 120,
+                      child: Icon(
+                        CupertinoIcons.person,
+                        color: Colors.green,
+                      )),
                 ),
               ),
               onTap: () {
-                print("hello world");
                 selectImage();
               },
             ),
