@@ -18,19 +18,20 @@ class _ToUpperBodyState extends State<ToUpperBody> {
   @override
   void initState() {
     super.initState();
-    _adMob.load();
+    //_adMob.load();
   }
 
   @override
   void dispose() {
     super.dispose();
-    _adMob.dispose();
+    //_adMob.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return ListView(
       children: [
+        /*
         FutureBuilder(
           future: AdSize.getAnchoredAdaptiveBannerAdSize(
             Orientation.portrait,
@@ -51,6 +52,7 @@ class _ToUpperBodyState extends State<ToUpperBody> {
             }
           },
         ),
+        */
         const SizedBox(
           height: 40,
         ),

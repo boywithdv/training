@@ -17,13 +17,13 @@ class _ToLowerBodyState extends State<ToLowerBody> {
   @override
   void initState() {
     super.initState();
-    _adMob.load();
+    //_adMob.load();
   }
 
   @override
   void dispose() {
     super.dispose();
-    _adMob.dispose();
+    //_adMob.dispose();
   }
 
   @override
@@ -31,6 +31,7 @@ class _ToLowerBodyState extends State<ToLowerBody> {
     return ListView(children: [
       Column(
         children: [
+          /*
           FutureBuilder(
             future: AdSize.getAnchoredAdaptiveBannerAdSize(
               Orientation.portrait,
@@ -51,6 +52,7 @@ class _ToLowerBodyState extends State<ToLowerBody> {
               }
             },
           ),
+          */
           SizedBox(
             height: 40,
           ),

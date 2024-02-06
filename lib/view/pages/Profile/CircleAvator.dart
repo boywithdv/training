@@ -25,7 +25,7 @@ class _ContainerAvatorState extends State<ContainerAvator> {
   void initState() {
     super.initState();
     _initData();
-    _adMob.load();
+    //_adMob.load();
   }
 
   Future<void> _initData() async {
@@ -49,7 +49,7 @@ class _ContainerAvatorState extends State<ContainerAvator> {
   @override
   void dispose() {
     super.dispose();
-    _adMob.dispose();
+    //_adMob.dispose();
   }
 
   @override
@@ -68,6 +68,7 @@ class _ContainerAvatorState extends State<ContainerAvator> {
               children: [
                 Avator(),
                 //ここからコンテナ外のことをかく
+                /*
                 FutureBuilder(
                   future: AdSize.getAnchoredAdaptiveBannerAdSize(
                     Orientation.portrait,
@@ -88,6 +89,7 @@ class _ContainerAvatorState extends State<ContainerAvator> {
                     }
                   },
                 ),
+                */
                 Container(
                   width: width * 0.9,
                   height: height * 0.05,
