@@ -16,7 +16,7 @@ class ResizedFitnessPng extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 400,
+        width: double.infinity * 0.1,
         height: 120,
         child: ImageCircle(
           png: png,

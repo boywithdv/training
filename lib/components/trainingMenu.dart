@@ -30,8 +30,9 @@ class _TrainingMenuState extends State<TrainingMenu>
           children: [
             Container(
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  color: const Color.fromARGB(132, 255, 255, 255)),
+                borderRadius: BorderRadius.circular(12),
+                color: const Color.fromARGB(132, 255, 255, 255),
+              ),
               child: ListTile(
                 //ここからlistviewで値を変更するが、モデルによって違う
                 title: Text(
