@@ -43,13 +43,6 @@ class Profile extends StatelessWidget {
                 },
               ),
               backgroundColor: Colors.transparent,
-              title: Text(
-                'UI',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16),
-              ),
               actions: [
                 IconButton(
                   onPressed: () {
@@ -100,9 +93,11 @@ class Profile extends StatelessWidget {
                   SizedBox(
                     height: 60,
                     child: DrawerHeader(
-                      child: Text(
-                        "MENU",
-                        style: TextStyle(color: Colors.white),
+                      child: Center(
+                        child: Text(
+                          "-MENU-",
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                     ),
                   ),
@@ -235,9 +230,11 @@ class Profile extends StatelessWidget {
                     SizedBox(
                       height: 60,
                       child: DrawerHeader(
-                        child: Text(
-                          "MENU",
-                          style: TextStyle(color: Colors.white),
+                        child: Center(
+                          child: Text(
+                            "-MENU-",
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ),
                       ),
                     ),
