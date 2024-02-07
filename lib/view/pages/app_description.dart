@@ -100,25 +100,26 @@ class _AppDescriptionState extends State<AppDescription> {
             ),
           ),
           Positioned(
-              top: arrowForwardHeight * 0.9,
-              left: arrowForwardWidth,
-              child: IconButton(
-                icon: Icon(
-                  pageNo == 2 ? Icons.arrow_forward : null,
-                  size: 30,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    CupertinoPageRoute(
-                      builder: (BuildContext context) {
-                        return const ScreenWidget();
-                      },
-                    ),
-                  );
-                },
-              ))
+            top: arrowForwardHeight * 0.9,
+            left: arrowForwardWidth,
+            child: IconButton(
+              icon: Icon(
+                pageNo == 2 ? Icons.arrow_forward : null,
+                size: 30,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  CupertinoPageRoute(
+                    builder: (BuildContext context) {
+                      return const ScreenWidget();
+                    },
+                  ),
+                );
+              },
+            ),
+          )
         ],
       ),
     );

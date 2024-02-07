@@ -38,4 +38,13 @@ void updateDisplayName(String displayName) async {
   }
 }
 
-//ユーザIDなどはローカル上に保存するようにプログラムを作成する
+//登録せずにアプリを使用する時のフラグ
+nonRegister() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.setInt('NonRegister', 1);
+}
+
+nonRegisterLogout() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.setInt("NonRegister", 0);
+}
