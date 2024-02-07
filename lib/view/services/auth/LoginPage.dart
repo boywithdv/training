@@ -185,22 +185,45 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  FadeInUp(
-                    duration: Duration(milliseconds: 2000),
-                    child: Center(
-                      child: TextButton(
-                        onPressed: () async {
-                          await Navigator.of(context).push(
-                            MaterialPageRoute(
-                                builder: (context) => PasswordForgetForm()),
-                          );
-                        },
-                        child: Text(
-                          "パスワードを忘れた方はこちら",
-                          style: TextStyle(color: Colors.white),
+                  Row(
+                    children: [
+                      FadeInUp(
+                        duration: Duration(milliseconds: 2000),
+                        child: Center(
+                          child: TextButton(
+                            onPressed: () async {
+                              await Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (context) => PasswordForgetForm()),
+                              );
+                            },
+                            child: Text(
+                              "パスワードを忘れた方はこちら",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 13),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                      FadeInUp(
+                        duration: Duration(milliseconds: 2000),
+                        child: Center(
+                          child: TextButton(
+                            onPressed: () async {
+                              await Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (context) => LoginedPage()),
+                              );
+                            },
+                            child: Text(
+                              'アカウントを登録せず使用',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 13),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
                   ),
                 ],
               ),
