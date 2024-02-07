@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:training/controller/UserInfo.dart';
 import 'package:training/controller/open_web_page.dart';
 import 'package:training/view/pages/Profile/CircleAvator.dart';
-import 'package:training/components/backgroundAnimation.dart';
+import 'package:training/view/components/backgroundAnimation.dart';
 import 'package:training/view/pages/app.dart';
 import 'package:training/view/pages/bodyRegistration/body_registration.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -43,45 +43,6 @@ class Profile extends StatelessWidget {
                 },
               ),
               backgroundColor: Colors.transparent,
-              actions: [
-                IconButton(
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (_) => CupertinoAlertDialog(
-                        title: Text(
-                            "Would you like to return to the login screen?"),
-                        content: Text("ログイン画面に戻りますか?"),
-                        actions: [
-                          CupertinoDialogAction(
-                            child: Text('Cancel'),
-                            isDestructiveAction: true,
-                            onPressed: () {
-                              Navigator.of(context, rootNavigator: true).pop();
-                            },
-                          ),
-                          CupertinoDialogAction(
-                            child: Text('OK'),
-                            onPressed: () async {
-                              Navigator.of(context, rootNavigator: true).pop();
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => App(),
-                                ),
-                              );
-                            },
-                          )
-                        ],
-                      ),
-                    );
-                  },
-                  icon: Icon(
-                    Icons.logout,
-                    color: Colors.white,
-                  ),
-                ),
-              ],
             ),
             key: _scaffoldKey,
             backgroundColor: Colors.transparent,
@@ -150,6 +111,46 @@ class Profile extends StatelessWidget {
                           context, "https://boywithdv.github.io/InquiryForm/");
                     },
                   ),
+                  ListTile(
+                    leading: Icon(Icons.logout),
+                    title: Text(
+                      "ログイン画面に戻る",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (_) => CupertinoAlertDialog(
+                          title: Text(
+                              "Would you like to return to the login screen?"),
+                          content: Text("ログイン画面に戻りますか?"),
+                          actions: [
+                            CupertinoDialogAction(
+                              child: Text('Cancel'),
+                              isDestructiveAction: true,
+                              onPressed: () {
+                                Navigator.of(context, rootNavigator: true)
+                                    .pop();
+                              },
+                            ),
+                            CupertinoDialogAction(
+                              child: Text('OK'),
+                              onPressed: () async {
+                                Navigator.of(context, rootNavigator: true)
+                                    .pop();
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => App(),
+                                  ),
+                                );
+                              },
+                            )
+                          ],
+                        ),
+                      );
+                    },
+                  )
                 ],
               ),
             ),
@@ -175,49 +176,7 @@ class Profile extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     fontSize: 16),
               ),
-              actions: [
-                IconButton(
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (_) => CupertinoAlertDialog(
-                        title: Text("Do you want to log out?"),
-                        content: Text("ログアウトしますか?"),
-                        actions: [
-                          CupertinoDialogAction(
-                            child: Text('Cancel'),
-                            isDestructiveAction: true,
-                            onPressed: () {
-                              Navigator.of(context, rootNavigator: true)
-                                  .pop(); // キャンセルボタンが押されたらダイアログを閉じる
-                            },
-                          ),
-                          CupertinoDialogAction(
-                            child: Text('OK'),
-                            onPressed: () async {
-                              Navigator.of(context, rootNavigator: true).pop();
-                              await _auth.signOut();
-                              if (_auth.currentUser == null) {
-                                prefs.setString('userName', '');
-                                prefs.setString(
-                                    "favorite_part_of_training", "");
-                              }
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => App()));
-                            },
-                          )
-                        ],
-                      ),
-                    );
-                  },
-                  icon: Icon(
-                    Icons.logout,
-                    color: Colors.white,
-                  ),
-                ),
-              ],
+              actions: [],
             ),
             body: ContainerAvator(),
             drawer: SizedBox(
@@ -284,6 +243,49 @@ class Profile extends StatelessWidget {
                         final _openWebUrl = OpenWebPage();
                         _openWebUrl.launchUriWithString(context,
                             "https://boywithdv.github.io/InquiryForm/");
+                      },
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.logout),
+                      title: Text(
+                        "ログアウト",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (_) => CupertinoAlertDialog(
+                            title: Text("Do you want to log out?"),
+                            content: Text("ログアウトしますか?"),
+                            actions: [
+                              CupertinoDialogAction(
+                                child: Text('Cancel'),
+                                isDestructiveAction: true,
+                                onPressed: () {
+                                  Navigator.of(context, rootNavigator: true)
+                                      .pop(); // キャンセルボタンが押されたらダイアログを閉じる
+                                },
+                              ),
+                              CupertinoDialogAction(
+                                child: Text('OK'),
+                                onPressed: () async {
+                                  Navigator.of(context, rootNavigator: true)
+                                      .pop();
+                                  await _auth.signOut();
+                                  if (_auth.currentUser == null) {
+                                    prefs.setString('userName', '');
+                                    prefs.setString(
+                                        "favorite_part_of_training", "");
+                                  }
+                                  Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => App()));
+                                },
+                              )
+                            ],
+                          ),
+                        );
                       },
                     ),
                   ],

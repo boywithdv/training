@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:training/components/ImageCircle.dart';
-import 'package:training/components/LottieAnimation.dart';
+import 'package:training/view/components/ImageCircle.dart';
+import 'package:training/view/components/LottieAnimation.dart';
 import 'package:training/models/models.dart';
 
 class FitnessContainer extends StatefulWidget {

@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:animated_background/animated_background.dart';
-import 'package:training/components/trainingMenu.dart';
+import 'package:training/view/components/trainingMenu.dart';
 import 'package:training/models/models.dart';
 
 class BackgroundAnimationToFitness extends StatefulWidget {

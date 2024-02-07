@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:training/components/imageContainer.dart';
+import 'package:training/view/components/imageContainer.dart';
 import 'package:training/view/pages/ScreenWidget.dart';
 
 class AppDescription extends StatefulWidget {

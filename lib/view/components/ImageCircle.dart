@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:training/components/fitnessPng.dart';
+import 'package:training/view/components/fitnessPng.dart';
 
 class ImageCircle extends StatelessWidget {
   const ImageCircle(

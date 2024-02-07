@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
-import 'package:training/components/backgroundAnimation.dart';
+import 'package:training/view/components/backgroundAnimation.dart';
 
-import 'package:training/components/menuBarComponents/animated_bar.dart';
-import 'package:training/components/menuBarComponents/rive_assets.dart';
-import 'package:training/components/menuBarComponents/rive_utils.dart';
+import 'package:training/view/components/menuBarComponents/animated_bar.dart';
+import 'package:training/view/components/menuBarComponents/rive_assets.dart';
+import 'package:training/view/components/menuBarComponents/rive_utils.dart';
 import 'package:training/view/pages/Lower/LowerBody.dart';
 import 'package:training/view/pages/Profile/Profile.dart';
 import 'package:training/view/pages/Upper/UpperBody.dart';

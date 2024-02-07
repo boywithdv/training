@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:training/components/photo.dart';
+import 'package:training/view/components/photo.dart';
 import 'package:training/controller/UserInfo.dart';
 
 class Avator extends StatefulWidget {

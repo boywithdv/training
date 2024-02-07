@@ -2,7 +2,7 @@ import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:training/components/profile_default_icon.dart';
+import 'package:training/view/components/profile_default_icon.dart';
 import 'package:training/controller/picker_image.dart';
 
 class Photo extends StatefulWidget {

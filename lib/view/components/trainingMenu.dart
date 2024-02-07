@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:training/components/selectedfitness.dart';
+import 'package:training/view/components/selectedfitness.dart';
 import 'package:training/models/models.dart';
 
 class TrainingMenu extends StatefulWidget {

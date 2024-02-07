@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:training/components/backgroundAnimation.dart';
+import 'package:training/view/components/backgroundAnimation.dart';
 import 'package:training/view/pages/app_description.dart';
 
 class LoginedPage extends StatefulWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:training/components/Circle.dart';
+import 'package:training/view/components/Circle.dart';
 
 class LottieLogin extends StatefulWidget {
   const LottieLogin({super.key});
