@@ -111,7 +111,7 @@ class _AppDescriptionState extends State<AppDescription> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  CupertinoPageRoute(
+                  MaterialPageRoute(
                     builder: (BuildContext context) {
                       return const ScreenWidget();
                     },
