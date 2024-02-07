@@ -212,8 +212,8 @@ class _LoginPageState extends State<LoginPage> {
                         duration: Duration(milliseconds: 2000),
                         child: Center(
                           child: TextButton(
-                            onPressed: () {
-                              nonRegister();
+                            onPressed: () async {
+                              await nonRegister();
                               Navigator.of(context).push(
                                 MaterialPageRoute(
                                     builder: (context) => ScreenWidget()),
