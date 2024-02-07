@@ -38,4 +38,7 @@ void updateDisplayName(String displayName) async {
   }
 }
 
-//ユーザIDなどはローカル上に保存するようにプログラムを作成する
+setNonUserPrefs() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.setInt('NonUserPrefs', 0);
+}

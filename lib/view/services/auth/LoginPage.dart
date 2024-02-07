@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:training/components/TextFieldForLogin.dart';
 import 'package:training/controller/LoginModel.dart';
 import 'package:training/view/pages/LoginedPage.dart';
+import 'package:training/view/pages/ScreenWidget.dart';
 import 'package:training/view/services/auth/RegisterForm.dart';
 import 'package:training/view/services/auth/passwordForgetForm.dart';
 
@@ -185,22 +186,46 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  FadeInUp(
-                    duration: Duration(milliseconds: 2000),
-                    child: Center(
-                      child: TextButton(
-                        onPressed: () async {
-                          await Navigator.of(context).push(
-                            MaterialPageRoute(
-                                builder: (context) => PasswordForgetForm()),
-                          );
-                        },
-                        child: Text(
-                          "パスワードを忘れた方はこちら",
-                          style: TextStyle(color: Colors.white),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      FadeInUp(
+                        duration: Duration(milliseconds: 2000),
+                        child: Center(
+                          child: TextButton(
+                            onPressed: () async {
+                              await Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (context) => PasswordForgetForm()),
+                              );
+                            },
+                            child: Text(
+                              "パスワードを忘れた方はこちら",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 10),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                      FadeInUp(
+                        duration: Duration(milliseconds: 2000),
+                        child: Center(
+                          child: TextButton(
+                            onPressed: () async {
+                              await Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (context) => ScreenWidget()),
+                              );
+                            },
+                            child: Text(
+                              "登録せずに使用",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 10),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
