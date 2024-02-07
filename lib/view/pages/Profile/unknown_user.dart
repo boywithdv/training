@@ -269,7 +269,7 @@ class _UnknownUserViewState extends State<UnknownUserView> {
           ),
         );
       default:
-        return Container();
+        return SizedBox();
     }
   }
 }
