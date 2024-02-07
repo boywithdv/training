@@ -167,9 +167,6 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
                   FadeInUp(
                     duration: Duration(milliseconds: 2000),
                     child: Center(

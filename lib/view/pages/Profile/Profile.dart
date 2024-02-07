@@ -53,49 +53,6 @@ class Profile extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     fontSize: 16),
               ),
-              actions: [
-                IconButton(
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (_) => CupertinoAlertDialog(
-                        title: Text("Do you want to log out?"),
-                        content: Text("ログアウトしますか?"),
-                        actions: [
-                          CupertinoDialogAction(
-                            child: Text('Cancel'),
-                            isDestructiveAction: true,
-                            onPressed: () {
-                              Navigator.of(context, rootNavigator: true)
-                                  .pop(); // キャンセルボタンが押されたらダイアログを閉じる
-                            },
-                          ),
-                          CupertinoDialogAction(
-                            child: Text('OK'),
-                            onPressed: () async {
-                              Navigator.of(context, rootNavigator: true).pop();
-                              await _auth.signOut();
-                              if (_auth.currentUser == null) {
-                                prefs.setString('userName', '');
-                                prefs.setString(
-                                    "favorite_part_of_training", "");
-                              }
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => LoginForm()));
-                            },
-                          )
-                        ],
-                      ),
-                    );
-                  },
-                  icon: Icon(
-                    Icons.logout,
-                    color: Colors.white,
-                  ),
-                ),
-              ],
             ),
             body: ContainerAvator(),
             drawer: SizedBox(
@@ -162,6 +119,49 @@ class Profile extends StatelessWidget {
                             "https://boywithdv.github.io/InquiryForm/");
                       },
                     ),
+                    ListTile(
+                      leading: Icon(Icons.logout),
+                      title: Text(
+                        "ログアウト",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (_) => CupertinoAlertDialog(
+                            title: Text("Do you want to log out?"),
+                            content: Text("ログアウトしますか?"),
+                            actions: [
+                              CupertinoDialogAction(
+                                child: Text('Cancel'),
+                                isDestructiveAction: true,
+                                onPressed: () {
+                                  Navigator.of(context, rootNavigator: true)
+                                      .pop(); // キャンセルボタンが押されたらダイアログを閉じる
+                                },
+                              ),
+                              CupertinoDialogAction(
+                                child: Text('OK'),
+                                onPressed: () async {
+                                  Navigator.of(context, rootNavigator: true)
+                                      .pop();
+                                  await _auth.signOut();
+                                  if (_auth.currentUser == null) {
+                                    prefs.setString('userName', '');
+                                    prefs.setString(
+                                        "favorite_part_of_training", "");
+                                  }
+                                  Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => LoginForm()));
+                                },
+                              )
+                            ],
+                          ),
+                        );
+                      },
+                    )
                   ],
                 ),
               ),
