@@ -188,6 +188,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       FadeInUp(
                         duration: Duration(milliseconds: 2000),
@@ -202,7 +203,7 @@ class _LoginPageState extends State<LoginPage> {
                             child: Text(
                               "パスワードを忘れた方はこちら",
                               style:
-                                  TextStyle(color: Colors.white, fontSize: 13),
+                                  TextStyle(color: Colors.white, fontSize: 10),
                             ),
                           ),
                         ),
@@ -221,7 +222,7 @@ class _LoginPageState extends State<LoginPage> {
                             child: Text(
                               'アカウントを登録せず使用',
                               style:
-                                  TextStyle(color: Colors.white, fontSize: 13),
+                                  TextStyle(color: Colors.white, fontSize: 10),
                             ),
                           ),
                         ),

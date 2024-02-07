@@ -17,9 +17,9 @@ void main() async {
   if (prefs.getBool('first_launch') ?? true) {
     final FirebaseAuth auth = FirebaseAuth.instance;
     await auth.signOut();
-
     prefs.setBool('first_launch', false);
   }
+
   MobileAds.instance.initialize();
   final scope = ProviderScope(child: App());
   runApp(scope);
