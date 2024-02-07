@@ -10,6 +10,7 @@ import 'package:training/view/pages/app.dart';
 import 'package:training/view/pages/bodyRegistration/body_registration.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:training/view/services/auth/LoginForm.dart';
 
 class MainContents extends StatelessWidget {
   MainContents({super.key});
@@ -82,7 +83,7 @@ class Profile extends StatelessWidget {
                               Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => App()));
+                                      builder: (context) => LoginForm()));
                             },
                           )
                         ],

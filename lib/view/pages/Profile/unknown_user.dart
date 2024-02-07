@@ -11,6 +11,8 @@ import 'package:training/controller/UserInfo.dart';
 import 'package:training/controller/open_web_page.dart';
 import 'package:training/models/Data/app_colors.dart';
 import 'package:training/view/pages/app.dart';
+import 'package:training/view/services/auth/LoginForm.dart';
+import 'package:training/view/services/auth/LoginPage.dart';
 import 'package:training/view/services/auth/RegisterForm.dart';
 
 class UnknownUser extends StatefulWidget {
@@ -207,6 +209,7 @@ class _UnknownUserViewState extends State<UnknownUserView> {
                 style: TextStyle(color: Colors.white),
               ),
               onTap: () {
+                setUnknounUserPrefsLogin();
                 showDialog(
                   context: context,
                   builder: (_) => CupertinoAlertDialog(
@@ -223,13 +226,12 @@ class _UnknownUserViewState extends State<UnknownUserView> {
                       ),
                       CupertinoDialogAction(
                         child: Text('OK'),
-                        onPressed: () async {
-                          setNonUserPrefs();
+                        onPressed: () {
                           Navigator.of(context, rootNavigator: true).pop();
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => App(),
+                              builder: (context) => LoginForm(),
                             ),
                           );
                         },

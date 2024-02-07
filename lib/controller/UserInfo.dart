@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 var prefs;
@@ -38,7 +39,14 @@ void updateDisplayName(String displayName) async {
   }
 }
 
-setNonUserPrefs() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  prefs.setInt('NonUserPrefs', 0);
+//ログインしていない場合
+setUnknounUserPrefsLogout() async {
+  SharedPreferences pref = await SharedPreferences.getInstance();
+  pref.setInt("unknouwn", 1);
+}
+
+//ログインしてない場合を修正するため
+setUnknounUserPrefsLogin() async {
+  SharedPreferences pref = await SharedPreferences.getInstance();
+  pref.setInt("unknouwn", 0);
 }
