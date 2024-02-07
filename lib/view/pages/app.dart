@@ -11,10 +11,12 @@ class App extends StatelessWidget {
         home: StreamBuilder<User?>(
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
+            /*
             final nonRegisterMath = prefs.getInt("NonRegister");
             if (nonRegisterMath == 1 && snapshot.hasData == false) {
               return ScreenWidget();
             }
+            */
             if (snapshot.connectionState == ConnectionState.waiting) {
               // スプラッシュ画面などに書き換えても良い
               return const SizedBox();
