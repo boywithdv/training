@@ -1,6 +1,7 @@
 import 'package:animated_background/animated_background.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -35,7 +36,7 @@ class _SelectedFitnessState extends State<SelectedFitness>
     with TickerProviderStateMixin {
   CountDownController _controller = CountDownController();
   final db = FirebaseFirestore.instance;
-
+  final user = FirebaseAuth.instance.currentUser;
   int _timer = 30;
   bool _isPause = true;
   void initState() {
@@ -91,7 +92,7 @@ class _SelectedFitnessState extends State<SelectedFitness>
                         notificationViewModel.showNotification();
                       },
                     );
-                    create();
+                    user != null ? create() : null;
                     Alert(
                             context: context,
                             title: '終了',
