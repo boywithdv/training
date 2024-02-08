@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:training/components/custom_components.dart';
 import 'package:training/models/Data/app_colors.dart';
 import 'package:training/controller/UserInfo.dart';
-
-var fitnessWeight;
+import 'package:training/view/pages/bodyRegistration/body_register_page.dart';
 
 class LinerGraph extends StatefulWidget {
   const LinerGraph({super.key});

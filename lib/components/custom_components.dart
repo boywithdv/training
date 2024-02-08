@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-var fitnessHeight;
-var fitnessWeight;
-
 class CustomComponents extends StatefulWidget {
   final String? text;
   final String? params;
@@ -14,19 +11,21 @@ class CustomComponents extends StatefulWidget {
   final Icon? icon;
   final Color? colors;
   final Widget? profileEditButton;
+  final String? registerDays;
 
-  const CustomComponents({
-    Key? key,
-    this.text,
-    this.colors,
-    this.ontap,
-    this.params,
-    required this.width,
-    required this.height,
-    this.child,
-    this.icon,
-    this.profileEditButton,
-  }) : super(key: key);
+  const CustomComponents(
+      {Key? key,
+      this.text,
+      this.colors,
+      this.ontap,
+      this.params,
+      required this.width,
+      required this.height,
+      this.child,
+      this.icon,
+      this.profileEditButton,
+      this.registerDays})
+      : super(key: key);
 
   @override
   _CustomComponentsState createState() => _CustomComponentsState();
@@ -45,9 +44,11 @@ class _CustomComponentsState extends State<CustomComponents>
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        setState(() {
-          isTapped = !isTapped;
-        });
+        setState(
+          () {
+            isTapped = !isTapped;
+          },
+        );
         // Navigatorをアニメーション後に呼び出す
         _controller.reverse().then(
           (_) {
@@ -122,6 +123,14 @@ class _CustomComponentsState extends State<CustomComponents>
                 left: 10,
                 child: Center(
                   child: widget.child,
+                ),
+              ),
+              Positioned(
+                top: 80,
+                left: 20,
+                child: Text(
+                  widget.registerDays ?? "",
+                  style: TextStyle(color: Colors.black45, fontSize: 12),
                 ),
               ),
               Center(
