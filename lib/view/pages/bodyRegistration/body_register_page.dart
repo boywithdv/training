@@ -40,7 +40,6 @@ class _BodyRegisterPageState extends State<BodyRegisterPage> {
     await getLastWeightDate();
     await getLastHeightDate();
     await calculateAndSetBMI();
-    setState(() {});
   }
 
   Future<void> calculateAndSetBMI() async {
