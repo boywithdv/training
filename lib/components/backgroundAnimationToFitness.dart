@@ -50,7 +50,7 @@ class _BackgroundAnimationState extends State<BackgroundAnimationToFitness>
             spawnMaxSpeed: 50,
             minOpacity: 0.3,
             spawnOpacity: 0.4,
-            baseColor: Color.fromARGB(119, 0, 34, 23),
+            baseColor: Color.fromARGB(255, 27, 27, 27),
           ),
         ),
         vsync: this,

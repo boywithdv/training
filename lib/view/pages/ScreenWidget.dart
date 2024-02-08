@@ -42,15 +42,15 @@ class _ScreenState extends State<Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.black,
       body: cureentWidget,
       bottomNavigationBar: SafeArea(
         child: Container(
           padding: const EdgeInsets.all(12),
           margin: const EdgeInsets.symmetric(horizontal: 80),
           decoration: BoxDecoration(
-            color: Colors.black,
-            border: Border.all(color: Colors.green),
+            color: Color.fromARGB(20, 255, 255, 255),
+            border: Border.all(color: Colors.transparent),
             borderRadius: const BorderRadius.all(Radius.circular(24)),
           ),
           child: Row(

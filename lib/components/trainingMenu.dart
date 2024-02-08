@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:training/components/selectedfitness.dart';
+import 'package:training/models/Data/app_colors.dart';
 import 'package:training/models/models.dart';
 
 class TrainingMenu extends StatefulWidget {
@@ -31,7 +32,7 @@ class _TrainingMenuState extends State<TrainingMenu>
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                color: const Color.fromARGB(132, 255, 255, 255),
+                color: AppColors.pageBackground,
               ),
               child: ListTile(
                 //ここからlistviewで値を変更するが、モデルによって違う
@@ -41,7 +42,6 @@ class _TrainingMenuState extends State<TrainingMenu>
                 ),
                 textColor: Colors.white,
                 onTap: () {
-                  print(widget.title);
                   _navigateToSelectedFitness(fitness.fitnessName, widget.png,
                       widget.lottieName, index);
                 },

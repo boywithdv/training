@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:animated_background/animated_background.dart';
+import 'package:training/models/Data/app_colors.dart';
 
 class BackgroundAnimation extends StatefulWidget {
   const BackgroundAnimation({super.key});
@@ -25,7 +26,7 @@ class _BackgroundAnimationState extends State<BackgroundAnimation>
             spawnMaxSpeed: 50,
             minOpacity: 0.3,
             spawnOpacity: 0.4,
-            baseColor: Color.fromARGB(119, 33, 44, 40),
+            baseColor: Color.fromARGB(255, 27, 27, 27),
           ),
         ),
         vsync: this,
