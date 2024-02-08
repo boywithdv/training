@@ -38,13 +38,14 @@ void updateDisplayName(String displayName) async {
   }
 }
 
-//登録せずにアプリを使用する時のフラグ
-nonRegister() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  prefs.setInt('NonRegister', 1);
+//ログインしていない場合
+setUnknounUserPrefsLogout() async {
+  SharedPreferences pref = await SharedPreferences.getInstance();
+  pref.setInt("unknouwn", 1);
 }
 
-nonRegisterLogout() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  prefs.setInt("NonRegister", 0);
+//ログインしてない場合を修正するため
+setUnknounUserPrefsLogin() async {
+  SharedPreferences pref = await SharedPreferences.getInstance();
+  pref.setInt("unknouwn", 0);
 }

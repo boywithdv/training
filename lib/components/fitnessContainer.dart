@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:training/view/components/ImageCircle.dart';
-import 'package:training/view/components/LottieAnimation.dart';
+import 'package:training/components/ImageCircle.dart';
+import 'package:training/components/LottieAnimation.dart';
+import 'package:training/models/Data/app_colors.dart';
 import 'package:training/models/models.dart';
 
 class FitnessContainer extends StatefulWidget {
@@ -41,7 +42,7 @@ class _FitnessContainerState extends State<FitnessContainer> {
           height: 290,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: Color.fromARGB(188, 63, 81, 181),
+            color: AppColors.pageBackground,
           ),
           child: LottieFiles(
               lottie: widget.muscleLottie[widget.index].fitnessLottieName),

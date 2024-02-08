@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:training/view/components/fitnessPng.dart';
+import 'package:training/components/fitnessPng.dart';
+import 'package:training/models/Data/app_colors.dart';
 
 class ImageCircle extends StatelessWidget {
   const ImageCircle(
@@ -14,7 +15,7 @@ class ImageCircle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
-            color: Color.fromARGB(168, 85, 102, 251),
+            color: AppColors.pageBackground,
             borderRadius: BorderRadius.circular(30)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

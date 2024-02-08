@@ -5,8 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:training/view/components/FitnessTimer.dart';
-import 'package:training/view/components/fitnessContainer.dart';
+import 'package:training/components/FitnessTimer.dart';
+import 'package:training/components/fitnessContainer.dart';
 import 'package:training/controller/UserInfo.dart';
 import 'package:training/controller/notifications.dart';
 import 'package:training/models/models.dart';
@@ -36,7 +36,8 @@ class _SelectedFitnessState extends State<SelectedFitness>
     with TickerProviderStateMixin {
   CountDownController _controller = CountDownController();
   final db = FirebaseFirestore.instance;
-  final user = FirebaseAuth.instance.currentUser;
+  final user = FirebaseAuth.instance;
+
   int _timer = 30;
   bool _isPause = true;
   void initState() {
@@ -70,7 +71,7 @@ class _SelectedFitnessState extends State<SelectedFitness>
             spawnMaxSpeed: 50,
             minOpacity: 0.3,
             spawnOpacity: 0.4,
-            baseColor: Color.fromARGB(119, 0, 34, 23),
+            baseColor: Color.fromARGB(255, 27, 27, 27),
           ),
         ),
         vsync: this,
@@ -92,7 +93,7 @@ class _SelectedFitnessState extends State<SelectedFitness>
                         notificationViewModel.showNotification();
                       },
                     );
-                    user != null ? create() : null;
+                    user.currentUser != null ? create() : null;
                     Alert(
                             context: context,
                             title: '終了',
@@ -149,7 +150,6 @@ class _SelectedFitnessState extends State<SelectedFitness>
             '-' +
             dt.day.toString())
         .collection('training')
-        //ここのdocはriverpodによりカウンターを作成してtest○○というようにする
         .doc(widget.muscleDescription)
         //Modelを使用してtitleに値を入れる
         .set({'title': widget.muscleDescription, 'time': dt});

@@ -5,21 +5,38 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:training/components/backgroundAnimation.dart';
+import 'package:training/components/imageContainer.dart';
 import 'package:training/controller/UserInfo.dart';
 import 'package:training/controller/open_web_page.dart';
 import 'package:training/models/Data/app_colors.dart';
-import 'package:training/view/components/imageContainer.dart';
-import 'package:training/view/pages/app.dart';
+import 'package:training/view/services/auth/LoginForm.dart';
 import 'package:training/view/services/auth/RegisterForm.dart';
 
-class UserNullProfile extends StatefulWidget {
-  const UserNullProfile({super.key});
+class UnknownUser extends StatefulWidget {
+  const UnknownUser({super.key});
 
   @override
-  State<UserNullProfile> createState() => _UserNullProfileState();
+  State<UnknownUser> createState() => _UnknownUserState();
 }
 
-class _UserNullProfileState extends State<UserNullProfile> {
+class _UnknownUserState extends State<UnknownUser> {
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [BackgroundAnimation(), UnknownUserView()],
+    );
+  }
+}
+
+class UnknownUserView extends StatefulWidget {
+  const UnknownUserView({super.key});
+
+  @override
+  State<UnknownUserView> createState() => _UnknownUserViewState();
+}
+
+class _UnknownUserViewState extends State<UnknownUserView> {
   var userEmail = prefs.getString('userEmail') ?? "";
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final user = FirebaseAuth.instance.currentUser;
@@ -167,7 +184,8 @@ class _UserNullProfileState extends State<UserNullProfile> {
                 style: TextStyle(color: Colors.white),
               ),
               onTap: () {
-                Share.share('初心者でも始められる集中的にトレーニングを行うアプリ！',
+                Share.share(
+                    'おうちで気楽に筋トレをしましょう。気楽に。\n https://apps.apple.com/jp/app/%E3%82%A4%E3%82%A8%E3%83%88%E3%83%AC-home-workout/id6476892667',
                     subject: 'イエトレ(Home Fitness)');
               },
             ),
@@ -190,6 +208,7 @@ class _UserNullProfileState extends State<UserNullProfile> {
                 style: TextStyle(color: Colors.white),
               ),
               onTap: () {
+                setUnknounUserPrefsLogin();
                 showDialog(
                   context: context,
                   builder: (_) => CupertinoAlertDialog(
@@ -206,13 +225,12 @@ class _UserNullProfileState extends State<UserNullProfile> {
                       ),
                       CupertinoDialogAction(
                         child: Text('OK'),
-                        onPressed: () async {
-                          nonRegisterLogout();
+                        onPressed: () {
                           Navigator.of(context, rootNavigator: true).pop();
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => App(),
+                              builder: (context) => LoginForm(),
                             ),
                           );
                         },
@@ -252,7 +270,7 @@ class _UserNullProfileState extends State<UserNullProfile> {
           ),
         );
       default:
-        return Container();
+        return SizedBox();
     }
   }
 }

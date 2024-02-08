@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
-import 'package:training/view/components/backgroundAnimation.dart';
+import 'package:training/components/backgroundAnimation.dart';
 
-import 'package:training/view/components/menuBarComponents/animated_bar.dart';
-import 'package:training/view/components/menuBarComponents/rive_assets.dart';
-import 'package:training/view/components/menuBarComponents/rive_utils.dart';
+import 'package:training/components/menuBarComponents/animated_bar.dart';
+import 'package:training/components/menuBarComponents/rive_assets.dart';
+import 'package:training/components/menuBarComponents/rive_utils.dart';
 import 'package:training/view/pages/Lower/LowerBody.dart';
 import 'package:training/view/pages/Profile/Profile.dart';
 import 'package:training/view/pages/Upper/UpperBody.dart';
@@ -42,15 +42,15 @@ class _ScreenState extends State<Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.black,
       body: cureentWidget,
       bottomNavigationBar: SafeArea(
         child: Container(
           padding: const EdgeInsets.all(12),
           margin: const EdgeInsets.symmetric(horizontal: 80),
           decoration: BoxDecoration(
-            color: Colors.black,
-            border: Border.all(color: Colors.green),
+            color: Color.fromARGB(20, 255, 255, 255),
+            border: Border.all(color: Colors.transparent),
             borderRadius: const BorderRadius.all(Radius.circular(24)),
           ),
           child: Row(

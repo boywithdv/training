@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:animated_background/animated_background.dart';
-import 'package:training/view/components/trainingMenu.dart';
+import 'package:training/components/trainingMenu.dart';
 import 'package:training/models/models.dart';
 
 class BackgroundAnimationToFitness extends StatefulWidget {
@@ -50,7 +50,7 @@ class _BackgroundAnimationState extends State<BackgroundAnimationToFitness>
             spawnMaxSpeed: 50,
             minOpacity: 0.3,
             spawnOpacity: 0.4,
-            baseColor: Color.fromARGB(119, 0, 34, 23),
+            baseColor: Color.fromARGB(255, 27, 27, 27),
           ),
         ),
         vsync: this,

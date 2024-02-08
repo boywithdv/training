@@ -2,8 +2,9 @@ import 'dart:ui';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:training/view/components/backgroundAnimation.dart';
+import 'package:training/components/backgroundAnimation.dart';
 import 'package:training/controller/UserInfo.dart';
+import 'package:training/view/pages/Profile/Profile.dart';
 import 'package:training/view/pages/ScreenWidget.dart';
 
 class ProfileEdit extends StatefulWidget {
@@ -73,7 +74,14 @@ class _TestEditState extends State<TestEdit> {
             color: Colors.white,
           ),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.of(context).push(
+              PageRouteBuilder(
+                opaque: true,
+                pageBuilder: (BuildContext context, _, __) {
+                  return ScreenWidget();
+                },
+              ),
+            );
           },
         ),
       ),

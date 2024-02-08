@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:training/view/components/custom_components.dart';
-import 'package:training/view/components/graphComponents/LinerGraph.dart';
+import 'package:training/components/custom_components.dart';
+import 'package:training/components/graphComponents/LinerGraph.dart';
 import 'package:training/controller/UserInfo.dart';
 import 'package:training/view/pages/bodyRegistration/height_selection_screen.dart';
 import 'package:training/view/pages/bodyRegistration/weight_selection_screen.dart';
@@ -9,7 +9,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 var fitnessHeight;
 var fitnessWeight;
-
+var heightRegisterDays;
+var weightRegisterDays;
 double calculateBMI(double heightInCentimeters, double weightInKilograms) {
   // 身長をメートルに変換
   double heightInMeters = heightInCentimeters / 100;
@@ -36,11 +37,13 @@ class _BodyRegisterPageState extends State<BodyRegisterPage> {
   Future<void> _initializeData() async {
     await readHeight();
     await readWeight();
-    calculateAndSetBMI();
+    await getLastWeightDate();
+    await getLastHeightDate();
+    await calculateAndSetBMI();
     setState(() {});
   }
 
-  void calculateAndSetBMI() {
+  Future<void> calculateAndSetBMI() async {
     if (fitnessHeight != null && fitnessWeight != null) {
       double height = double.parse(fitnessHeight);
       double weight = double.parse(fitnessWeight);
@@ -70,8 +73,11 @@ class _BodyRegisterPageState extends State<BodyRegisterPage> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               CustomComponents(
+                registerDays: heightRegisterDays == null
+                    ? ""
+                    : "更新日 \n $heightRegisterDays",
                 text: "身長",
-                params: '$fitnessHeight cm',
+                params: fitnessHeight == null ? null : '$fitnessHeight cm',
                 width: 150,
                 height: 150,
                 ontap: Height(),
@@ -82,8 +88,11 @@ class _BodyRegisterPageState extends State<BodyRegisterPage> {
                 colors: Colors.white,
               ),
               CustomComponents(
+                registerDays: weightRegisterDays == null
+                    ? ""
+                    : "更新日 \n $weightRegisterDays",
                 text: "体重",
-                params: 'Today : $fitnessWeight kg',
+                params: fitnessWeight == null ? null : "Today : $fitnessWeight",
                 width: 150,
                 height: 150,
                 ontap: Weight(),
@@ -160,5 +169,68 @@ class _BodyRegisterPageState extends State<BodyRegisterPage> {
     } else {
       fitnessWeight = null; // デフォルト値を設定するか、エラー処理を行うなど
     }
+  }
+
+  Future<DateTime?> getLastWeightDate() async {
+    DateTime? lastWeightDate;
+
+    try {
+      final db = FirebaseFirestore.instance;
+      final querySnapshot = await db
+          .collection('userId')
+          .doc(userId)
+          .collection('weight')
+          .orderBy('time', descending: true) // 最新のデータから順に取得
+          .limit(1) // 1つのデータだけ取得
+          .get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        // 最新の体重データの日付を取得
+        final doc = querySnapshot.docs.first;
+        final timestamp = doc['time'] as Timestamp;
+        lastWeightDate = timestamp.toDate();
+        weightRegisterDays = lastWeightDate.year.toString() +
+            "年" +
+            lastWeightDate.month.toString() +
+            "月" +
+            lastWeightDate.day.toString() +
+            "日";
+        print(weightRegisterDays);
+      }
+    } catch (error) {
+      print('Error retrieving last weight date: $error');
+    }
+
+    return lastWeightDate;
+  }
+
+  Future<DateTime?> getLastHeightDate() async {
+    DateTime? lastHeightDate;
+
+    try {
+      final db = FirebaseFirestore.instance;
+      final docSnapshot = await db
+          .collection('userId')
+          .doc(userId)
+          .collection('height')
+          .doc('date')
+          .get();
+
+      if (docSnapshot.exists) {
+        // 日付を取得
+        final timestamp = docSnapshot['time'] as Timestamp;
+        lastHeightDate = timestamp.toDate();
+        heightRegisterDays = lastHeightDate.year.toString() +
+            "年" +
+            lastHeightDate.month.toString() +
+            "月" +
+            lastHeightDate.day.toString() +
+            "日";
+      }
+    } catch (error) {
+      print('Error retrieving height date: $error');
+    }
+
+    return lastHeightDate;
   }
 }

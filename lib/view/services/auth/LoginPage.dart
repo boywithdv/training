@@ -2,9 +2,9 @@ import 'package:animate_do/animate_do.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:training/controller/UserInfo.dart';
-import 'package:training/view/components/TextFieldForLogin.dart';
+import 'package:training/components/TextFieldForLogin.dart';
 import 'package:training/controller/LoginModel.dart';
+import 'package:training/controller/UserInfo.dart';
 import 'package:training/view/pages/LoginedPage.dart';
 import 'package:training/view/pages/ScreenWidget.dart';
 import 'package:training/view/services/auth/RegisterForm.dart';
@@ -167,9 +167,6 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
                   FadeInUp(
                     duration: Duration(milliseconds: 2000),
                     child: Center(
@@ -213,20 +210,20 @@ class _LoginPageState extends State<LoginPage> {
                         child: Center(
                           child: TextButton(
                             onPressed: () async {
-                              await nonRegister();
-                              Navigator.of(context).push(
+                              setUnknounUserPrefsLogout();
+                              await Navigator.of(context).push(
                                 MaterialPageRoute(
                                     builder: (context) => ScreenWidget()),
                               );
                             },
                             child: Text(
-                              'アカウントを登録せず使用',
+                              "登録せずに使用",
                               style:
                                   TextStyle(color: Colors.white, fontSize: 10),
                             ),
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ],
@@ -241,15 +238,14 @@ class _LoginPageState extends State<LoginPage> {
 
 void _showDialog(BuildContext context, String title) {
   showDialog(
-    context: context,
-    builder: (BuildContext contxt) {
-      return AlertDialog(
-        backgroundColor: Colors.transparent,
-        title: Text(
-          title,
-          style: TextStyle(color: Colors.white),
-        ),
-      );
-    },
-  );
+      context: context,
+      builder: (BuildContext contxt) {
+        return AlertDialog(
+          backgroundColor: Colors.transparent,
+          title: Text(
+            title,
+            style: TextStyle(color: Colors.white),
+          ),
+        );
+      });
 }
