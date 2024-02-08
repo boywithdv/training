@@ -184,7 +184,8 @@ class _UnknownUserViewState extends State<UnknownUserView> {
                 style: TextStyle(color: Colors.white),
               ),
               onTap: () {
-                Share.share('初心者でも始められる集中的にトレーニングを行うアプリ！',
+                Share.share(
+                    'おうちで気楽に筋トレをしましょう。気楽に。\n https://apps.apple.com/jp/app/%E3%82%A4%E3%82%A8%E3%83%88%E3%83%AC-home-workout/id6476892667',
                     subject: 'イエトレ(Home Fitness)');
               },
             ),
