@@ -6,7 +6,6 @@ import 'package:training/controller/open_web_page.dart';
 import 'package:training/view/pages/Profile/CircleAvator.dart';
 import 'package:training/components/backgroundAnimation.dart';
 import 'package:training/view/pages/Profile/unknown_user.dart';
-import 'package:training/view/pages/app.dart';
 import 'package:training/view/pages/bodyRegistration/body_registration.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:share_plus/share_plus.dart';
