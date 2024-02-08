@@ -53,10 +53,14 @@ class _CustomComponentsState extends State<CustomComponents>
           (_) {
             // widget.ontapを評価し、nullでない場合のみNavigator.pushを呼び出す
             if (widget.ontap != null) {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (BuildContext context) {
-                return widget.ontap!;
-              }));
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) {
+                      return widget.ontap!;
+                    },
+                    fullscreenDialog: true),
+              );
             }
           },
         );
