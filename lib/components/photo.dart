@@ -23,9 +23,8 @@ class _PhotoState extends State<Photo> {
   }
 
   Future<void> _loadImage() async {
-    final firebase_storage = PhotoController();
     Uint8List? img =
-        await firebase_storage.read(); // readメソッドが非同期になっているためawaitを使用
+        await _photoController.read(); // readメソッドが非同期になっているためawaitを使用
     setState(() {
       _image = img;
     });
@@ -73,7 +72,10 @@ class _PhotoState extends State<Photo> {
                 radius: 120,
                 child: ClipOval(
                   child: Container(
-                      width: 120, height: 120, child: ProfileDefaultIcon()),
+                    width: 120,
+                    height: 120,
+                    child: ProfileDefaultIcon(),
+                  ),
                 ),
               ),
               onTap: () {
