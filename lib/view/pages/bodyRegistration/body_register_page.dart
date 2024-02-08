@@ -39,11 +39,10 @@ class _BodyRegisterPageState extends State<BodyRegisterPage> {
     await readWeight();
     await getLastWeightDate();
     await getLastHeightDate();
-    calculateAndSetBMI();
-    setState(() {});
+    await calculateAndSetBMI();
   }
 
-  void calculateAndSetBMI() {
+  Future<void> calculateAndSetBMI() async {
     if (fitnessHeight != null && fitnessWeight != null) {
       double height = double.parse(fitnessHeight);
       double weight = double.parse(fitnessWeight);
