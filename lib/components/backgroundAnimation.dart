@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:animated_background/animated_background.dart';
-import 'package:training/models/Data/app_colors.dart';
 
 class BackgroundAnimation extends StatefulWidget {
   const BackgroundAnimation({super.key});
