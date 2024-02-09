@@ -7,8 +7,12 @@ import 'package:training/controller/UserInfo.dart';
 import 'package:training/firebase_options.dart';
 import 'package:training/view/pages/app.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:timezone/timezone.dart' as tz;
+import 'package:timezone/data/latest_all.dart' as tz;
 
 void main() async {
+  tz.initializeTimeZones();
+  tz.setLocalLocation(tz.getLocation("Asia/Tokyo"));
   WidgetsFlutterBinding.ensureInitialized();
   prefs = await SharedPreferences.getInstance();
   await Firebase.initializeApp(
