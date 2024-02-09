@@ -9,6 +9,12 @@ FLUTTER_BUILD_NUMBER=1.0.1
 EXCLUDED_ARCHS[sdk=iphonesimulator*]=i386
 EXCLUDED_ARCHS[sdk=iphoneos*]=armv7
 DART_OBFUSCATION=false
+<<<<<<< HEAD
 TRACK_WIDGET_CREATION=true
 TREE_SHAKE_ICONS=false
 PACKAGE_CONFIG=.dart_tool/package_config.json
+=======
+TRACK_WIDGET_CREATION=false
+TREE_SHAKE_ICONS=true
+PACKAGE_CONFIG=/Users/tsukuda/flutterdevelop/training/.dart_tool/package_config.json
+>>>>>>> f30b7ef016cc158b43f91dc2a3a8b92cef7d8979
