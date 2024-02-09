@@ -1,9 +1,7 @@
-import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:training/components/profile_default_icon.dart';
-import 'package:training/controller/picker_image.dart';
+import 'package:training/components/LottieAnimation.dart';
+import 'package:training/controller/UserInfo.dart';
 
 class Photo extends StatefulWidget {
   final double width;
@@ -14,72 +12,15 @@ class Photo extends StatefulWidget {
 }
 
 class _PhotoState extends State<Photo> {
-  Uint8List? _image;
-  final _photoController = PhotoController();
-  @override
-  void initState() {
-    super.initState();
-    _loadImage();
-  }
-
-  Future<void> _loadImage() async {
-    final firebase_storage = PhotoController();
-    Uint8List? img =
-        await firebase_storage.read(); // readメソッドが非同期になっているためawaitを使用
-    setState(() {
-      _image = img;
-    });
-  }
-
-  void selectImage() async {
-    Uint8List? img = await _photoController.pickImage(ImageSource.gallery);
-    if (img != null) {
-      await _photoController.uploadImageToFirebase(img);
-      setState(() {
-        _image = img;
-      });
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: _image != null
-          ? GestureDetector(
-              child: CircleAvatar(
-                backgroundColor: Colors.transparent,
-                radius: 120,
-                child: ClipOval(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    width: 120,
-                    height: 120,
-                    child: Image.memory(
-                      _image!,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ),
-              onTap: () {
-                selectImage();
-              },
-            )
-          : GestureDetector(
-              child: CircleAvatar(
-                backgroundColor: Colors.transparent,
-                radius: 120,
-                child: ClipOval(
-                  child: Container(
-                      width: 120, height: 120, child: ProfileDefaultIcon()),
-                ),
-              ),
-              onTap: () {
-                selectImage();
-              },
-            ),
-    );
+        child: userId != null
+            ? LottieFiles(
+                lottie: 'assets/Lottie/lottie3.json',
+              )
+            : LottieFiles(
+                lottie: 'assets/Lottie/lottie2.json',
+              ));
   }
 }

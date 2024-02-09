@@ -41,7 +41,7 @@ class _AvatorState extends State<Avator> {
             fit: StackFit.expand,
             children: [
               Positioned(
-                top: 190,
+                top: 240,
                 left: 0,
                 //ぼかしの実装
                 child: BackdropFilter(
@@ -87,7 +87,7 @@ class _AvatorState extends State<Avator> {
                 ),
               ),
               Positioned(
-                top: 30,
+                top: 0,
                 left: 0,
                 right: 0,
                 child: Photo(width: 120),
