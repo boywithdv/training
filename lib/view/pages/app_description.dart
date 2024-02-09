@@ -136,14 +136,14 @@ class _AppDescriptionState extends State<AppDescription> {
       case 1:
         return Container(
           child: ImageContainer(
-            img: Image.asset("assets/img/selection.png"),
+            img: Image.asset("assets/img/fitness_select.png"),
             txt: '筋トレの部位選択をしてトレーニングをしよう！',
           ),
         );
       case 2:
         return Container(
           child: ImageContainer(
-            img: Image.asset("assets/img/body.png"),
+            img: Image.asset("assets/img/body_register.png"),
             txt: '身長と体重を入力してBMIの数値を記録してくれます!',
           ),
         );

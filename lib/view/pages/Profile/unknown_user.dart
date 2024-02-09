@@ -251,7 +251,7 @@ class _UnknownUserViewState extends State<UnknownUserView> {
       case 0:
         return Container(
           child: ImageContainer(
-            img: Image.asset("assets/img/accountRegister.png"),
+            img: Image.asset("assets/img/used_discription.png"),
             txt: '左上のsettingIcon押下でアカウントの登録ができます^_^',
           ),
         );
@@ -265,7 +265,7 @@ class _UnknownUserViewState extends State<UnknownUserView> {
       case 2:
         return Container(
           child: ImageContainer(
-            img: Image.asset("assets/img/body.png"),
+            img: Image.asset("assets/img/body_register.png"),
             txt: '他に身長体重の入力をしてBMI数値の計測が可能となります!',
           ),
         );
