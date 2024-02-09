@@ -10,7 +10,6 @@ import 'package:training/components/fitnessContainer.dart';
 import 'package:training/controller/UserInfo.dart';
 import 'package:training/controller/notifications.dart';
 import 'package:training/models/models.dart';
-import 'package:training/view/pages/Profile/Profile.dart';
 import 'package:training/view/pages/ScreenWidget.dart';
 
 final notificationProvider = Provider<NotificationViewModel>((ref) {
@@ -113,14 +112,23 @@ class _SelectedFitnessState extends State<SelectedFitness>
                         ),
                         type: AlertType.success,
                         closeFunction: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (BuildContext context) {
-                                  return ScreenWidget();
-                                },
-                                fullscreenDialog: true),
-                          );
+                          userId != ""
+                              ? Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) {
+                                        return ScreenWidget();
+                                      },
+                                      fullscreenDialog: true),
+                                )
+                              : Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) {
+                                        return ScreenWidget();
+                                      },
+                                      fullscreenDialog: true),
+                                );
                         }).show();
                   },
                 );
