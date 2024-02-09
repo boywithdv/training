@@ -51,9 +51,9 @@ class ScheduleDailly8AMNofitications {
       _nextInstanceOf8AM(),
       const NotificationDetails(
         android: AndroidNotificationDetails(
-          'ob-1-face-daily',
-          'ob-1-face-daily',
-          channelDescription: 'Face photo notification',
+          'am-1-weight-daily',
+          'am-1-weight-daily',
+          channelDescription: 'Weight notification',
         ),
         iOS: DarwinNotificationDetails(
           badgeNumber: 1,
