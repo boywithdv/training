@@ -4,6 +4,8 @@
 	<dict>
 		<key>CFBundleDisplayName</key>
 		<string>イエトレ</string>
+		<key>CFBundleIconName</key>
+		<string>イエトレ</string>
 		<key>CADisableMinimumFrameDurationOnPhone</key>
 		<true />
 		<key>CFBundleDevelopmentRegion</key>
