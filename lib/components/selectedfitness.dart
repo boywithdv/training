@@ -10,6 +10,8 @@ import 'package:training/components/fitnessContainer.dart';
 import 'package:training/controller/UserInfo.dart';
 import 'package:training/controller/notifications.dart';
 import 'package:training/models/models.dart';
+import 'package:training/view/pages/Profile/Profile.dart';
+import 'package:training/view/pages/ScreenWidget.dart';
 
 final notificationProvider = Provider<NotificationViewModel>((ref) {
   return NotificationViewModel(ref.read);
@@ -95,18 +97,31 @@ class _SelectedFitnessState extends State<SelectedFitness>
                     );
                     user.currentUser != null ? create() : null;
                     Alert(
-                            context: context,
-                            title: '終了',
-                            style: AlertStyle(
-                              isCloseButton: true,
-                              isButtonVisible: false,
-                              titleStyle: TextStyle(
-                                color: Colors.black,
-                                fontSize: 30.0,
-                              ),
-                            ),
-                            type: AlertType.success)
-                        .show();
+                        context: context,
+                        title: '終了',
+                        style: AlertStyle(
+                          isCloseButton: true,
+                          isButtonVisible: false,
+                          titleStyle: TextStyle(
+                            color: Colors.black,
+                            fontSize: 30.0,
+                          ),
+                        ),
+                        closeIcon: Icon(
+                          Icons.close,
+                          size: 30,
+                        ),
+                        type: AlertType.success,
+                        closeFunction: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) {
+                                  return ScreenWidget();
+                                },
+                                fullscreenDialog: true),
+                          );
+                        }).show();
                   },
                 );
               },
