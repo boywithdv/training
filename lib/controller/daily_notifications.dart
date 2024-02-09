@@ -47,7 +47,7 @@ class ScheduleDailly8AMNofitications {
     await flutterLocalNotificationsPlugin.zonedSchedule(
       0,
       'おはようございます。',
-      '本日の筋トレの記録をとりましょう。',
+      '本日の体重の記録をとりましょう。',
       _nextInstanceOf8AM(),
       const NotificationDetails(
         android: AndroidNotificationDetails(
