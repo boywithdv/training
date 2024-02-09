@@ -2,10 +2,16 @@ import 'dart:io';
 
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/timezone.dart' as tz;
+import 'package:timezone/data/latest_all.dart' as tz;
 
 class ScheduleDailly8AMNofitications {
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
+  Future setUpNotifications() async {
+    await _requestPermissions();
+    tz.initializeTimeZones();
+    await _scheduleDaily8AMNotification();
+  }
 
   Future<void> _requestPermissions() async {
     if (Platform.isIOS || Platform.isMacOS) {
@@ -36,7 +42,7 @@ class ScheduleDailly8AMNofitications {
   tz.TZDateTime _nextInstanceOf8AM() {
     final tz.TZDateTime now = tz.TZDateTime.now(tz.local);
     tz.TZDateTime scheduledDate =
-        tz.TZDateTime(tz.local, now.year, now.month, now.day, 8);
+        tz.TZDateTime(tz.local, now.year, now.month, now.day, 13);
     if (scheduledDate.isBefore(now)) {
       scheduledDate = scheduledDate.add(const Duration(days: 1));
     }
@@ -51,8 +57,8 @@ class ScheduleDailly8AMNofitications {
       _nextInstanceOf8AM(),
       const NotificationDetails(
         android: AndroidNotificationDetails(
-          'am-1-weight-daily',
-          'am-1-weight-daily',
+          'weight-daily',
+          'weight-daily',
           channelDescription: 'Weight notification',
         ),
         iOS: DarwinNotificationDetails(

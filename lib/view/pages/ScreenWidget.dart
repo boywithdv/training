@@ -5,6 +5,7 @@ import 'package:training/components/backgroundAnimation.dart';
 import 'package:training/components/menuBarComponents/animated_bar.dart';
 import 'package:training/components/menuBarComponents/rive_assets.dart';
 import 'package:training/components/menuBarComponents/rive_utils.dart';
+import 'package:training/controller/daily_notifications.dart';
 import 'package:training/view/pages/Lower/LowerBody.dart';
 import 'package:training/view/pages/Profile/Profile.dart';
 import 'package:training/view/pages/Upper/UpperBody.dart';
@@ -34,9 +35,21 @@ class Screen extends StatefulWidget {
 class _ScreenState extends State<Screen> {
   RiveAsset selectedBottomNav = bottomNavs.last;
   Widget cureentWidget = MainContents();
+  ScheduleDailly8AMNofitications _notifications =
+      ScheduleDailly8AMNofitications();
   @override
   void initState() {
     super.initState();
+    _setUpNotifications();
+  }
+
+  Future<void> _setUpNotifications() async {
+    try {
+      await _notifications.setUpNotifications();
+      print('Notifications set up successfully.');
+    } catch (e) {
+      print('Error setting up notifications: $e');
+    }
   }
 
   @override
