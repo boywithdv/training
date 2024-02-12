@@ -41,13 +41,13 @@ class _AvatorState extends State<Avator> {
             fit: StackFit.expand,
             children: [
               Positioned(
-                top: 240,
+                top: height * 0.26,
                 left: 0,
                 //ぼかしの実装
                 child: BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
                   child: Container(
-                    height: innerHeight * 0.4,
+                    height: innerHeight * 0.3,
                     width: innerWidth,
                     decoration: BoxDecoration(
                       color: const Color.fromARGB(95, 255, 255, 255),
@@ -56,7 +56,7 @@ class _AvatorState extends State<Avator> {
                     child: Column(
                       children: [
                         SizedBox(
-                          height: innerHeight * 0.1,
+                          height: innerHeight * 0.04,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
