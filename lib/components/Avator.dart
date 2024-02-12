@@ -32,7 +32,7 @@ class _AvatorState extends State<Avator> {
     double height = MediaQuery.of(context).size.height;
     return Container(
       color: Colors.transparent,
-      height: height * 0.45,
+      height: height * 0.48,
       child: LayoutBuilder(
         builder: (context, constraints) {
           double innerHeight = constraints.maxHeight;
@@ -41,7 +41,7 @@ class _AvatorState extends State<Avator> {
             fit: StackFit.expand,
             children: [
               Positioned(
-                top: height * 0.29,
+                top: height * 0.33,
                 left: 0,
                 //ぼかしの実装
                 child: BackdropFilter(

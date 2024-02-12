@@ -67,6 +67,9 @@ class _ContainerAvatorState extends State<ContainerAvator> {
             child: Column(
               children: [
                 Avator(),
+                SizedBox(
+                  height: sizedBoxHeight,
+                ),
                 //ここからコンテナ外のことをかく
                 FutureBuilder(
                   future: AdSize.getAnchoredAdaptiveBannerAdSize(
@@ -89,7 +92,7 @@ class _ContainerAvatorState extends State<ContainerAvator> {
                   },
                 ),
                 Container(
-                  width: width * 0.9,
+                  width: width,
                   height: height * 0.05,
                   child: Center(
                     child: Text(
