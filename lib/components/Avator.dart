@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:training/components/photo.dart';
+import 'package:training/components/lottie_container.dart';
 import 'package:training/controller/UserInfo.dart';
 
 class Avator extends StatefulWidget {
@@ -86,12 +86,7 @@ class _AvatorState extends State<Avator> {
                   ),
                 ),
               ),
-              Positioned(
-                top: 0,
-                left: 0,
-                right: 0,
-                child: Photo(width: 120),
-              ),
+              LottieContainer()
             ],
           );
         },

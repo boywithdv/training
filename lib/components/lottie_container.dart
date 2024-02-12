@@ -3,15 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:training/components/LottieAnimation.dart';
 import 'package:training/controller/UserInfo.dart';
 
-class Photo extends StatefulWidget {
-  final double width;
-  const Photo({super.key, required this.width});
+class LottieContainer extends StatefulWidget {
+  const LottieContainer({super.key});
 
   @override
-  State<Photo> createState() => _PhotoState();
+  State<LottieContainer> createState() => _LottieContainerState();
 }
 
-class _PhotoState extends State<Photo> {
+class _LottieContainerState extends State<LottieContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
