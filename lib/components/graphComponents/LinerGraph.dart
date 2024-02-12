@@ -26,6 +26,7 @@ class _LinerGraphState extends State<LinerGraph> {
   Future<void> _initData() async {
     userId = prefs.getString("uid");
     userName = prefs.getString('userName') ?? "";
+    setState(() {});
     // データ取得後にsetStateを呼び出して反映させる
   }
 
