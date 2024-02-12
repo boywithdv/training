@@ -41,7 +41,7 @@ class _AvatorState extends State<Avator> {
             fit: StackFit.expand,
             children: [
               Positioned(
-                top: height * 0.26,
+                top: height * 0.29,
                 left: 0,
                 //ぼかしの実装
                 child: BackdropFilter(
