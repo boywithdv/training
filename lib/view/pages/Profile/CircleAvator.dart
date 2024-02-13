@@ -20,7 +20,6 @@ class _ContainerAvatorState extends State<ContainerAvator> {
   final AdMob _adMob = AdMob();
 
   List<TrainingData> dataList = [];
-  String? fav;
   @override
   void initState() {
     super.initState();
