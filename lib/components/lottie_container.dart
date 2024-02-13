@@ -1,25 +1,40 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:training/components/LottieAnimation.dart';
-import 'package:training/controller/UserInfo.dart';
+import 'package:lottie/lottie.dart';
 
 class LottieContainer extends StatefulWidget {
-  const LottieContainer({super.key});
+  final double width;
+  const LottieContainer({super.key, required this.width});
 
   @override
   State<LottieContainer> createState() => _LottieContainerState();
 }
 
-class _LottieContainerState extends State<LottieContainer> {
+class _LottieContainerState extends State<LottieContainer>
+    with TickerProviderStateMixin {
+  late final AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: userId != null
-            ? LottieFiles(
-                lottie: 'assets/Lottie/lottie3.json',
-              )
-            : LottieFiles(
-                lottie: 'assets/Lottie/lottie2.json',
-              ));
+    double width = MediaQuery.of(context).size.width;
+    return Center(
+      child: Container(
+        width: widget.width,
+        child: Lottie.asset("assets/Lottie/lottie1.json", repeat: true),
+      ),
+    );
   }
 }

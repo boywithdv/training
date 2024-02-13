@@ -30,9 +30,10 @@ class _AvatorState extends State<Avator> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Container(
       color: Colors.transparent,
-      height: height * 0.48,
+      height: height * 0.45,
       child: LayoutBuilder(
         builder: (context, constraints) {
           double innerHeight = constraints.maxHeight;
@@ -41,52 +42,55 @@ class _AvatorState extends State<Avator> {
             fit: StackFit.expand,
             children: [
               Positioned(
-                top: height * 0.33,
+                top: 0,
+                left: width * 0.1,
+                child: LottieContainer(
+                  width: width * 0.7,
+                ),
+              ),
+              Positioned(
+                top: width * 0.37,
                 left: 0,
                 //ぼかしの実装
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                  child: Container(
-                    height: innerHeight * 0.3,
-                    width: innerWidth,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(95, 255, 255, 255),
-                      borderRadius: BorderRadius.circular(40),
-                    ),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: innerHeight * 0.04,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Center(
-                              child: Text(
-                                userName,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 25,
-                                ),
+                child: Container(
+                  height: innerHeight * 0.3,
+                  width: innerWidth,
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(95, 255, 255, 255),
+                    borderRadius: BorderRadius.circular(40),
+                  ),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: innerHeight * 0.04,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Center(
+                            child: Text(
+                              userName,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 25,
                               ),
                             ),
-                          ],
-                        ),
-                        Text(
-                          "Favorite part of training",
-                          style: TextStyle(color: Colors.white70),
-                        ),
-                        Text(
-                          favorite_part_of_training ?? "",
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
+                          ),
+                        ],
+                      ),
+                      Text(
+                        "Favorite part of training",
+                        style: TextStyle(color: Colors.white70),
+                      ),
+                      Text(
+                        favorite_part_of_training ?? "",
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold),
+                      )
+                    ],
                   ),
                 ),
               ),
-              LottieContainer()
             ],
           );
         },
