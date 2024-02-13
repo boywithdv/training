@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:training/controller/UserInfo.dart';
@@ -55,8 +57,8 @@ class Profile extends StatelessWidget {
             ),
             body: ContainerAvator(),
             drawer: SizedBox(
-              width: 190,
-              height: 400,
+              width: 200,
+              height: 470,
               child: Drawer(
                 backgroundColor: Colors.black87,
                 child: ListView(
@@ -155,6 +157,62 @@ class Profile extends StatelessWidget {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) => LoginForm()));
+                                },
+                              )
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                    ListTile(
+                      leading:
+                          Icon(CupertinoIcons.person_crop_circle_badge_minus),
+                      title: Text(
+                        "アカウント削除",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (_) => CupertinoAlertDialog(
+                            title: Text(
+                              "Do you want to delete your account?",
+                              style: TextStyle(color: Colors.red),
+                            ),
+                            content: Text(
+                              "アカウント削除しますか？",
+                              style: TextStyle(color: Colors.red),
+                            ),
+                            actions: [
+                              CupertinoDialogAction(
+                                child: Text('いいえ'),
+                                onPressed: () {
+                                  print(userId);
+                                  Navigator.of(context, rootNavigator: true)
+                                      .pop(); // キャンセルボタンが押されたらダイアログを閉じる
+                                },
+                              ),
+                              CupertinoDialogAction(
+                                child: Text('はい'),
+                                isDestructiveAction: true,
+                                onPressed: () async {
+                                  Navigator.of(context, rootNavigator: true)
+                                      .pop();
+                                  if (_auth.currentUser != null) {
+                                    FirebaseFirestore.instance
+                                        .collection('userId')
+                                        .doc(userId)
+                                        .delete();
+                                    await _auth.currentUser?.delete();
+                                    await _auth.signOut();
+                                    prefs.setString('userName', '');
+                                    prefs.setString(
+                                        "favorite_part_of_training", "");
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => LoginForm()));
+                                  }
                                 },
                               )
                             ],

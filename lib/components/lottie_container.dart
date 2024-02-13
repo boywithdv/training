@@ -29,7 +29,6 @@ class _LottieContainerState extends State<LottieContainer>
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
     return Center(
       child: Container(
         width: widget.width,
