@@ -38,21 +38,10 @@ class ScheduleDailly8AMNofitications {
     }
   }
 
-  // 1回目に通知を飛ばす時間の作成
-  tz.TZDateTime _nextInstanceOf8AM() {
-    final tz.TZDateTime now = tz.TZDateTime.now(tz.local);
-    tz.TZDateTime scheduledDate =
-        tz.TZDateTime(tz.local, now.year, now.month, now.day, 13);
-    if (scheduledDate.isBefore(now)) {
-      scheduledDate = scheduledDate.add(const Duration(days: 1));
-    }
-    return scheduledDate;
-  }
-
   Future<void> _scheduleDaily8AMNotification() async {
     await flutterLocalNotificationsPlugin.zonedSchedule(
       0,
-      'おはようございます。',
+      'こんにちは',
       '本日の体重の記録をとりましょう。',
       _nextInstanceOf8AM(),
       const NotificationDetails(
@@ -72,10 +61,11 @@ class ScheduleDailly8AMNofitications {
     );
   }
 
-  tz.TZDateTime _nextInstanceOfTenAM() {
+  // 1回目に通知を飛ばす時間の作成
+  tz.TZDateTime _nextInstanceOf8AM() {
     final tz.TZDateTime now = tz.TZDateTime.now(tz.local);
     tz.TZDateTime scheduledDate =
-        tz.TZDateTime(tz.local, now.year, now.month, now.day, 20);
+        tz.TZDateTime(tz.local, now.year, now.month, now.day, 8);
     if (scheduledDate.isBefore(now)) {
       scheduledDate = scheduledDate.add(const Duration(days: 1));
     }
