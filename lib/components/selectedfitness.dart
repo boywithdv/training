@@ -112,24 +112,22 @@ class _SelectedFitnessState extends State<SelectedFitness>
                         ),
                         type: AlertType.success,
                         closeFunction: () {
-                          userId != ""
-                              ? Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (BuildContext context) {
-                                        return ScreenWidget();
-                                      },
-                                      fullscreenDialog: true),
-                                )
-                              : Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (BuildContext context) {
-                                        return ScreenWidget();
-                                      },
-                                      fullscreenDialog: true),
-                                );
-                        }).show();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) {
+                                  return ScreenWidget();
+                                },
+                                fullscreenDialog: true),
+                          );
+                        }).show().then((value) => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) {
+                                return ScreenWidget();
+                              },
+                              fullscreenDialog: true),
+                        ));
                   },
                 );
               },

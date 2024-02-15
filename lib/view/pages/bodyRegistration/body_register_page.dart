@@ -92,7 +92,8 @@ class _BodyRegisterPageState extends State<BodyRegisterPage> {
                     ? ""
                     : "更新日 \n $weightRegisterDays",
                 text: "体重",
-                params: fitnessWeight == null ? null : "Today : $fitnessWeight",
+                params:
+                    fitnessWeight == null ? null : "Today : $fitnessWeight kg",
                 width: 150,
                 height: 150,
                 ontap: Weight(),
