@@ -9,6 +9,7 @@ import 'package:training/controller/daily_notifications.dart';
 import 'package:training/view/pages/Lower/LowerBody.dart';
 import 'package:training/view/pages/Profile/Profile.dart';
 import 'package:training/view/pages/Upper/UpperBody.dart';
+import 'package:flutter_app_badger/flutter_app_badger.dart';
 
 class ScreenWidget extends StatelessWidget {
   const ScreenWidget({super.key});
@@ -40,12 +41,14 @@ class _ScreenState extends State<Screen> {
   @override
   void initState() {
     super.initState();
+    FlutterAppBadger.removeBadge();
     _setUpNotifications();
   }
 
   Future<void> _setUpNotifications() async {
     try {
       await _notifications.setUpNotifications();
+
       print('Notifications set up successfully.');
     } catch (e) {
       print('Error setting up notifications: $e');
