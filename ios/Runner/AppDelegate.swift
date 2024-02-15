@@ -5,6 +5,7 @@ import Flutter
 @objc class AppDelegate: FlutterAppDelegate {
   private func clearAllNotifications(_ application: UIApplication) {
     application.applicationIconBadgeNumber = 0
+    UIApplication.shared.applicationIconBadgeNumber = 0
     UNUserNotificationCenter.current().removeAllDeliveredNotifications()
 }
   override func application(
