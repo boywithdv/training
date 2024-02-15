@@ -102,9 +102,10 @@ class Profile extends StatelessWidget {
                         style: TextStyle(color: Colors.white),
                       ),
                       onTap: () {
-                        Share.share(
+                        _shareText(
+                            context,
                             'おうちで気楽に筋トレをしましょう。気楽に。\n https://apps.apple.com/jp/app/%E3%82%A4%E3%82%A8%E3%83%88%E3%83%AC-home-workout/id6476892667',
-                            subject: 'イエトレ(Home Fitness)');
+                            'イエトレ(Home Fitness)');
                       },
                     ),
                     ListTile(
@@ -224,5 +225,12 @@ class Profile extends StatelessWidget {
               ),
             ),
           );
+  }
+
+  void _shareText(BuildContext context, String text, String subject) async {
+    final box = context.findRenderObject() as RenderBox?;
+    await Share.share(text,
+        subject: subject,
+        sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size);
   }
 }
