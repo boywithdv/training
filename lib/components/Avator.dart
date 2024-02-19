@@ -79,7 +79,7 @@ class _AvatorState extends State<Avator> {
                         ],
                       ),
                       Text(
-                        "Favorite part of training",
+                        "お気に筋トレ部位",
                         style: TextStyle(color: Colors.white70),
                       ),
                       Text(
