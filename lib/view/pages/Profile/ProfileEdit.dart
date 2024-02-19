@@ -146,7 +146,7 @@ class _TestEditState extends State<TestEdit> {
                   ),
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: "Favorite part of training",
+                    labelText: "お気に筋トレ部位",
                     labelStyle: TextStyle(color: Colors.white),
                     prefixIcon: Icon(
                       Icons.accessibility_new_rounded,

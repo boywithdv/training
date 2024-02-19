@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:training/controller/UserInfo.dart';
 import 'package:training/view/pages/ScreenWidget.dart';
+import 'package:training/view/pages/workout_menu/workout_menu_page.dart';
 import 'package:training/view/services/auth/LoginForm.dart';
 
 class App extends StatelessWidget {
@@ -19,6 +20,7 @@ class App extends StatelessWidget {
             if (snapshot.hasData) {
               // User が null でなない、つまりサインイン済みのホーム画面へ
               return ScreenWidget();
+              //return ScreenWidget();
             } else if (snapshot.data == null && math == 1) {
               userId = "";
               return ScreenWidget();

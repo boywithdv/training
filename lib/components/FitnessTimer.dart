@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
+import 'package:training/models/Data/app_colors.dart';
 
 class FitNessT extends StatelessWidget {
   const FitNessT(
@@ -34,7 +35,8 @@ class FitNessT extends StatelessWidget {
         isReverse: false,
         onStart: onStart,
         autoStart: autoStart,
-        textStyle: TextStyle(fontSize: 50.0, color: Colors.white),
+        textStyle:
+            TextStyle(fontSize: 50.0, color: AppColors.contentColorWhite),
         onComplete: onComplete,
       ),
     );

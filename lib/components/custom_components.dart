@@ -10,22 +10,21 @@ class CustomComponents extends StatefulWidget {
   final Widget? child;
   final Icon? icon;
   final Color? colors;
-  final Widget? profileEditButton;
+  final Widget? widgetChild;
   final String? registerDays;
-
-  const CustomComponents(
-      {Key? key,
-      this.text,
-      this.colors,
-      this.ontap,
-      this.params,
-      required this.width,
-      required this.height,
-      this.child,
-      this.icon,
-      this.profileEditButton,
-      this.registerDays})
-      : super(key: key);
+  const CustomComponents({
+    Key? key,
+    this.text,
+    this.colors,
+    this.ontap,
+    this.params,
+    required this.width,
+    required this.height,
+    this.child,
+    this.icon,
+    this.widgetChild,
+    this.registerDays,
+  }) : super(key: key);
 
   @override
   _CustomComponentsState createState() => _CustomComponentsState();
@@ -33,9 +32,8 @@ class CustomComponents extends StatefulWidget {
 
 class _CustomComponentsState extends State<CustomComponents>
     with SingleTickerProviderStateMixin {
-  bool isTapped = false;
   late final _controller = AnimationController(
-    duration: const Duration(milliseconds: 200),
+    duration: const Duration(milliseconds: 100),
     vsync: this,
   );
   late final _animation = _controller.drive(Tween<double>(begin: 1, end: 0.95));
@@ -44,11 +42,6 @@ class _CustomComponentsState extends State<CustomComponents>
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        setState(
-          () {
-            isTapped = !isTapped;
-          },
-        );
         // Navigatorをアニメーション後に呼び出す
         _controller.reverse().then(
           (_) {
@@ -134,7 +127,7 @@ class _CustomComponentsState extends State<CustomComponents>
                 ),
               ),
               Center(
-                child: widget.profileEditButton,
+                child: widget.widgetChild,
               )
             ],
           ),

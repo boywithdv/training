@@ -10,7 +10,7 @@ class Components extends StatefulWidget {
   final Widget? child;
   final Icon? icon;
   final Color? colors;
-  final Widget? profileEditButton;
+  final Widget? widgetChild;
 
   const Components({
     Key? key,
@@ -22,7 +22,7 @@ class Components extends StatefulWidget {
     required this.height,
     this.child,
     this.icon,
-    this.profileEditButton,
+    this.widgetChild,
   }) : super(key: key);
 
   @override
@@ -118,7 +118,7 @@ class _ComponentsState extends State<Components>
                 ),
               ),
               Center(
-                child: widget.profileEditButton,
+                child: widget.widgetChild,
               )
             ],
           ),

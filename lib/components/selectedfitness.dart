@@ -9,6 +9,7 @@ import 'package:training/components/FitnessTimer.dart';
 import 'package:training/components/fitnessContainer.dart';
 import 'package:training/controller/UserInfo.dart';
 import 'package:training/controller/notifications.dart';
+import 'package:training/models/Data/app_colors.dart';
 import 'package:training/models/models.dart';
 import 'package:training/view/pages/ScreenWidget.dart';
 
@@ -54,11 +55,11 @@ class _SelectedFitnessState extends State<SelectedFitness>
             onPressed: () {
               Navigator.pop(context);
             },
-            color: Colors.white,
+            color: AppColors.contentColorWhite,
             icon: Icon(Icons.arrow_circle_left_outlined)),
         title: Text(
           widget.muscleDescription,
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: AppColors.contentColorWhite),
         ),
         backgroundColor: Colors.transparent,
       ),

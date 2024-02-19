@@ -164,7 +164,7 @@ class _ContainerAvatorState extends State<ContainerAvator> {
         ontap: ProfileEdit(),
         width: 130,
         height: 50,
-        profileEditButton: Text(
+        widgetChild: Text(
           "プロフィール編集",
           style: TextStyle(color: Colors.black),
         ),

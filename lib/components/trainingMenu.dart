@@ -58,7 +58,8 @@ class _TrainingMenuState extends State<TrainingMenu>
 
   void _navigateToSelectedFitness(String muscleName, String musclePng,
       List<FitnessModel> muscleLottie, int index) {
-    Navigator.of(context, rootNavigator: true).push(PageRouteBuilder(
+    Navigator.of(context, rootNavigator: true).push(
+      PageRouteBuilder(
         opaque: true,
         pageBuilder: (BuildContext context, _, __) {
           print(widget.lottieName);
@@ -67,6 +68,8 @@ class _TrainingMenuState extends State<TrainingMenu>
               musclePng: musclePng,
               muscleLottie: muscleLottie,
               index: index);
-        }));
+        },
+      ),
+    );
   }
 }
