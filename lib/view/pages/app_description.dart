@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:training/components/imageContainer.dart';
 import 'package:training/view/pages/ScreenWidget.dart';
@@ -111,9 +110,10 @@ class _AppDescriptionState extends State<AppDescription> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    CupertinoPageRoute(
+                    MaterialPageRoute(
+                      fullscreenDialog: true,
                       builder: (BuildContext context) {
-                        return const ScreenWidget();
+                        return ScreenWidget();
                       },
                     ),
                   );

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:training/components/backgroundAnimation.dart';
@@ -164,7 +163,7 @@ class _FitnessState extends State<Fitness> {
         ),
         leading: IconButton(
           icon: Icon(
-            CupertinoIcons.bars,
+            Icons.table_rows,
             color: AppColors.contentColorWhite,
           ),
           onPressed: () {
@@ -206,17 +205,18 @@ class _FitnessState extends State<Fitness> {
               ),
             ),
             ListTile(
-              leading: Icon(CupertinoIcons.repeat),
+              leading: Icon(Icons.repeat),
               title: Text(
                 "筋トレメニュー作成",
                 style: TextStyle(color: AppColors.contentColorWhite),
               ),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    fullscreenDialog: true,
-                    builder: (BuildContext context) => WorkoutMenuPage(),
+                Navigator.of(context, rootNavigator: true).push(
+                  PageRouteBuilder(
+                    opaque: true,
+                    pageBuilder: (BuildContext context, _, __) {
+                      return WorkoutMenuPage();
+                    },
                   ),
                 );
               },

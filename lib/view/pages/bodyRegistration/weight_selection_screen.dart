@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/physics.dart';
 import 'package:training/controller/UserInfo.dart';
@@ -141,7 +140,7 @@ class _DivisionSliderState extends State<DivisionSlider> {
                   if (value == "" || value == 0) {
                     showDialog(
                       context: context,
-                      builder: (_) => CupertinoAlertDialog(
+                      builder: (_) => AlertDialog(
                         title: Text("Input values are incorrect."),
                         content: Text("体重を入力してください"),
                         actions: [],

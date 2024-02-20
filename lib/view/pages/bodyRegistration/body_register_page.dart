@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:training/components/custom_components.dart';
 import 'package:training/components/graphComponents/LinerGraph.dart';
@@ -116,7 +115,7 @@ class _BodyRegisterPageState extends State<BodyRegisterPage> {
             height: 240,
             child: GraphContainer(),
             icon: Icon(
-              CupertinoIcons.person,
+              Icons.person,
               size: 35,
             ),
             colors: Colors.white,

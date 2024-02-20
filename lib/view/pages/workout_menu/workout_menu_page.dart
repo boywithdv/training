@@ -18,25 +18,27 @@ class _WorkoutMenuPageState extends State<WorkoutMenuPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: AppColors.contentColorBlack,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: const Text('メニュー作成',
-            style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.white)),
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            bottomRight: Radius.elliptical(10, 30),
+          backgroundColor: AppColors.contentColorBlack,
+          title: const Text('メニュー作成',
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white)),
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomRight: Radius.elliptical(10, 30),
+            ),
           ),
-        ),
-        elevation: 0,
-        leading: const Icon(
-          Icons.close,
-          color: Colors.white,
-        ),
-      ),
+          elevation: 0,
+          leading: IconButton(
+            icon: Icon(
+              Icons.close,
+              color: Colors.white,
+            ),
+            onPressed: () => Navigator.pop(context),
+          )),
       body: Stack(
         children: [
           BackgroundAnimation(),

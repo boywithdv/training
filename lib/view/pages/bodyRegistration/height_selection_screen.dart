@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:training/controller/UserInfo.dart';
@@ -109,7 +108,7 @@ class _HeightState extends State<Height> {
           if (heightController.text == "" || heightController.text == null) {
             showDialog(
               context: context,
-              builder: (_) => CupertinoAlertDialog(
+              builder: (_) => AlertDialog(
                 title: Text("Input values are incorrect."),
                 content: Text("身長を入力してください"),
                 actions: [],

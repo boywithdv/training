@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:training/components/custom_components.dart';
 import 'package:training/models/Data/app_colors.dart';
@@ -34,7 +33,7 @@ class _LinerGraphState extends State<LinerGraph> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("test"),
+        title: Text(""),
       ),
       body: Center(
           child: CustomComponents(
@@ -45,7 +44,7 @@ class _LinerGraphState extends State<LinerGraph> {
         height: 240,
         child: GraphContainer(),
         icon: Icon(
-          CupertinoIcons.person,
+          Icons.person,
           size: 35,
         ),
       )),

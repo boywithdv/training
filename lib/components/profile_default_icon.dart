@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ProfileDefaultIcon extends StatefulWidget {
@@ -17,7 +16,7 @@ class _ProfileDefaultIconState extends State<ProfileDefaultIcon> {
           color: Colors.black54,
           child: Center(
             child: Icon(
-              CupertinoIcons.person,
+              Icons.person,
               color: Colors.white70,
               size: 80,
             ),
@@ -27,7 +26,7 @@ class _ProfileDefaultIconState extends State<ProfileDefaultIcon> {
             top: 12,
             left: 24,
             child: Icon(
-              CupertinoIcons.camera,
+              Icons.camera,
               color: Color(0xFF50E4FF),
               size: 13,
             ))
