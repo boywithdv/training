@@ -5,10 +5,10 @@ import 'package:provider/provider.dart';
 import 'package:training/components/TextFieldForLogin.dart';
 import 'package:training/controller/LoginModel.dart';
 import 'package:training/controller/UserInfo.dart';
-import 'package:training/view/pages/LoginedPage.dart';
-import 'package:training/view/pages/ScreenWidget.dart';
-import 'package:training/view/services/auth/RegisterForm.dart';
-import 'package:training/view/services/auth/passwordForgetForm.dart';
+import 'package:training/view/pages/logined_page.dart';
+import 'package:training/view/pages/screen_widget.dart';
+import 'package:training/view/services/auth/register_page.dart';
+import 'package:training/view/services/auth/password_forget_form.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});

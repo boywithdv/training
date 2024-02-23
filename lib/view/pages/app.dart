@@ -1,9 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:training/controller/UserInfo.dart';
-import 'package:training/view/pages/ScreenWidget.dart';
-import 'package:training/view/pages/workout_menu/workout_menu_page.dart';
-import 'package:training/view/services/auth/LoginForm.dart';
+import 'package:training/view/pages/screen_widget.dart';
+import 'package:training/view/services/auth/login_form.dart';
 
 class App extends StatelessWidget {
   @override

@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:training/components/backgroundAnimation.dart';
 import 'package:training/controller/UserInfo.dart';
-import 'package:training/view/pages/ScreenWidget.dart';
+import 'package:training/view/pages/screen_widget.dart';
 
 class ProfileEdit extends StatefulWidget {
   const ProfileEdit({super.key});

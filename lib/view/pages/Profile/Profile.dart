@@ -4,13 +4,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:training/controller/UserInfo.dart';
 import 'package:training/controller/open_web_page.dart';
-import 'package:training/view/pages/Profile/CircleAvator.dart';
 import 'package:training/components/backgroundAnimation.dart';
-import 'package:training/view/pages/Profile/unknown_user.dart';
-import 'package:training/view/pages/bodyRegistration/body_registration.dart';
+import 'package:training/view/pages/Profile/circle_avator.dart';
+import 'package:training/view/pages/body_registations/body_registration.dart';
+import 'package:training/view/pages/profile/unknown_user.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:training/view/services/auth/LoginForm.dart';
+import 'package:training/view/services/auth/login_form.dart';
 
 class MainContents extends StatelessWidget {
   MainContents({super.key});

@@ -7,9 +7,9 @@ import 'package:training/components/menuBarComponents/rive_assets.dart';
 import 'package:training/components/menuBarComponents/rive_utils.dart';
 import 'package:training/controller/daily_notifications.dart';
 import 'package:training/models/Data/app_colors.dart';
-import 'package:training/view/pages/Lower/LowerBody.dart';
-import 'package:training/view/pages/Profile/Profile.dart';
-import 'package:training/view/pages/Upper/UpperBody.dart';
+import 'package:training/view/pages/lower/lower_body.dart';
+import 'package:training/view/pages/profile/Profile.dart';
+import 'package:training/view/pages/upper/upper_body.dart';
 import 'package:flutter_app_badger/flutter_app_badger.dart';
 import 'package:training/view/pages/workout_menu/workout_menu_page.dart';
 

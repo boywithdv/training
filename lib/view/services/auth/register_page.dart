@@ -46,7 +46,7 @@ class _RegisterFormState extends State<RegisterForm> {
           builder: (context, model, child) {
             return Stack(
               children: [
-                BackgroundAnimation(),
+                const BackgroundAnimation(),
                 Center(
                   child: Container(
                     height: 140,
@@ -71,7 +71,6 @@ class _RegisterFormState extends State<RegisterForm> {
                               pw: false,
                               textController: model.titleController,
                               onChanged: (text) {
-                                print(text);
                                 model.setEmail(text);
                               },
                             ),
@@ -96,7 +95,7 @@ class _RegisterFormState extends State<RegisterForm> {
                                   );
                                 },
                               ),
-                              prefixIcon: Icon(
+                              prefixIcon: const Icon(
                                 Icons.password_rounded,
                                 color: Colors.white70,
                               ),
@@ -104,7 +103,6 @@ class _RegisterFormState extends State<RegisterForm> {
                               pw: _password,
                               textController: model.authorController,
                               onChanged: (text) {
-                                print(text);
                                 model.setPassword(text);
                               },
                             ),
@@ -133,37 +131,33 @@ class _RegisterFormState extends State<RegisterForm> {
                             } on FirebaseAuthException catch (e) {
                               if (e.code == 'email-already-in-use') {
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
+                                  const SnackBar(
                                     content: Text('指定したメールアドレスは登録済みです'),
                                   ),
                                 );
-                                print('指定したメールアドレスは登録済みです');
                               } else if (e.code == 'invalid-email') {
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
+                                  const SnackBar(
                                     content: Text('メールアドレスのフォーマットが正しくありません'),
                                   ),
                                 );
-                                print('メールアドレスのフォーマットが正しくありません');
                               } else if (e.code == 'operation-not-allowed') {
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
+                                  const SnackBar(
                                     content:
                                         Text('指定したメールアドレス・パスワードは現在使用できません'),
                                   ),
                                 );
-                                print('指定したメールアドレス・パスワードは現在使用できません');
                               } else if (e.code == 'weak-password') {
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
+                                  const SnackBar(
                                     content: Text('パスワードは６文字以上にしてください'),
                                   ),
                                 );
-                                print('パスワードは６文字以上にしてください');
                               }
                             }
                           },
-                          child: Text(
+                          child: const Text(
                             "サインアップ",
                             style: TextStyle(color: Colors.white),
                           ),
@@ -175,7 +169,7 @@ class _RegisterFormState extends State<RegisterForm> {
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          child: Row(
+                          child: const Row(
                             children: [
                               Icon(
                                 Icons.arrow_circle_left_outlined,

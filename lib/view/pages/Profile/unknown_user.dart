@@ -10,8 +10,8 @@ import 'package:training/components/imageContainer.dart';
 import 'package:training/controller/UserInfo.dart';
 import 'package:training/controller/open_web_page.dart';
 import 'package:training/models/Data/app_colors.dart';
-import 'package:training/view/services/auth/LoginForm.dart';
-import 'package:training/view/services/auth/RegisterForm.dart';
+import 'package:training/view/services/auth/login_form.dart';
+import 'package:training/view/services/auth/register_page.dart';
 
 class UnknownUser extends StatefulWidget {
   const UnknownUser({super.key});

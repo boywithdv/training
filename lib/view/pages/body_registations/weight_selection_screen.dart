@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/physics.dart';
 import 'package:training/controller/UserInfo.dart';
-import 'package:training/view/pages/ScreenWidget.dart';
+import 'package:training/view/pages/screen_widget.dart';
 
 class Weight extends StatefulWidget {
   const Weight({super.key});

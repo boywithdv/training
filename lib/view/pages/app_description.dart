@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:training/components/imageContainer.dart';
-import 'package:training/view/pages/ScreenWidget.dart';
+import 'package:training/view/pages/screen_widget.dart';
 
 class AppDescription extends StatefulWidget {
   const AppDescription({Key? key}) : super(key: key);

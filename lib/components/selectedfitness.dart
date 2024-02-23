@@ -11,7 +11,7 @@ import 'package:training/controller/UserInfo.dart';
 import 'package:training/controller/notifications.dart';
 import 'package:training/models/Data/app_colors.dart';
 import 'package:training/models/models.dart';
-import 'package:training/view/pages/ScreenWidget.dart';
+import 'package:training/view/pages/screen_widget.dart';
 
 final notificationProvider = Provider<NotificationViewModel>((ref) {
   return NotificationViewModel(ref.read);

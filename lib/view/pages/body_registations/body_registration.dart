@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:training/components/backgroundAnimation.dart';
-import 'package:training/view/pages/ScreenWidget.dart';
-import 'package:training/view/pages/bodyRegistration/body_register_page.dart';
+import 'package:training/view/pages/screen_widget.dart';
+import 'package:training/view/pages/body_registations/body_register_page.dart';
 
 class BodyRegistration extends StatefulWidget {
   const BodyRegistration({super.key});
