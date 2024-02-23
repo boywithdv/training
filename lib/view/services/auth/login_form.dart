@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:training/components/LottieFiles.dart';
-import 'package:training/components/backgroundAnimation.dart';
+import 'package:training/components/lottie_files.dart';
+import 'package:training/components/background_animation.dart';
 import 'package:training/view/services/auth/login_page.dart';
 
 class LoginForm extends StatefulWidget {

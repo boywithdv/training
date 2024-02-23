@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:training/controller/UserInfo.dart';
 import 'package:training/controller/open_web_page.dart';
-import 'package:training/components/backgroundAnimation.dart';
+import 'package:training/components/background_animation.dart';
 import 'package:training/view/pages/Profile/circle_avator.dart';
 import 'package:training/view/pages/body_registations/body_registration.dart';
 import 'package:training/view/pages/profile/unknown_user.dart';

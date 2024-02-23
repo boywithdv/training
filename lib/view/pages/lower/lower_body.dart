@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:training/components/backgroundAnimationToFitness.dart';
-import 'package:training/components/resizedFitnessPng.dart';
+import 'package:training/components/background_animation_to_fitness.dart';
+import 'package:training/components/resized_fitness_png.dart';
 import 'package:training/controller/admob.dart';
 import 'package:training/models/models.dart';
 

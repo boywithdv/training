@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:training/components/fitnessPng.dart';
+import 'package:training/components/fitness_png.dart';
 import 'package:training/models/Data/app_colors.dart';
 
 class ImageCircle extends StatelessWidget {

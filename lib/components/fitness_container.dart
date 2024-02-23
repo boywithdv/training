@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:training/components/ImageCircle.dart';
-import 'package:training/components/LottieAnimation.dart';
+import 'package:training/components/image_circle.dart';
+import 'package:training/components/lottie_animation.dart';
 import 'package:training/models/Data/app_colors.dart';
 import 'package:training/models/models.dart';
 

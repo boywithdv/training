@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:training/components/backgroundAnimation.dart';
+import 'package:training/components/background_animation.dart';
 import 'package:training/view/pages/screen_widget.dart';
 import 'package:training/view/pages/body_registations/body_register_page.dart';
 

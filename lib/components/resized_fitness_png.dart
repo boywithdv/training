@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:training/components/ImageCircle.dart';
+import 'package:training/components/image_circle.dart';
 
 class ResizedFitnessPng extends StatelessWidget {
   const ResizedFitnessPng(

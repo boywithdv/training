@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:training/components/imageContainer.dart';
+import 'package:training/components/image_container.dart';
 import 'package:training/view/pages/screen_widget.dart';
 
 class AppDescription extends StatefulWidget {

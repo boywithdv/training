@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:training/components/TextFieldForLogin.dart';
-import 'package:training/components/backgroundAnimation.dart';
+import 'package:training/components/text_field_for_login.dart';
+import 'package:training/components/background_animation.dart';
 import 'package:training/controller/RegisterModel.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -63,7 +63,7 @@ class _RegisterFormState extends State<RegisterForm> {
                               width: _sizedBoxWidth,
                             ),
                             TextFieldForLogin(
-                              prefixIcon: Icon(
+                              prefixIcon: const Icon(
                                 Icons.mail,
                                 color: Colors.white70,
                               ),
@@ -84,8 +84,8 @@ class _RegisterFormState extends State<RegisterForm> {
                             TextFieldForLogin(
                               suffixIcon: IconButton(
                                 icon: _isObscured
-                                    ? Icon(Icons.visibility)
-                                    : Icon(Icons.visibility_off),
+                                    ? const Icon(Icons.visibility)
+                                    : const Icon(Icons.visibility_off),
                                 onPressed: () {
                                   setState(
                                     () {
@@ -163,7 +163,7 @@ class _RegisterFormState extends State<RegisterForm> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       Container(
                         child: TextButton(
                           onPressed: () {

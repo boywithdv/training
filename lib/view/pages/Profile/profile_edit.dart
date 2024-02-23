@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:training/components/backgroundAnimation.dart';
+import 'package:training/components/background_animation.dart';
 import 'package:training/controller/UserInfo.dart';
 import 'package:training/view/pages/screen_widget.dart';
 

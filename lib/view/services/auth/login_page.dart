@@ -2,7 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:training/components/TextFieldForLogin.dart';
+import 'package:training/components/text_field_for_login.dart';
 import 'package:training/controller/LoginModel.dart';
 import 'package:training/controller/UserInfo.dart';
 import 'package:training/view/pages/logined_page.dart';

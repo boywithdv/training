@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
-import 'package:training/components/backgroundAnimation.dart';
+import 'package:training/components/background_animation.dart';
 
 import 'package:training/components/menuBarComponents/animated_bar.dart';
 import 'package:training/components/menuBarComponents/rive_assets.dart';

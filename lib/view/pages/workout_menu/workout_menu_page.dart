@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:training/components/backgroundAnimation.dart';
-import 'package:training/components/backgroundComponents.dart';
-import 'package:training/components/fitnessPng.dart';
+import 'package:training/components/background_animation.dart';
+import 'package:training/components/background_component.dart';
+import 'package:training/components/fitness_png.dart';
 import 'package:training/components/selected_workout_menu.dart';
 import 'package:training/components/workout_menu_components.dart';
 import 'package:training/models/Data/app_colors.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:training/components/selectedfitness.dart';
+import 'package:training/components/selected_fitness.dart';
 import 'package:training/models/Data/app_colors.dart';
 import 'package:training/models/models.dart';
 
