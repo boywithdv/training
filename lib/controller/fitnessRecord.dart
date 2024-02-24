@@ -1,7 +1,7 @@
 // firestore通信するクラス
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:training/controller/UserInfo.dart';
+import 'package:training/controller/user_info.dart';
 
 class FirestoreService {
   final db = FirebaseFirestore.instance;

@@ -7,7 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:training/components/fitness_timer.dart';
 import 'package:training/components/fitness_container.dart';
-import 'package:training/controller/UserInfo.dart';
+import 'package:training/controller/user_info.dart';
 import 'package:training/controller/notifications.dart';
 import 'package:training/models/Data/app_colors.dart';
 import 'package:training/models/models.dart';

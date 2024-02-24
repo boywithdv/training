@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:training/components/background_animation.dart';
 import 'package:training/components/text_field_for_login.dart';
-import 'package:training/controller/PwResetModel.dart';
+import 'package:training/controller/pw_reset_model.dart';
 
 class PasswordForgetForm extends StatefulWidget {
   const PasswordForgetForm({super.key});

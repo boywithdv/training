@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:training/controller/UserInfo.dart';
+import 'package:training/controller/user_info.dart';
 import 'package:training/controller/open_web_page.dart';
 import 'package:training/components/background_animation.dart';
 import 'package:training/view/pages/Profile/circle_avator.dart';

@@ -7,7 +7,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:training/components/background_animation.dart';
 import 'package:training/components/image_container.dart';
-import 'package:training/controller/UserInfo.dart';
+import 'package:training/controller/user_info.dart';
 import 'package:training/controller/open_web_page.dart';
 import 'package:training/models/Data/app_colors.dart';
 import 'package:training/view/services/auth/login_form.dart';

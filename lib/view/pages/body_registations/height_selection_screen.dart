@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
-import 'package:training/controller/UserInfo.dart';
+import 'package:training/controller/user_info.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:training/view/pages/screen_widget.dart';
 

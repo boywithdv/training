@@ -5,7 +5,7 @@ import 'package:training/components/Avator.dart';
 import 'package:training/controller/admob.dart';
 import 'package:training/view/pages/profile/profile_edit.dart';
 import 'package:training/components/custom_components.dart';
-import 'package:training/controller/UserInfo.dart';
+import 'package:training/controller/user_info.dart';
 import 'package:training/controller/fitnessRecord.dart';
 
 class ContainerAvator extends StatefulWidget {

@@ -3,7 +3,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:training/components/custom_components.dart';
 import 'package:training/models/Data/app_colors.dart';
-import 'package:training/controller/UserInfo.dart';
+import 'package:training/controller/user_info.dart';
 import 'package:training/view/pages/body_registations/body_register_page.dart';
 
 class LinerGraph extends StatefulWidget {
